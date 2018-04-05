@@ -34,10 +34,11 @@ public class SplashScreen extends Application {
 	    }
 
 	    @Override
+	    //initialize 
 	 public void init() {
 	        ImageView splash = new ImageView(new Image(SPLASH_IMAGE));
 	        loadProgress = new ProgressBar();
-	        loadProgress.setPrefWidth(SPLASH_WIDTH - 50);
+	        loadProgress.setPrefWidth(SPLASH_WIDTH - 100);
 	        progressText = new Label("Finding your adventure . . .");
 	        splashLayout = new VBox();
 	        splashLayout.getChildren().addAll(splash, loadProgress, progressText);
