@@ -26,8 +26,8 @@ public class SplashScreen extends Application {
 	    private ProgressBar loadProgress;
 	    private Label progressText;
 	    private Stage mainStage;
-	    private static final int SPLASH_WIDTH = 600;
-	    private static final int SPLASH_HEIGHT = 600;
+	    private static final int SPLASH_WIDTH = 100;
+	    private static final int SPLASH_HEIGHT = 100;
 
 	 public static void main(String[] args) throws Exception {
 	        launch(args);
@@ -38,7 +38,7 @@ public class SplashScreen extends Application {
 	 public void init() {
 	        ImageView splash = new ImageView(new Image(SPLASH_IMAGE));
 	        loadProgress = new ProgressBar();
-	        loadProgress.setPrefWidth(SPLASH_WIDTH - 100);
+	        loadProgress.setPrefWidth(SPLASH_WIDTH - 50);
 	        progressText = new Label("Finding your adventure . . .");
 	        splashLayout = new VBox();
 	        splashLayout.getChildren().addAll(splash, loadProgress, progressText);
@@ -135,6 +135,8 @@ public class SplashScreen extends Application {
 	        Scene splashScene = new Scene(splashLayout, Color.TRANSPARENT);
 	        final Rectangle2D bounds = Screen.getPrimary().getBounds();
 	        initStage.setScene(splashScene);
+	        //Does not effect adventure list
+	        //initStage.setWidth(SPLASH_WIDTH + 500);
 	        initStage.setX(bounds.getMinX() + bounds.getWidth() / 2 - SPLASH_WIDTH / 2);
 	        initStage.setY(bounds.getMinY() + bounds.getHeight() / 2 - SPLASH_HEIGHT / 2);
 	        initStage.initStyle(StageStyle.TRANSPARENT);
