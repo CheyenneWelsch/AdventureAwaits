@@ -16,7 +16,7 @@ import javafx.stage.*;
 import javafx.util.Duration;
 
 	
-public class Splash extends Application {
+public class SplashL extends Application {
 	public static final String APPLICATION_ICON = 
 	    		"https://n6-img-fp.akamaized.net/free-vector/time-to-travel_23-2147514516.jpg?size=338&ext=jpg";
 	public static final String SPLASH_IMAGE =
@@ -25,7 +25,7 @@ public class Splash extends Application {
 	    private Pane splashLayout;
 	    private ProgressBar loadProgress;
 	    private Label progressText;
-	    private Stage mainStage;
+	    //private Stage mainStage;
 	    private static final int SPLASH_WIDTH = 600; //Splash Screen conditional to image size
 	    private static final int SPLASH_HEIGHT = 600; //Splash Screen conditional to image size
 

@@ -26,8 +26,8 @@ public class SplashScreen extends Application {
 	    private ProgressBar loadProgress;
 	    private Label progressText;
 	    private Stage mainStage;
-	    private static final int SPLASH_WIDTH = 100;
-	    private static final int SPLASH_HEIGHT = 100;
+	    private static final int SPLASH_WIDTH = 600; //Splash Screen conditional to image size
+	    private static final int SPLASH_HEIGHT = 600; //Splash Screen conditional to image size
 
 	 public static void main(String[] args) throws Exception {
 	        launch(args);
@@ -35,10 +35,10 @@ public class SplashScreen extends Application {
 
 	    @Override
 	    //initialize 
-	 public void init() {
-	        ImageView splash = new ImageView(new Image(SPLASH_IMAGE));
+	 public void init() { //design of splash
+	        ImageView splash = new ImageView(new Image(SPLASH_IMAGE)); //creates new image view object using defined Splash_Image from
 	        loadProgress = new ProgressBar();
-	        loadProgress.setPrefWidth(SPLASH_WIDTH - 50);
+	        loadProgress.setPrefWidth(SPLASH_WIDTH); //with
 	        progressText = new Label("Finding your adventure . . .");
 	        splashLayout = new VBox();
 	        splashLayout.getChildren().addAll(splash, loadProgress, progressText);
@@ -91,7 +91,7 @@ public class SplashScreen extends Application {
 	                adventureTask,
 	                () -> showMainStage(adventureTask.valueProperty())
 	        );
-	        new Thread(adventureTask).start();
+	        new Thread(adventureTask).start(); //used to add text to splash screen & get it to fade out
 	    }
 
 	    private void showMainStage(

@@ -1,5 +1,12 @@
 package UML;
 
-public class Admin {
+public class Admin extends User {
 
+	public void editUser(){
+		
+	}
+	
+	public void editFlight(){
+		
+	}
 }
