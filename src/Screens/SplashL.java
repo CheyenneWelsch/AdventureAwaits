@@ -97,6 +97,9 @@ public class SplashL extends Application {
 	    private void showMainStage(
 	            ReadOnlyObjectProperty<ObservableList<String>> adventure
 	    ) {
+	    	/*
+	    	 * creates follow-up screen (mainStage) with a list of places.
+	    	 * We can use this as a basis for the login screen
 	        mainStage = new Stage(StageStyle.DECORATED);
 	        mainStage.setTitle("My adventures");
 	        mainStage.getIcons().add(new Image(
@@ -108,6 +111,7 @@ public class SplashL extends Application {
 
 	        mainStage.setScene(new Scene(adventureView));
 	        mainStage.show();
+	        */
 	    }
 
 	    private void showSplash(
