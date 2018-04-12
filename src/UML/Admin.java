@@ -6,7 +6,11 @@ public class Admin extends User {
 		
 	}
 	
-	public void editFlight(){
+	public void updateFlight(){
+		
+	}
+	
+	public void deleteFlight(){
 		
 	}
 }

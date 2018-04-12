@@ -1,6 +1,6 @@
 package UML;
 
-public class User {
+public abstract class User {
 	private String firstName;
 	private String lastName;
 	private String address;
@@ -8,17 +8,27 @@ public class User {
 	private String state;
 	private String userName;
 	private String password;
+	private String email;
 
-	
 	private String SSN;
 	// after implementing text boxes, maybe look for a way to have dashes to get
 	// rid of need for string to int
-	
+
 	private String securityQuestion;
 	private String securityAnswer;
 
-	public String getName() {
-		return lastName + "," + firstName;
+	// do not want a getSSN method because there is no instance where the system
+	// should return that number
+	public void setSSN(String sSN) {
+		SSN = sSN;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return firstName;
 	}
 
 	public void setName(String firstName, String lastName) {
@@ -34,32 +44,44 @@ public class User {
 		this.userName = userName;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
+	//do not want get Password for security reasons
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getSSN() {
-		return SSN;
+	
+	public String getAddress(){
+		return address;
 	}
 
-	public void setSSN(String sSN) {
-		SSN = sSN;
+	public String getState(){
+		return state;
 	}
-
+	
+	public int getZip(){
+		return zip;
+	}
+	
+	public void setAddress(String address, String state, int zip){
+		this.address = address;
+		this.state = state;
+		this.zip = zip;
+	}
+	
+	public String getEmail(){
+		return email;
+	}
+	
+	public void setEmail(String email){
+		this.email = email;
+	}
+	
+	
 	public String getSecurityQuestion() {
 		return securityQuestion;
 	}
 
 	public void setSecurityQuestion(String securityQuestion) {
 		this.securityQuestion = securityQuestion;
-	}
-
-	public String getSecurityAnswer() {
-		return securityAnswer;
 	}
 
 	public void setSecurityAnswer(String securityAnswer) {
