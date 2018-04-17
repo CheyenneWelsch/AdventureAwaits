@@ -1,4 +1,4 @@
-package Screens;
+package gsu.edu.cis2360.GUI;
 
 import javafx.animation.FadeTransition;
 import javafx.application.Application;

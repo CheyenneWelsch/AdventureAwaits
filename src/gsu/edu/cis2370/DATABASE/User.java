@@ -1,4 +1,4 @@
-package UML;
+package gsu.edu.cis2370.DATABASE;
 
 public abstract class User {
 	private String firstName;

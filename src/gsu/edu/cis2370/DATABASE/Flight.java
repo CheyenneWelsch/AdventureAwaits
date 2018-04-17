@@ -1,8 +1,9 @@
-package UML;
+package gsu.edu.cis2370.DATABASE;
 
 import java.util.Date;
 
 public class Flight {
+	
 	private String fromCity;
 	private String fromAirport;
 	private String toCity;
@@ -25,7 +26,7 @@ public class Flight {
 	Plane p1 = new Plane();
 	
 	//getting size of the plane
-	private Passenger [] seats = new Passenger [p1.getSize()];
+	private User [] seats = new User [p1.getSize()];
 	
 	
 	

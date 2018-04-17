@@ -1,4 +1,4 @@
-package Screens;
+package gsu.edu.cis2360.GUI;
 import javafx.*;
 //Used
 import javax.swing.ImageIcon;
