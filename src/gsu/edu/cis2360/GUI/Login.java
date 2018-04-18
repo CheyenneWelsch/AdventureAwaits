@@ -67,7 +67,13 @@ public class Login extends Application {
 				@Override
 			    public void handle(ActionEvent e) {
 			        actiontarget.setText("Sign in button pressed");
-			        textGrab(userTextField.getText(), pwBox.getText());
+			        if(testUser(userTextField.getText()) == true &&
+			        		testPass(pwBox.getText()) == true){
+			        	  textGrab(userTextField.getText(), pwBox.getText());
+			        }else{
+			        	actiontarget.setText("ERROR, BAD ENTRY");
+			        }
+
 			    }
 			});
 			
@@ -92,9 +98,27 @@ public class Login extends Application {
 			grid.add(actiontarget, 1, 6);
 
 		}
-		
+		//FOR TESTING - display user name 
 		private void textGrab(String user, String pass){
 			System.out.println("Username: " + user + "\nPassword: " + pass);
+		}
+		
+		
+		private boolean testUser(String s1){
+			//if(s1.matches("[a-zA-Z0-9._-]{3,}")){
+			if(s1.matches("[a-zA-Z0-9._-].{3,}")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+		private boolean testPass(String s1){
+			if(s1.matches("(?=.*[0-9a-zA-Z@#$%^&+=]).{8,}")){
+				return true;
+			}else{
+				return false;
+			}
 		}
 		
 	public static void main(String[]args){
