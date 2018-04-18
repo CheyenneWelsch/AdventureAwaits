@@ -33,8 +33,11 @@ public class Login extends Application {
 	
 	
 	//creates a login button
-	Button btn = new Button("Login");
+	Button btnLogin = new Button("Login");
 	final Text actiontarget = new Text();
+	
+	Button btnSignUp = new Button("Sign-Up");
+	//sign-up window pop up
 	
 	@Override
 		public void start(Stage primaryStage) {
@@ -57,13 +60,17 @@ public class Login extends Application {
 
 			//button alignment
 			HBox hbBtn = new HBox(10);
-			hbBtn.getChildren().add(btn);
+			hbBtn.getChildren().add(btnLogin);
 			grid.add(hbBtn, 1, 4);
+			
+			HBox loginBtn = new HBox(10);
+			loginBtn.getChildren().add(btnSignUp);
+			grid.add(hbBtn, 2, 4);
 			
 			
 			//use to do action when button pressed
 			//include all actions within the setOnAction method
-			btn.setOnAction(new EventHandler<ActionEvent>() {
+			btnLogin.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 			    public void handle(ActionEvent e) {
 			        actiontarget.setText("Sign in button pressed");
