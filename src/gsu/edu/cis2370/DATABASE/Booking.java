@@ -14,7 +14,7 @@ public class Booking {
 	
 	//checks available number of seats on plane
 	public int checkSeats(){
-		return 
+		return; 
 	}
 	
 }
