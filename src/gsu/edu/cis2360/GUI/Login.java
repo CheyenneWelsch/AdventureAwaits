@@ -61,6 +61,7 @@ public class Login extends Application {
 			grid.add(hbBtn, 1, 4);
 			
 			
+			
 			//use to do action when button pressed
 			//include all actions within the setOnAction method
 			btn.setOnAction(new EventHandler<ActionEvent>() {
