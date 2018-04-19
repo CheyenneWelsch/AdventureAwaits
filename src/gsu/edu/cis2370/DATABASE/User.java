@@ -1,5 +1,9 @@
 package gsu.edu.cis2370.DATABASE;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
 public abstract class User {
 	private String firstName;
 	private String lastName;
@@ -16,7 +20,8 @@ public abstract class User {
 
 	private String securityQuestion;
 	private String securityAnswer;
-
+	
+	
 	// do not want a getSSN method because there is no instance where the system
 	// should return that number
 	public void setSSN(String sSN) {
@@ -25,6 +30,7 @@ public abstract class User {
 
 	public String getFirstName() {
 		return firstName;
+		String firstName = (INSERT )
 	}
 
 	public String getLastName() {

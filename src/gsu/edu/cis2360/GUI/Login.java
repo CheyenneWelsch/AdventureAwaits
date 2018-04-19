@@ -82,7 +82,7 @@ public class Login extends Application {
 			        	 
 			        	  
 			        }else{
-			        	actiontarget.setText("ERROR, BAD ENTRY");
+			        	actiontarget.setText("ERROR, FORGOT PASSWORD?");
 			        }
 
 			    }
@@ -92,6 +92,7 @@ public class Login extends Application {
 				@Override
 			    public void handle(ActionEvent e) {
 			        actiontarget.setText("Sign in button pressed");
+			        //pulls from the sign up class
 			        	  SignUp s1 = new SignUp();
 			        	  s1.start(primaryStage);
 			       
