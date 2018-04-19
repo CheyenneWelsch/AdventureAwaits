@@ -60,17 +60,17 @@ public class Login extends Application {
 
 			//button alignment
 			HBox hbBtn = new HBox(10);
-			hbBtn.getChildren().add(btnLogin);
-			grid.add(hbBtn, 1, 4);
+			hbBtn.getChildren().addAll(btnLogin, btnSignUp);
+			grid.add(btnLogin, 0, 4);
+			grid.add(btnSignUp, 1, 4);
 			
-			HBox loginBtn = new HBox(10);
-			loginBtn.getChildren().add(btnSignUp);
-			grid.add(hbBtn, 2, 4);
+		
 			
 			
 			
 			//use to do action when button pressed
 			//include all actions within the setOnAction method
+			
 			btnLogin.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 			    public void handle(ActionEvent e) {
@@ -85,15 +85,25 @@ public class Login extends Application {
 			    }
 			});
 			
-			
+			btnSignUp.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+			    public void handle(ActionEvent e) {
+			        actiontarget.setText("Sign in button pressed");
+			        if(testUser(userTextField.getText()) == true &&
+			        		testPass(pwBox.getText()) == true){
+			        	  textGrab(userTextField.getText(), pwBox.getText());
+			        }else{
+			        	actiontarget.setText("ERROR, BAD ENTRY");
+			        }
+
+			    }
+			});
 			
 			// create a new scene and place it on stage
 			Scene scene = new Scene(grid, 325, 275);
 			primaryStage.setTitle("Login"); //set title
 			primaryStage.setScene(scene);
 			primaryStage.show();
-
-		
 			
 			//btn.setOnAction(e -> textGrab(userTextField.getText(), pwBox.getText()) );
 		
@@ -104,6 +114,7 @@ public class Login extends Application {
 			// adds location for text to appear if login fails
 			final Text actiontarget = new Text();
 			grid.add(actiontarget, 1, 6);
+			
 
 		}
 		//FOR TESTING - display user name 
@@ -133,5 +144,4 @@ public class Login extends Application {
 		Application.launch(args);
 	}
 	
-
 }
