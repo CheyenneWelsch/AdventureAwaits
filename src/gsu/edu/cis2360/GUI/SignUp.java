@@ -127,16 +127,31 @@ public class SignUp extends Application {
 				@Override
 			    public void handle(ActionEvent e) {
 			        actiontarget.setText("Sign in button pressed");
-			        if(testUser(userTextField.getText()) == true &&
-			        		testPass(pwBox.getText()) == true){
-			        	  textGrab(userTextField.getText(), pwBox.getText());
+			        if(testUser(userTextField.getText()) == true) {
+			        	  textGrab(userTextField.getText());
 			        	 
 			        	  
 			        }else{
-			        	actiontarget.setText("ERROR, WRONG PASSWORD");
+			        	actiontarget.setText("ERROR, USERNAME INVALID. TRY AGAIN!");
 			        }
-
-			    }
+			        
+			        
+			        if(testUser(userTextField.getText()) == true) {
+			        	  textGrab(userTextField.getText());
+			        	 
+			        	  
+			        }else{
+			        	actiontarget.setText("ERROR, UNSERNAME TAKEN.");
+			        }
+				
+			        
+			        if(textGrab(userTextField.getText(), pwBOX.getText()){  
+		        }else{
+		        	actiontarget.setText("ERROR, BAD INPUT");
+		        } 
+		        
+				}    
+			    
 			});
 			
 			
@@ -160,10 +175,13 @@ public class SignUp extends Application {
 
 		}
 		
-		private void textGrab(String user, String pass){
-			System.out.println("Username: " + user + "\nPassword: " + pass);
+		private void textGrab(String user){
+			System.out.println("Username: " + user);
 		}
 		
+		private void textGrab1(String string){
+			System.out.println("Password: " + pass);
+		}
 		private boolean testUser(String s1){
 			//if(s1.matches("[a-zA-Z0-9._-]{3,}")){
 			if(s1.matches("[a-zA-Z0-9._-].{3,}")){
