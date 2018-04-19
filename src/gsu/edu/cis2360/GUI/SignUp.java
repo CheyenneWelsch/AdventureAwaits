@@ -126,7 +126,8 @@ public class SignUp extends Application {
 			btnCreate.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 			    public void handle(ActionEvent e) {
-			        actiontarget.setText("Sign in button pressed");
+					//registering 
+			        //actiontarget.setText("Sign in button pressed");
 			        if(testUser(userTextField.getText()) == true) {
 			        	  textGrab(userTextField.getText()); 
 			        }else{
