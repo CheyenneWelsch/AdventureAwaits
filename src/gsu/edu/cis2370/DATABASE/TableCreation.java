@@ -26,7 +26,7 @@ public class TableCreation {
 		// Execute a statement
 		//ResultSet resultSet = statement.executeQuery;
 		
-		/*
+		
 		//USER TABLE 
 		String user = ("CREATE TABLE USER" +
 						"(ssn INTEGER not NULL ," +
@@ -47,7 +47,7 @@ public class TableCreation {
 						" PRIMARY KEY (ssn))");
 		
 		statement.executeUpdate(user);
-		*/
+		
 		
 		
 		
