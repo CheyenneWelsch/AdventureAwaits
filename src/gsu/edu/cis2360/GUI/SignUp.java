@@ -128,9 +128,7 @@ public class SignUp extends Application {
 			    public void handle(ActionEvent e) {
 			        actiontarget.setText("Sign in button pressed");
 			        if(testUser(userTextField.getText()) == true) {
-			        	  textGrab(userTextField.getText());
-			        	 
-			        	  
+			        	  textGrab(userTextField.getText()); 
 			        }else{
 			        	actiontarget.setText("ERROR, USERNAME INVALID. TRY AGAIN!");
 			        }
@@ -139,19 +137,18 @@ public class SignUp extends Application {
 			        if(testUser(userTextField.getText()) == true) {
 			        	  textGrab(userTextField.getText());
 			        	 
-			        	  
+			        //??Defaulting??	  
 			        }else{
 			        	actiontarget.setText("ERROR, UNSERNAME TAKEN.");
 			        }
 				
-			        
-			        if(textGrab(userTextField.getText(), pwBOX.getText()){  
-		        }else{
-		        	actiontarget.setText("ERROR, BAD INPUT");
-		        } 
-		        
-				}    
-			    
+			       /* if(testpwBOX(pwBOXTextField.getText()) == true) {
+			        	textGrab(userTextField.getText());
+			        }else {
+			        	actiontarget.setText("ERROR, PASSWORD INCORRECT");
+			        }
+				*/
+				}   
 			});
 			
 			
@@ -179,7 +176,7 @@ public class SignUp extends Application {
 			System.out.println("Username: " + user);
 		}
 		
-		private void textGrab1(String string){
+		private void textGrab1(String pass){
 			System.out.println("Password: " + pass);
 		}
 		private boolean testUser(String s1){
@@ -215,12 +212,9 @@ public class SignUp extends Application {
 			}	
 		}
 			
+				
 		
 		
 		
-		
-		
-		
-		}
 	
 }
