@@ -123,11 +123,19 @@ public class SignUp extends Application {
 			
 			//use to do action when button pressed
 			//include all actions within the setOnAction method
-			btn.setOnAction(new EventHandler<ActionEvent>() {
+			btnCreate.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 			    public void handle(ActionEvent e) {
 			        actiontarget.setText("Sign in button pressed");
-			        textGrab(userTextField.getText(), pwBOX.getText());
+			        if(testUser(userTextField.getText()) == true &&
+			        		testPass(pwBox.getText()) == true){
+			        	  textGrab(userTextField.getText(), pwBox.getText());
+			        	 
+			        	  
+			        }else{
+			        	actiontarget.setText("ERROR, BAD ENTRY");
+			        }
+
 			    }
 			});
 			
@@ -154,6 +162,23 @@ public class SignUp extends Application {
 		
 		private void textGrab(String user, String pass){
 			System.out.println("Username: " + user + "\nPassword: " + pass);
+		}
+		
+		private boolean testUser(String s1){
+			//if(s1.matches("[a-zA-Z0-9._-]{3,}")){
+			if(s1.matches("[a-zA-Z0-9._-].{3,}")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+		private boolean testPass(String s1){
+			if(s1.matches("(?=.*[0-9a-zA-Z@#$%^&+=]).{8,}")){
+				return true;
+			}else{
+				return false;
+			}
 		}
 	
 }
