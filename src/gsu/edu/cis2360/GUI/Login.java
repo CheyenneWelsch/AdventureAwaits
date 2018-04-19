@@ -79,8 +79,7 @@ public class Login extends Application {
 			        if(testUser(userTextField.getText()) == true &&
 			        		testPass(pwBox.getText()) == true){
 			        	  textGrab(userTextField.getText(), pwBox.getText());
-			        	  signUpTEST s1 = new signUpTEST();
-			        	  s1.start(primaryStage);
+			        	 
 			        	  
 			        }else{
 			        	actiontarget.setText("ERROR, BAD ENTRY");
@@ -93,15 +92,12 @@ public class Login extends Application {
 				@Override
 			    public void handle(ActionEvent e) {
 			        actiontarget.setText("Sign in button pressed");
-			        if(testUser(userTextField.getText()) == true &&
-			        		testPass(pwBox.getText()) == true){
-			        	  textGrab(userTextField.getText(), pwBox.getText());
-			        	 
-			        }else{
-			        	actiontarget.setText("ERROR, BAD ENTRY");
+			        	  SignUp s1 = new SignUp();
+			        	  s1.start(primaryStage);
+			       
 			        }
 
-			    }
+			    
 			});
 			
 			// create a new scene and place it on stage
