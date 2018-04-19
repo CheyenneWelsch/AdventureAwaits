@@ -133,7 +133,7 @@ public class SignUp extends Application {
 			        	 
 			        	  
 			        }else{
-			        	actiontarget.setText("ERROR, BAD ENTRY");
+			        	actiontarget.setText("ERROR, WRONG PASSWORD");
 			        }
 
 			    }
@@ -179,6 +179,30 @@ public class SignUp extends Application {
 			}else{
 				return false;
 			}
+		}
+		
+		private boolean testPw2(String s1) {
+			if(s1.matches("(?=.*[0-9a-zA-Z@#$%^&+=]).{8,}")) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		private boolean testPw(String s1, String s2) {
+			if (s1.matches(s2)){
+				return true;
+			}else {
+				return false;
+			}	
+		}
+			
+		
+		
+		
+		
+		
+		
 		}
 	
 }

@@ -6,7 +6,7 @@ public class textInput {
 	
 
 	/*
-	 * Regrex Expressions
+	 * RegEx Expressions
 	 * 
 ^                 # start-of-string
 (?=.*[0-9])       # a digit must occur at least once
