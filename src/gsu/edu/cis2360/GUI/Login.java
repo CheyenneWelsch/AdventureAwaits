@@ -61,8 +61,9 @@ public class Login extends Application {
 			//button alignment
 			HBox hbBtn = new HBox(10);
 			hbBtn.getChildren().addAll(btnLogin, btnSignUp);
-			grid.add(btnLogin, 0, 4);
-			grid.add(btnSignUp, 1, 4);
+			grid.add(btnLogin, 0, 3);
+			grid.add(btnSignUp, 1, 3);
+			
 			
 		
 			
