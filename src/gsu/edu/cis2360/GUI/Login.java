@@ -16,7 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.paint.Paint;
+
 
 
 public class Login extends Application {
@@ -60,7 +60,7 @@ public class Login extends Application {
 
 			//button alignment
 			HBox hbBtn = new HBox(10);
-			hbBtn.getChildren().addAll(btnLogin, btnSignUp);
+			hbBtn.getChildren().addAll(btnSignUp, btnLogin);
 			grid.add(btnLogin, 0, 3);
 			grid.add(btnSignUp, 1, 3);
 			
