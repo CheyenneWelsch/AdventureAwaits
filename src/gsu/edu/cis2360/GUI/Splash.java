@@ -25,7 +25,7 @@ public class Splash extends Application {
 	    private Pane splashLayout;
 	    private ProgressBar loadProgress;
 	    private Label progressText;
-	    private Stage mainStage;
+	    //private Stage mainStage;
 	    private static final int SPLASH_WIDTH = 600; //Splash Screen conditional to image size
 	    private static final int SPLASH_HEIGHT = 600; //Splash Screen conditional to image size
 
@@ -97,6 +97,9 @@ public class Splash extends Application {
 	    private void showMainStage(
 	            ReadOnlyObjectProperty<ObservableList<String>> adventure
 	    ) {
+	    	/*
+	    	 * creates follow-up screen (mainStage) with a list of places.
+	    	 * We can use this as a basis for the login screen
 	        mainStage = new Stage(StageStyle.DECORATED);
 	        mainStage.setTitle("My adventures");
 	        mainStage.getIcons().add(new Image(
@@ -108,6 +111,7 @@ public class Splash extends Application {
 
 	        mainStage.setScene(new Scene(adventureView));
 	        mainStage.show();
+	        */
 	    }
 
 	    private void showSplash(
