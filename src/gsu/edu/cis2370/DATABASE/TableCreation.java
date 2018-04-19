@@ -26,7 +26,7 @@ public class TableCreation {
 		// Execute a statement
 		//ResultSet resultSet = statement.executeQuery;
 		
-		
+		/*
 		//USER TABLE 
 		String user = ("CREATE TABLE USER" +
 						"(ssn INTEGER not NULL ," +
@@ -47,7 +47,71 @@ public class TableCreation {
 						" PRIMARY KEY (ssn))");
 		
 		statement.executeUpdate(user);
+		*/
 		
-		connection.close();
+		
+		
+		
+	
+		String flight = ("CREATE TABLE FLIGHTS" +
+				"(flightNumber INTEGER not NULL ," +
+				" fromCity VARCHAR(225), " +
+				" toCity VARCHAR(225), " +
+				" fromAirport VARCHAR(225), " +
+				" toAirport VARCHAR(225), " +
+				" departDate VARCHAR(225), " +
+				" arriveDate VARCHAR(225), " +
+				" departTime VARCHAR(225), " +
+				" arriveTime VARCHAR(225), " +
+				"planeType VARCHAR(225) ,"+
+				" PRIMARY KEY (flightNumber))");
+
+
+
+String airport = ("CREATE TABLE AIRPORT" +
+		"(airportCode VARCHAR(3) ," +
+		" name VARCHAR(225), " +
+		" street VARCHAR(225), " +
+		" city VARCHAR(225), " +
+		" state VARCHAR(225), " +
+		" zip VARCHAR(225), " +
+		" country VARCHAR(225), " +
+		"checkSeat INTEGER not NULL ,"+
+		" PRIMARY KEY (airportCode))");
+
+
+
+
+String booking = ("CREATE TABLE BOOKING" +
+		"(confirmationNumber INTEGER not NULL ," +
+		" flightnumb INTEGER not NULL, " +
+		" assignPassenger VARCHAR(225), " +
+		" checkSeat VARCHAR(225), " +
+		" searchFlights VARCHAR(225), " +
+		" PRIMARY KEY (confirmationNumber))");
+
+
+
+String plane = ("CREATE TABLE PLANE" +
+		"(planeid INTEGER not NULL ," +
+		" type VARCHAR(225), " +
+		" maxsize INTEGER not NULL, " +
+		" currentsize INTEGER, " +
+		" status VARCHAR(225), " +
+		" PRIMARY KEY (planeid))");
+
+statement.executeUpdate(flight);
+statement.executeUpdate(airport);
+statement.executeUpdate(booking);
+statement.executeUpdate(plane);
+
+
+
+
+
+connection.close();
+
+
+
 	}
 }
