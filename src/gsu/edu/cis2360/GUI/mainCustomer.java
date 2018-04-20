@@ -62,11 +62,17 @@ public class mainCustomer extends Application{
 		
 		// create a new scene and place it on stage
 		Scene scene = new Scene(grid, 325, 300);
-		primaryStage.setTitle("Login"); //set title
+		primaryStage.setTitle("Main Menu"); //set title
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
 	}
-
+	
+	
+	
+	
+	public static void main(String[]args){
+		Application.launch(args);
+	}
 	
 }

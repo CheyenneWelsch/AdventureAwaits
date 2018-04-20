@@ -83,7 +83,13 @@ public class Search extends Application {
 	
 		
 		//btn.setOnAction(e -> textGrab(userTextField.getText(), pwBox.getText()) );
-	
+		btnBack.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+		    public void handle(ActionEvent e) {
+				mainAdmin adminMenu = new mainAdmin();
+		       adminMenu.start(primaryStage);
+		    }
+		});
 		
 		
 	
@@ -103,4 +109,3 @@ public static void main(String[]args){
 
 
 }
-

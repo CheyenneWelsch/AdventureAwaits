@@ -28,6 +28,7 @@ public class mainAdmin extends Application {
 	Button btnMyFlights= new Button("View My Flights");
 	Button btnAddFlight = new Button("Add Flights");
 	Button btnDeleteFlight = new Button("Delete Flights");
+	Button btnEditFlight = new Button("Edit Flights");
 	Text txtAdmin = new Text("Admin Tools");
 	
 	Button btnLogout = new Button("Log Out");
@@ -51,8 +52,9 @@ public class mainAdmin extends Application {
 		grid.add(btnCancel, 0 ,4);
 		grid.add(txtAdmin, 0, 6);
 		grid.add(btnAddFlight, 0, 7);
-		grid.add(btnDeleteFlight, 0, 8);
-		grid.add(btnLogout, 0, 10);
+		grid.add(btnEditFlight, 0, 8);
+		grid.add(btnDeleteFlight, 0, 9);
+		grid.add(btnLogout, 0, 11);
 		
 		
 		
@@ -63,18 +65,81 @@ public class mainAdmin extends Application {
 		btnAddFlight.setMinWidth(200);
 		btnDeleteFlight.setMinWidth(200);
 		btnLogout.setMinWidth(200);
+		btnEditFlight.setMinWidth(200);
+	
+		/*
+		btnMyFlights.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+		    public void handle(ActionEvent e) {
+				listTEST list = new listTEST();
+				list.start(primaryStage);
+		    }
+		});
+		*/
+		
+		btnSearch.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+		    public void handle(ActionEvent e) {
+				Search test = new Search();
+				test.start(primaryStage);
+		    }
+		});
 	
 		
+		btnLogout.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+		    public void handle(ActionEvent e) {
+				Login test = new Login();
+				test.start(primaryStage);
+		    }
+		});
+		
+		btnCancel.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+		    public void handle(ActionEvent e) {
+				Login test = new Login();
+				test.start(primaryStage);
+		    }
+		});
+		
+		
+		/*	class not made yet
+		 * btnBook.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+			    public void handle(ActionEvent e) {
+					bookingTEST book = new bookingTEST();
+					book.start(primaryStage);
+			    }
+			});
+			*/
+		
+		
+		/*	class not made yet
+		 * btnCencel.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+			    public void handle(ActionEvent e) {
+					cancelFlightTEST cancel = new cancelFlightTEST();
+					cancel.start(primaryStage);
+			    }
+			});
+			*/
 		
 		
 		
 		
 		// create a new scene and place it on stage
 		Scene scene = new Scene(grid, 325, 400);
-		primaryStage.setTitle("Login"); //set title
+		primaryStage.setTitle("Main Menu"); //set title
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
 	}
-
+	
+	
+	
+	
+	public static void main(String[]args){
+		Application.launch(args);
+	}
+	
 }

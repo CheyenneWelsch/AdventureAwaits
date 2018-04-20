@@ -2,6 +2,7 @@ package gsu.edu.cis2360.GUI;
 
 
 
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,7 +26,7 @@ public class Login extends Application {
 	
 	Label userName = new Label("User Name: ");
 	Label pw = new Label("Password: ");
-	TextField userTextField = new TextField();
+	public static TextField userTextField = new TextField();
 	PasswordField pwBox = new PasswordField();
 	Text scenetitle = new Text("Adventure Awaits");
 	// creates a specialized password input box that hides the password

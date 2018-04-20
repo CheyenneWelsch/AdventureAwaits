@@ -30,7 +30,6 @@ public abstract class User {
 
 	public String getFirstName() {
 		return firstName;
-		String firstName = (INSERT )
 	}
 
 	public String getLastName() {
