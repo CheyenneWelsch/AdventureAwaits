@@ -119,30 +119,9 @@ public class Login extends Application {
 			
 
 		}
-		//FOR TESTING - display user name 
-		private void textGrab(String user, String pass){
-			System.out.println("Username: " + user + "\nPassword: " + pass);
-		}
 		
 		
-		private boolean testUser(String s1){
-			//if(s1.matches("[a-zA-Z0-9._-]{3,}")){
-			if(s1.matches("[a-zA-Z0-9._-].{3,}")){
-				return true;
-			}else{
-				return false;
-			}
-		}
-		
-		private boolean testPass(String s1){
-			if(s1.matches("(?=.*[0-9a-zA-Z@#$%^&+=]).{8,}")){
-				return true;
-			}else{
-				return false;
-			}
-		}
-		
-	public static void main(String[]args){
+	public static void main(String[] args){
 		Application.launch(args);
 	}
 	
