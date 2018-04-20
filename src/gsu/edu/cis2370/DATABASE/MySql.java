@@ -90,12 +90,12 @@ public class MySql {
 //Statement statement = connection.prepareStatement(user);
 //Statement statement = connection.prepareStatement(flight);
 //Statement statement = connection.prepareStatement(airport);
-//Statement statement = connection.prepareStatement(booking);
+Statement statement = connection.prepareStatement(booking);
 
 //statement.executeUpdate(user);
 //statement.executeUpdate(flight);
-statement.executeUpdate(airport);
-//statement.executeUpdate(booking);
+//statement.executeUpdate(airport);
+statement.executeUpdate(booking);
 
 
 	
