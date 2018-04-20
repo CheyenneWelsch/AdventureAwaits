@@ -24,7 +24,6 @@ public class SqlCommand {
 		//access = auto as customer
 		//manually create admin account
 		
-		
 		String ssn;
 		String firstName;
 		String lastName;
@@ -41,42 +40,69 @@ public class SqlCommand {
 		String securityAnswer;
 		String access;
 		
-			String sql = ("INSERT into USER (ssn , firstName , lastName , email, phoneNumber , username, password, "
-					+ "street, city, state, zip, country, securityQuestion, securityAnswer , access) " 
+		String user = ("INSERT into USER (ssn , firstName , lastName , email, phoneNumber , username, password, street, city, state, zip, country, securityQuestion, securityAnswer , access) " +
 							"Values (" + ssn + "' , '" + firstName + "' , '" + lastName + "' , '" + email + "','" + phoneNumber + "','" 
 					+ username + "','" + password + "','" + street + "','" + city + "','" + state + "','" + zip + "','" + country + "','" 
 							+ securityQuestion + "','" + securityAnswer + "','" + access + "','"); 
 							 
 		
 							
+		// INSERT into PLANE Attributes: planeId , type , maxSize , currentSize, status
+			
+			
+		String planeId;
+		String type;
+		String maxSize;
+		String currentSize;
+		String status;
+			
+			
+		String plane = ("INSERT into PLANE (planeId , type , maxSize , currentSize , status )" +
+							"Values (" + planeId + "' , '" + type + "','" + maxSize + "','"+ currentSize + "','"+ status + "','"); 						
 							
 							
-							
-		//Prepare a statement
-		Statement statement = connection.prepareStatement(sql);
-							
+		// INSERT into FLIGHTS Attributes: flightNumber , fromCity , toCity , fromAirport, toAirport
+		//departDate , arriveDate , departTime , arriveTime , planeType
 		
-							
+		String flightNumber;
+		String fromCity;
+		String toCity; 
+		String fromAirport;
+		String toAirport;
+		String departDate; 
+		String arriveDate;
+		String departTime; 
+		String arriveTime;
+		String planeType;
 		
-		// Execute a statement
-		//ResultSet resultSet = statement.executeQuery;
-		
+			
+			
+		String flights = ("INSERT into PLANE (flightNumber , fromCity , toCity , fromAirport , toAirport , departDate , ariveDate , departTime , arriveTime , planeType )" +
+							"Values (" + flightNumber + "' , '" + fromCity + "','" + toCity + "','"+ fromAirport + "','"+ toAirport + "','" + departDate + "','" + arriveDate + "','" + departTime + "','"+ arriveTime + "','"+ planeType + "','"); 	
 		
 	
+		// INSERT into AIRPORT Attributes: airportCode , name , street , city , state , zip , country , checkSeat
+				
+		String airportCode;
+		String name;
+		String street; 
+		String city;
+		String state;
+		String zip;
+		String country;
+		String checkSeat;
+				
+					
+					
+		String airport = ("INSERT into BOOKING (airportCode , name , street , checkSeat , searchFlights )" +
+									"Values (" + airportCode + "' , '" + name + "','" + assignPassenger + "','"+ checkSeat + "','"+ searchFlights + "','"); 
+
+
+
+
+
+
+
 	
-
-
-
-
-
-connection.close();
-
-
-
-	}
-
-	private static String getText(Object userNameBox) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }
