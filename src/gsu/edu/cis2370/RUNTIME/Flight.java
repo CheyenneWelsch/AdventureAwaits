@@ -1,4 +1,4 @@
-package gsu.edu.cis2370.DATABASE;
+package gsu.edu.cis2370.RUNTIME;
 
 import java.util.Date;
 
@@ -17,7 +17,7 @@ public class Flight {
 	private int flightNumber;
 	
 	//getting size of the plane
-	private User [] seats = new User [p1.getSize()];
+	//private User [] seats = new User [p1.getSize()];
 	
 	
 	

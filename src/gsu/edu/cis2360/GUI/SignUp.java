@@ -44,29 +44,30 @@ public class SignUp extends Application {
 	Label securityQ = new Label("Security Question: ");
 	Label securityA = new Label("Security Answer: ");
 	
-	TextField userTextField = new TextField();
+	
 	Text scenetitle = new Text("ACCOUNT CREATION");
 	
-	TextField userNameBox = new TextField();
-	TextField firstNameBOX = new TextField();
-	TextField lastNameBOX = new TextField();
-	TextField ssnBOX = new TextField();
-	TextField addressBOX = new TextField();
-	TextField cityBOX = new TextField();
-	TextField stateBOX = new TextField();
-	TextField zipBOX = new TextField();
-	TextField countryBOX = new TextField();
-	TextField securityQBOX = new TextField();
-	TextField securityABOX = new TextField();
+	public TextField userTextField = new TextField();
+	TextField userNameBOX = new TextField();
+	public TextField firstNameBOX = new TextField();
+	public TextField lastNameBOX = new TextField();
+	public TextField ssnBOX = new TextField();
+	public TextField addressBOX = new TextField();
+	public TextField cityBOX = new TextField();
+	public TextField stateBOX = new TextField();
+	public TextField zipBOX = new TextField();
+	public TextField countryBOX = new TextField();
+	public TextField securityQBOX = new TextField();
+	public TextField securityABOX = new TextField();
 	
-	PasswordField pwBOX = new PasswordField();
+	public PasswordField pwBOX = new PasswordField();
 	PasswordField pw2BOX = new PasswordField();
 
 	
 	
 	
 	//creates a login button
-	Button btn = new Button("Go Back");
+	Button btnBack = new Button("Go Back");
 	Button btnCreate = new Button("Create Account");
 	final Text actiontarget = new Text();
 	
@@ -116,22 +117,22 @@ public class SignUp extends Application {
 
 			//HBox creates items in a horizontal row
 			HBox hbBtn = new HBox(20);
-			hbBtn.getChildren().addAll(btn, btnCreate);
+			hbBtn.getChildren().addAll(btnBack, btnCreate);
 			grid.add(hbBtn, 0, 14);
 			grid.add(btnCreate, 1,14);
 			btnCreate.setMinWidth(300);
 			
 			//use to do action when button pressed
 			//include all actions within the setOnAction method
-			btn.setOnAction(new EventHandler<ActionEvent>() {
+			btnCreate.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 			    public void handle(ActionEvent e) {
-			        actiontarget.setText("Sign in button pressed");
-			        textGrab(userTextField.getText(), pwBOX.getText());
+			        actiontarget.setText("Create button pressed");
+			        //createAccount(textGrab(userTextField.getText(), pwBOX.getText());
 			    }
 			});
 			
-			btn.setOnAction(new EventHandler<ActionEvent>() {
+			btnBack.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 			    public void handle(ActionEvent e) {
 			       Login login = new Login();
@@ -160,10 +161,11 @@ public class SignUp extends Application {
 
 		}
 		
+	/*
 		private void textGrab(String user, String pass){
 			System.out.println("Username: " + user + "\nPassword: " + pass);
 		}
-		
+		*/
 		
 
 		public static void main(String[]args){

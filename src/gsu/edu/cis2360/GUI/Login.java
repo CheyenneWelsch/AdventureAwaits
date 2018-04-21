@@ -26,8 +26,9 @@ public class Login extends Application {
 	
 	Label userName = new Label("User Name: ");
 	Label pw = new Label("Password: ");
-	public static TextField userTextField = new TextField();
+	
 	PasswordField pwBox = new PasswordField();
+	TextField userTextField = new TextField();
 	Text scenetitle = new Text("Adventure Awaits");
 	// creates a specialized password input box that hides the password
 	// input
@@ -76,8 +77,9 @@ public class Login extends Application {
 			btnLogin.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 			    public void handle(ActionEvent e) {
-			        actiontarget.setText("Sign in button pressed");
-			        if(testUser(userTextField.getText()) == true &&
+			   actiontarget.setText("Sign in button pressed");
+			   /*
+			   if(testUser(userTextField.getText()) == true &&
 			        		testPass(pwBox.getText()) == true){
 			        	  textGrab(userTextField.getText(), pwBox.getText());
 			        	 
@@ -85,7 +87,7 @@ public class Login extends Application {
 			        }else{
 			        	actiontarget.setText("ERROR, FORGOT PASSWORD?");
 			        }
-
+			    */
 			    }
 			});
 			

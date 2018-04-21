@@ -1,4 +1,4 @@
-package gsu.edu.cis2370.DATABASE;
+package gsu.edu.cis2370.RUNTIME;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,8 +22,13 @@ public abstract class User {
 	private String securityAnswer;
 	
 	
+	
 	// do not want a getSSN method because there is no instance where the system
 	// should return that number
+	
+	
+	
+	
 	public void setSSN(String sSN) {
 		SSN = sSN;
 	}

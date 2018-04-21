@@ -1,4 +1,4 @@
-package gsu.edu.cis2370.DATABASE;
+package gsu.edu.cis2370.RUNTIME;
 
 public class Booking {
 
@@ -12,9 +12,6 @@ public class Booking {
 		this.bookingID = bookingID;
 	}
 	
-	//checks available number of seats on plane
-	public int checkSeats(){
-		return; 
-	}
+	
 	
 }

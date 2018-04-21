@@ -1,4 +1,4 @@
-package gsu.edu.cis2370.DATABASE;
+package gsu.edu.cis2370.RUNTIME;
 
 public class Admin extends User {
 

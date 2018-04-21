@@ -1,48 +1,32 @@
 package gsu.edu.cis2370.RUNTIME;
 
 import java.util.Date;
-
+import gsu.edu.cis2360.GUI.*;
 public class ValueOption{
 	
-	//User
-	public String User.getFirstName(){
+	public SignUp signUp = new SignUp();
+	
+	//User Object
+	public User user = new User(){
+		
+	};
+	
+	public void createAccount(User x){
+		this.user.setName(signUp.firstNameBOX.toString(), signUp.lastNameBOX.toString());
+		this.user.setSSN(signUp.ssnBOX.toString());
+		
+		
+		this.user.setUserName(signUp.userTextField.toString());
+		this.user.setPassword(signUp.pwBOX.toString());
+		
+		//since setAddress needs an int value, the next line converts the string to an int
+		int zip =Integer.parseInt(signUp.zipBOX.toString());
+		this.user.setAddress(signUp.addressBOX.toString(), signUp.stateBOX.toString(), zip);
+		
 		
 	}
 	
 	
-	//entity:
-	public final class User {
-		private final SSN ssn; //global identity
-		FirstName firstName;
-		LastName lastName;
-		Address address;
-	}
-	
-	new User(String ssn, String firstName, String, lastName, String address) {
-		
-	}
-	
-	class SSN {
-		String value;
-		public SSN(String value) {
-			this.value = value.toString();
-		}
-	}
-	
-	class FirstName {
-		String value;
-	}
-	
-	class LastName {
-		String value;
-	}
-	
-	class Address {
-		String address;
-		String city;
-		int zip;
-		String country;
-	}
 	
 	
 	

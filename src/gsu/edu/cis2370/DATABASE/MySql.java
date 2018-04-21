@@ -22,7 +22,7 @@ public class MySql {
 	
 	
 	
-		/*String user = ("CREATE TABLE USER" +
+		String user = ("CREATE TABLE USER" +
 				"(ssn INTEGER not NULL ," +
 				" firstName VARCHAR(20), " +
 				" lastName VARCHAR(30), " +
@@ -38,7 +38,7 @@ public class MySql {
 				" securityQuestion VARCHAR(500), " +
 				" securityAnswer VARCHAR(200), " +
 				" access VARCHAR(8), " +
-				" PRIMARY KEY (ssn))");*/
+				" PRIMARY KEY (ssn))");
 
 
 
