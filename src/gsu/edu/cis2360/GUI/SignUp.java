@@ -3,24 +3,31 @@ package gsu.edu.cis2360.GUI;
 
 import gsu.edu.cis2370.RUNTIME.*;
 import java.awt.Color;
+import java.sql.SQLException;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
 
-public class SignUp extends Application  {
+public class SignUp extends Application {
 		
 	//ValueOption vo = new ValueOption();
 	//TESTCLASS tc = new TESTCLASS();
-	
+
 
 	
 	// creates a specialized password input box that hides the password
@@ -74,7 +81,9 @@ public class SignUp extends Application  {
 	
 	@Override
 		public void start(Stage primaryStage) {
-			TESTCLASS tc = new TESTCLASS();
+		
+		//ValueObject vo = new ValueObject();	
+		
 			// create GridPane object
 			GridPane grid = new GridPane();
 			grid.add(scenetitle, 0, 0);
@@ -127,14 +136,21 @@ public class SignUp extends Application  {
 			
 			//use to do action when button pressed
 			//include all actions within the setOnAction method
+			
 			btnCreate.setOnAction(new EventHandler<ActionEvent>() {
+			
 				@Override
 			    public void handle(ActionEvent e) {
-			        actiontarget.setText("Create button pressed");
-			        String text = firstNameBOX.setText(text.setText(format("$%.2f");;
-			       System.out.println(text);
-			        ValueObject vo = new ValueObject();
-			        vo.register();
+					actiontarget.setText("Create button pressed");
+					
+			        //use value object object
+			       
+					ValueObject vo = new ValueObject();
+					vo.register();
+					
+			        String text = firstNameBOX.getText();
+			        System.out.println(text);
+			        
 			       
 			        //createAccount(textGrab(userTextField.getText(), pwBOX.getText());
 			    }
@@ -175,8 +191,15 @@ public class SignUp extends Application  {
 		}
 		*/
 		
-
+	public static void main (String[] args) throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.jdbc.Driver");
+		   System.out.println("Driver loaded");
+		   
+		// Establish a connection, enter personal user name and password for connection
+		//AdventureAwaits" , "username", "password");
 		
-		
+		Application.launch(args);
+	}
+	
 	
 }

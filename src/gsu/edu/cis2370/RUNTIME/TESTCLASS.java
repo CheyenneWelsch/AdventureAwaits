@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class TESTCLASS {
 
@@ -13,7 +14,7 @@ public class TESTCLASS {
 		connection = null;
 		try{
 		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
-		System.out.println("Database connected");
+		System.out.println("Database connected1111");
 		
 		
 		//String text = "INSERT INTO `mydb`.`USER` (`ssn`, `firstName`, `phone`) VALUES(?,?,?,?)";
@@ -21,9 +22,11 @@ public class TESTCLASS {
 		//PreparedStatement preState = connection.prepareStatement(text);
 		//preState.setString(1, ssn);
 		
-		String text = "INSERT INTO `mydb`.`USER` (`ssn`, `firstName`, `phone`) VALUES(?,?,?,?)('" + ssn + "`, `" + firstName + "`,`" + lastName + "``" + phone + "')";
+		//String text = "INSERT INTO `mydb`.`USER` (`ssn`, `firstName`, `phone`) VALUES('" + ssn + "` , `" + firstName + "` , `" + lastName + "` , `" + phone + "')";
+		String text = "INSERT INTO `mydb`.`USER` (`ssn`, `firstName`, 'lastName', `phone`) VALUES('" + 000000004 + "` , `" + firstName + "` , `" + lastName + "` , `" + 404 + "')";
 		Statement stmt = connection.prepareStatement(text);
-		stmt.executeUpdate(text);
+		//stmt.executeUpdate(text);
+		stmt.execute(text);
 		System.out.println("PUSHED");
 		
 		
@@ -37,6 +40,36 @@ public class TESTCLASS {
 		return connection;
 	}
 	
+	public Connection getUser(){
+		connection = null;
+		try{
+		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
+		System.out.println("Database connected1111");
+		
+		
+		//String text = "INSERT INTO `mydb`.`USER` (`ssn`, `firstName`, `phone`) VALUES(?,?,?,?)";
+		// ('" + ssn + "`, `" + firstName + "`,`" + lastName + "``" + phone + "')");
+		//PreparedStatement preState = connection.prepareStatement(text);
+		//preState.setString(1, ssn);
+		
+		//String text = "INSERT INTO `mydb`.`USER` (`ssn`, `firstName`, `phone`) VALUES('" + ssn + "` , `" + firstName + "` , `" + lastName + "` , `" + phone + "')";
+		String text = "SELECT * FROM Users WHERE CustomerName='Max';)";
+		Statement stmt = connection.prepareStatement(text);
+		ResultSet rs = connection.executeQuery(query);
+		
+		stmt.executeUpdate(text);
+		System.out.println("PUSHED");
+		
+		
+		
+		
+		
+		
+		} catch (SQLException e){
+			System.out.println(e.getMessage());
+		}
+		return connection;
+	}
 	
 	public static void main (String[] args) throws SQLException, ClassNotFoundException {
 	 // Load the JDBC driver

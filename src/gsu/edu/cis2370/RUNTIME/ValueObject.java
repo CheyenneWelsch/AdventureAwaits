@@ -11,40 +11,46 @@ import gsu.edu.cis2370.DATABASE.*;
 
 public class ValueObject{
 	
-	
 	public SignUp signUp = new SignUp();
 	
 	//User Object
-	public User user = new User(getSSN(), getFirstName(), getLastName(), getPhone()){
-		
-	};
+	User user = new User(getSSN(), getFirstName(), getLastName(), getPhone()){};
+	
+	public ValueObject(){	
+	}
+	
+	
+	
+
 	
 	public void register(){
 		TESTCLASS tc = new TESTCLASS();
-		int x = 513847263;
-		int p = 303;
-		tc.newUser(x, user.getFirstName(), user.getLastName(), p);
+		
+		System.out.println("User.getSSN: " + user.getSSN());
+		//tc.newUser(user.getSSN(), "Max", "Xam", user.getPhone());
+		//tc.newUser(user.getSSN(), user.getFirstName(), user.getLastName(), user.getPhone());
 	}
 	
+	
 	public int getSSN(){
-		String text = signUp.ssnBOX.toString();
+		String text = signUp.ssnBOX.getText();
 		int ssn = Integer.parseInt(text);
 		return ssn;
 	}
 	
 	public String getFirstName(){
-		String text = signUp.firstNameBOX.toString();
+		String text = signUp.firstNameBOX.getText();
 		return text; 
 	}
 	
 	
 	public String getLastName(){
-		String text = signUp.lastNameBOX.toString();
+		String text = signUp.lastNameBOX.getText();
 		return text; 
 	}
 	
 	public int getPhone(){
-		String text = signUp.phoneBOX.toString();
+		String text = signUp.phoneBOX.getText();
 		int phone = Integer.parseInt(text);
 		return phone;
 	}

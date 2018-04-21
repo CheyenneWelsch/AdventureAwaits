@@ -43,7 +43,7 @@ public abstract class User {
 	
 	//default constructor
 	public User() {
-		this(999999999, "First", "Last","emailaddress@email.email", 555 ,"user", "password", 
+		this(999999, "First", "Last","emailaddress@email.email", 555 ,"user", "password", 
 				"000 Fake Street", "Atlanta", "GA", 00000, "USA", "Is this a question?", "Yes");
 		}
 	
@@ -53,14 +53,23 @@ public abstract class User {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.phone = phone;
+		System.out.println("User created2");
+		
+	}
+	//TEST
+	public User(String firstName, String lastName){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		System.out.println("User created");
+		
 	}
 	
 	public int getSSN(){
 		return SSN;
 	}
 	
-	public void setSSN(int sSN) {
-		SSN = sSN;
+	public void setSSN(int SSN) {
+		this.SSN = SSN;
 	}
 
 	
