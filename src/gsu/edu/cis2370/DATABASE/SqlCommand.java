@@ -100,9 +100,18 @@ public class SqlCommand {
 					
 		String airport = ("INSERT into BOOKING (airportCode , name , street , checkSeat , searchFlights )" +
 									"Values (" + airportCode + "' , '" + name + "','" + assignPassenger + "','"+ checkSeat + "','"+ searchFlights + "','"); 
-
-
-
+		/*
+		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('SFO', 'San Francisco International Airport', 'San Francisco', 'CA');
+		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('DEN', 'Denver International Airport', 'Denver', 'CO');
+		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('LAS', 'McCarran International Airport', 'Las Vegas', 'NV');
+		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('LGA', 'La Guardia Airport', 'New York', 'NY');
+		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('IAH', 'George Bush Intercontinental Airport', 'Houston', 'TX');
+		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('LAX', 'Los Angeles International Airport', 'Los Angeles', 'CA');
+		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('JNU', 'Juneau International Airport', 'Juneau', 'AK');
+		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('PHX', 'Phoenix Sky Harbor International Airport', 'Phoenix', 'AZ');
+		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('IAD', 'Dulles International Airport', 'Washington', 'DC');
+		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('MIA', 'Miami International Airport', 'Miami', 'FL');
+		*/
 
 
 
