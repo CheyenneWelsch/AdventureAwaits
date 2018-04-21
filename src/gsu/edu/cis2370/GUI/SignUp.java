@@ -1,4 +1,4 @@
-package gsu.edu.cis2360.GUI;
+package gsu.edu.cis2370.GUI;
 
 
 import gsu.edu.cis2370.RUNTIME.*;

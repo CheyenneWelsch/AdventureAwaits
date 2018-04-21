@@ -168,4 +168,8 @@ public abstract class User {
 	public void setSecurityAnswer(String securityAnswer) {
 		this.securityAnswer = securityAnswer;
 	}
+
+	public void setZip(int zip) {
+		this.zip = zip;
+	}
 }

@@ -5,8 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
-import gsu.edu.cis2360.GUI.*;
+
 import gsu.edu.cis2370.DATABASE.*;
+import gsu.edu.cis2370.GUI.*;
 
 
 public class ValueObject{
