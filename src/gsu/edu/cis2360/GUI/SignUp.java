@@ -1,5 +1,7 @@
 package gsu.edu.cis2360.GUI;
 
+
+import gsu.edu.cis2370.RUNTIME.*;
 import java.awt.Color;
 
 import javafx.application.Application;
@@ -21,7 +23,8 @@ import javafx.scene.paint.Paint;
 
 public class SignUp extends Application {
 		
-	
+	ValueOption vo = new ValueOption();
+	TESTCLASS tc = new TESTCLASS();
 	
 
 	
@@ -43,7 +46,7 @@ public class SignUp extends Application {
 	Label country = new Label("Country: ");
 	Label securityQ = new Label("Security Question: ");
 	Label securityA = new Label("Security Answer: ");
-	
+	Label email = new Label("Email: ");
 	
 	Text scenetitle = new Text("ACCOUNT CREATION");
 	
@@ -59,7 +62,7 @@ public class SignUp extends Application {
 	public TextField countryBOX = new TextField();
 	public TextField securityQBOX = new TextField();
 	public TextField securityABOX = new TextField();
-	
+	public TextField emailBOX = new TextField();
 	public PasswordField pwBOX = new PasswordField();
 	PasswordField pw2BOX = new PasswordField();
 
@@ -93,13 +96,13 @@ public class SignUp extends Application {
 			grid.add(stateBOX, 1, 6);
 			grid.add(zip, 2, 6);
 			grid.add(zipBOX, 3, 6);
-			grid.add(country, 0, 7);
-			grid.add(countryBOX, 1, 7, 3, 1);
-			grid.add(securityQ, 0, 8);
-			grid.add(securityQBOX, 1, 8, 3, 1);
-			grid.add(securityA, 0, 9);
-			grid.add(securityABOX, 1, 9, 3, 1);
-		
+			grid.add(securityQ, 0, 7);
+			grid.add(securityQBOX, 1, 7, 3, 1);
+			grid.add(securityA, 0, 8);
+			grid.add(securityABOX, 1, 8, 3, 1);
+			
+			grid.add(email, 0, 10);
+			grid.add(emailBOX, 1, 10, 3, 1);
 			grid.add(userName, 0, 11);
 			grid.add(userTextField, 1, 11, 3, 1);
 			grid.add(pw, 0, 12);
@@ -128,6 +131,8 @@ public class SignUp extends Application {
 				@Override
 			    public void handle(ActionEvent e) {
 			        actiontarget.setText("Create button pressed");
+			        vo.createAccount();
+			        
 			        //createAccount(textGrab(userTextField.getText(), pwBOX.getText());
 			    }
 			});
@@ -168,9 +173,7 @@ public class SignUp extends Application {
 		*/
 		
 
-		public static void main(String[]args){
-			Application.launch(args);
-		}
+		
 		
 	
 }

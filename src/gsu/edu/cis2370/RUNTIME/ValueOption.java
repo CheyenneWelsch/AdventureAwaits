@@ -11,10 +11,20 @@ public class ValueOption{
 		
 	};
 	
-	public void createAccount(User x){
-		this.user.setName(signUp.firstNameBOX.toString(), signUp.lastNameBOX.toString());
-		this.user.setSSN(signUp.ssnBOX.toString());
+	public boolean duplicateCheck(String x, String y){
+		if(x.equals(y)){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	
+	
+	public void createAccount(){
 		
+		//duplicateCheck(this.user.setSSN(signUp.ssnBOX.toString()),  pull SSN somehow);
+		//if yes, continue, if false, return text from button press
+		this.user.setName(signUp.firstNameBOX.toString(), signUp.lastNameBOX.toString());
 		
 		this.user.setUserName(signUp.userTextField.toString());
 		this.user.setPassword(signUp.pwBOX.toString());
@@ -22,12 +32,19 @@ public class ValueOption{
 		//since setAddress needs an int value, the next line converts the string to an int
 		int zip =Integer.parseInt(signUp.zipBOX.toString());
 		this.user.setAddress(signUp.addressBOX.toString(), signUp.stateBOX.toString(), zip);
-		
+		this.user.setSecurityQuestion(signUp.securityQBOX.toString());
+		this.user.setSecurityAnswer(signUp.securityQBOX.toString());
+		this.user.setEmail(signUp.emailBOX.toString());
 		
 	}
 	
+	public boolean checkAccount(){
+		return false;
+	}
 	
-	
+	public void testPrint(String txt){
+		System.out.println(txt);
+	}
 	
 	
 }
