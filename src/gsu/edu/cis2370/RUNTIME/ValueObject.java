@@ -80,7 +80,7 @@ public class ValueObject{
 		user.setPhone(phone);
 		tc.toBase(user.getSSN(), user.getFirstName(), user.getPhone());
 	}
-	*/
+
 	
 	public void createAccount(){
 		
@@ -105,7 +105,7 @@ public class ValueObject{
 		tc.newUser(user.getSSN(), user.getFirstName(), user.getLastName(), user.getPhone());
 		
 	}
-	
+		*/
 	
 	
 	
