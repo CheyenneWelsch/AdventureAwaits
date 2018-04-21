@@ -92,6 +92,7 @@ public class Search extends Application {
 		});
 		
 		
+		
 	
 		// adds location for text to appear if login fails
 		final Text actiontarget = new Text();

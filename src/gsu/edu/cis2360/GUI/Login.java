@@ -3,6 +3,10 @@ package gsu.edu.cis2360.GUI;
 
 
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -78,6 +82,9 @@ public class Login extends Application {
 				@Override
 			    public void handle(ActionEvent e) {
 			   actiontarget.setText("Sign in button pressed");
+			   SignUp s1 = new SignUp();
+	        	  s1.start(primaryStage);
+			   
 			   /*
 			   if(testUser(userTextField.getText()) == true &&
 			        		testPass(pwBox.getText()) == true){
@@ -124,8 +131,16 @@ public class Login extends Application {
 		}
 		
 		
-	public static void main(String[] args){
+	public static void main (String[] args) throws SQLException, ClassNotFoundException {
+		Class.forName("com.mysql.jdbc.Driver");
+		   System.out.println("Driver loaded");
+		   
+		// Establish a connection, enter personal user name and password for connection
+		//AdventureAwaits" , "username", "password");
+		
 		Application.launch(args);
 	}
+	
+	
 	
 }

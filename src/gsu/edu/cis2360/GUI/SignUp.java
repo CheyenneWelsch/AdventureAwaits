@@ -5,26 +5,21 @@ import gsu.edu.cis2370.RUNTIME.*;
 import java.awt.Color;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.HPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.paint.Paint;
 
 
-public class SignUp extends Application {
+
+public class SignUp extends Application  {
 		
-	ValueOption vo = new ValueOption();
-	TESTCLASS tc = new TESTCLASS();
+	//ValueOption vo = new ValueOption();
+	//TESTCLASS tc = new TESTCLASS();
 	
 
 	
@@ -47,6 +42,7 @@ public class SignUp extends Application {
 	Label securityQ = new Label("Security Question: ");
 	Label securityA = new Label("Security Answer: ");
 	Label email = new Label("Email: ");
+	Label phone = new Label("Phone: ");
 	
 	Text scenetitle = new Text("ACCOUNT CREATION");
 	
@@ -63,7 +59,9 @@ public class SignUp extends Application {
 	public TextField securityQBOX = new TextField();
 	public TextField securityABOX = new TextField();
 	public TextField emailBOX = new TextField();
+	public TextField phoneBOX = new TextField();
 	public PasswordField pwBOX = new PasswordField();
+	
 	PasswordField pw2BOX = new PasswordField();
 
 	
@@ -76,7 +74,7 @@ public class SignUp extends Application {
 	
 	@Override
 		public void start(Stage primaryStage) {
-
+			TESTCLASS tc = new TESTCLASS();
 			// create GridPane object
 			GridPane grid = new GridPane();
 			grid.add(scenetitle, 0, 0);
@@ -103,13 +101,15 @@ public class SignUp extends Application {
 			
 			grid.add(email, 0, 10);
 			grid.add(emailBOX, 1, 10, 3, 1);
-			grid.add(userName, 0, 11);
-			grid.add(userTextField, 1, 11, 3, 1);
-			grid.add(pw, 0, 12);
-			grid.add(pwBOX, 1, 12, 3, 1);
-			grid.add(pw2, 0, 13);
-			grid.add(pw2BOX, 1, 13, 3, 1);
-			grid.add(actiontarget, 1, 15, 3, 1);
+			grid.add(phone, 0, 11);
+			grid.add(phoneBOX, 1, 11, 3, 1);
+			grid.add(userName, 0, 12);
+			grid.add(userTextField, 1, 12, 3, 1);
+			grid.add(pw, 0, 13);
+			grid.add(pwBOX, 1, 13, 3, 1);
+			grid.add(pw2, 0, 14);
+			grid.add(pw2BOX, 1, 14, 3, 1);
+			grid.add(actiontarget, 1, 16, 3, 1);
 			
 			
 			grid.setAlignment(Pos.CENTER);
@@ -131,8 +131,11 @@ public class SignUp extends Application {
 				@Override
 			    public void handle(ActionEvent e) {
 			        actiontarget.setText("Create button pressed");
-			        vo.createAccount();
-			        
+			        String text = firstNameBOX.setText(text.setText(format("$%.2f");;
+			       System.out.println(text);
+			        ValueObject vo = new ValueObject();
+			        vo.register();
+			       
 			        //createAccount(textGrab(userTextField.getText(), pwBOX.getText());
 			    }
 			});
