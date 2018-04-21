@@ -15,13 +15,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
 
-public class flightList extends Application {
+public class flightListAdmin extends Application {
 
 	/*
 	LocalDate a1 = LocalDate.of(2019, 02, 20);
@@ -38,6 +39,18 @@ public class flightList extends Application {
 	LocalTime tc1 = LocalTime.of(1, 00);
 	LocalTime tc2 = LocalTime.of(5, 30);
 	 */
+	
+
+	//private Flight (int flightID, String fromAirport, String departureDate, int departureTime, String arrivalDate, int arrivalTime){
+	//Defining Table Data
+	final ObservableList<Flight> data = FXCollections.observableArrayList(
+			new Flight(001, "ATL", "01/01/2018", 1000, "01/02/2018", 0130),
+			new Flight(002, "NYC", "02/01/2018", 1000, "02/02/2018", 0130),
+			new Flight(003, "LAX", "03/01/2018", 1000, "03/02/2018", 0130)
+		);
+	
+	Flight f1 = new Flight();
+	
 	
 	private TableView table = new TableView();
 
@@ -59,7 +72,15 @@ public class flightList extends Application {
 		table.setEditable(true);
 		
 		TableColumn flightID = new TableColumn("Flight ID");
+		flightID.setMinWidth(100);
+
+		
 		TableColumn airport = new TableColumn("Airport");
+		airport.setMinWidth(100);
+		airport.setCellValueFactory(
+                new PropertyValueFactory<Flight, String>("Airport"));
+		
+		
 		TableColumn departure = new TableColumn("Departures");
 		TableColumn firstDepartureCol = new TableColumn ("Date");
 		TableColumn secondDepartureCol = new TableColumn ("Time");
@@ -68,21 +89,14 @@ public class flightList extends Application {
 		TableColumn secondArrivalCol = new TableColumn ("Time");
 		
 		//create a table of all of the TableColumn objects
+		table.setItems(data);
 		table.getColumns().addAll(flightID, airport, departure, arrival);
-		
+	
 		//creates a nested column in the selected TableColumn objects
 		departure.getColumns().addAll(firstDepartureCol, secondDepartureCol);
 		arrival.getColumns().addAll(firstArrivalCol, secondArrivalCol);
 		
 		
-		
-		//private Flight (int flightID, String fromAirport, String departureDate, int departureTime, String arrivalDate, int arrivalTime){
-		//Defining Table Data
-		final ObservableList<Flight> data = FXCollections.observableArrayList(
-				new Flight(001, "ATL", "01/01/2018", 1000, "01/02/2018", 0130),
-				new Flight(002, "ATL", "01/01/2018", 1000, "01/02/2018", 0130),
-				new Flight(003, "ATL", "01/01/2018", 1000, "01/02/2018", 0130)
-			);
 		
 		
 		

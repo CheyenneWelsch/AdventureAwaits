@@ -23,12 +23,14 @@ public class ValueObject{
 	
 
 	
-	public void register(){
+	public void register ()throws NumberFormatException{
 		TESTCLASS tc = new TESTCLASS();
-		
-		System.out.println("User.getSSN: " + user.getSSN());
+		int ssn = Integer.parseInt(signUp.ssnBOX.getText());
+		int phone = Integer.parseInt(signUp.phoneBOX.getText());
+	
+		System.out.println("user.getSSN: " + user.getSSN());
 		//tc.newUser(user.getSSN(), "Max", "Xam", user.getPhone());
-		//tc.newUser(user.getSSN(), user.getFirstName(), user.getLastName(), user.getPhone());
+		tc.newUser(user.getSSN(), user.getFirstName(), user.getLastName(), user.getPhone());
 	}
 	
 	

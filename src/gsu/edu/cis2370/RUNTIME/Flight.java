@@ -38,7 +38,9 @@ public class Flight{
 		this.arrivalTime = arrivalTime;
 	}
 	*/
-	
+	public Flight(){
+		
+	}
 	
 	public Flight (int flightID, String fromAirport, String departureDate, int departureTime, String arrivalDate, int arrivalTime){
 		this.flightID = flightID;

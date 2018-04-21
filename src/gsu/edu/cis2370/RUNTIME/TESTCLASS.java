@@ -55,7 +55,7 @@ public class TESTCLASS {
 		//String text = "INSERT INTO `mydb`.`USER` (`ssn`, `firstName`, `phone`) VALUES('" + ssn + "` , `" + firstName + "` , `" + lastName + "` , `" + phone + "')";
 		String text = "SELECT * FROM Users WHERE CustomerName='Max';)";
 		Statement stmt = connection.prepareStatement(text);
-		ResultSet rs = connection.executeQuery(query);
+		
 		
 		stmt.executeUpdate(text);
 		System.out.println("PUSHED");
