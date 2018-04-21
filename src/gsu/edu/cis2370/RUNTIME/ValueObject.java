@@ -79,26 +79,32 @@ public class ValueObject{
 		user.setPhone(phone);
 		tc.toBase(user.getSSN(), user.getFirstName(), user.getPhone());
 	}
-	
+	*/
 	
 	public void createAccount(){
 		
 		//duplicateCheck(this.user.setSSN(signUp.ssnBOX.toString()),  pull SSN somehow);
 		//if yes, continue, if false, return text from button press
-		this.user.setName(signUp.firstNameBOX.toString(), signUp.lastNameBOX.toString());
-		
-		this.user.setUserName(signUp.userTextField.toString());
-		this.user.setPassword(signUp.pwBOX.toString());
+		this.user.setFirstName(signUp.firstNameBOX.getText());
+		this.user.setLastName(signUp.lastNameBOX.getText());
+		this.user.setUserName(signUp.userTextField.getText());
+		this.user.setPassword(signUp.pwBOX.getText());
 		
 		//since setAddress needs an int value, the next line converts the string to an int
-		int zip =Integer.parseInt(signUp.zipBOX.toString());
-		this.user.setAddress(signUp.addressBOX.toString(), signUp.stateBOX.toString(), zip);
-		this.user.setSecurityQuestion(signUp.securityQBOX.toString());
-		this.user.setSecurityAnswer(signUp.securityQBOX.toString());
-		this.user.setEmail(signUp.emailBOX.toString());
+		int zip =Integer.parseInt(signUp.zipBOX.getText());
+		this.user.setStreet(signUp.addressBOX.getText());
+		this.user.setState(signUp.stateBOX.getText());
+		this.user.setZip(Integer.parseInt(signUp.zipBOX.getText()));
+		this.user.setSecurityQuestion(signUp.securityQBOX.getText());
+		this.user.setSecurityAnswer(signUp.securityQBOX.getText());
+		this.user.setEmail(signUp.emailBOX.getText());
+		System.out.println("TESTING IN CREATE ACCOUNT");
+		TESTCLASS tc = new TESTCLASS();
+		
+		tc.newUser(user.getSSN(), user.getFirstName(), user.getLastName(), user.getPhone());
 		
 	}
-	*/
+	
 	
 	
 	
