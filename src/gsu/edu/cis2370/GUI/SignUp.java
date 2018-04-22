@@ -82,7 +82,6 @@ public class SignUp extends Application {
 	@Override
 		public void start(Stage primaryStage) {
 		
-		//ValueObject vo = new ValueObject();	
 		
 			// create GridPane object
 			GridPane grid = new GridPane();
@@ -130,29 +129,34 @@ public class SignUp extends Application {
 			//HBox creates items in a horizontal row
 			HBox hbBtn = new HBox(20);
 			hbBtn.getChildren().addAll(btnBack, btnCreate);
-			grid.add(hbBtn, 0, 14);
-			grid.add(btnCreate, 1,14);
+			grid.add(hbBtn, 0, 15);
+			grid.add(btnCreate, 1,15);
 			btnCreate.setMinWidth(300);
 			
 			//use to do action when button pressed
 			//include all actions within the setOnAction method
+			// create a new scene and place it on stage
+			Scene scene = new Scene(grid, 750, 650);
+			primaryStage.setTitle("Login"); //set title
+			primaryStage.setScene(scene);
+			primaryStage.show();
 			
 			btnCreate.setOnAction(new EventHandler<ActionEvent>() {
-			
 				@Override
 			    public void handle(ActionEvent e) {
 					actiontarget.setText("Create button pressed");
 					
 			        //use value object object
-			       
+					System.out.println("Line before Value Object creation");
 					ValueObject vo = new ValueObject();
-					vo.register();
 					
+					int ssn = Integer.parseInt(ssnBOX.getText());
+					int phone = Integer.parseInt(phoneBOX.getText());
+					vo.register(ssn, firstNameBOX.getText(), lastNameBOX.getText(), phone);
 			        String text = firstNameBOX.getText();
 			        System.out.println(text);
 			        
 			       
-			        //createAccount(textGrab(userTextField.getText(), pwBOX.getText());
 			    }
 			});
 			
@@ -166,11 +170,7 @@ public class SignUp extends Application {
 			
 			
 			
-			// create a new scene and place it on stage
-			Scene scene = new Scene(grid, 750, 550);
-			primaryStage.setTitle("Login"); //set title
-			primaryStage.setScene(scene);
-			primaryStage.show();
+		
 		
 			
 			//btn.setOnAction(e -> textGrab(userTextField.getText(), pwBox.getText()) );
