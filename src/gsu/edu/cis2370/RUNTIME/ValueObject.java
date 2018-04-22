@@ -9,6 +9,8 @@ import java.util.Date;
 
 import gsu.edu.cis2370.DATABASE.*;
 import gsu.edu.cis2370.GUI.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 public class ValueObject{
@@ -72,12 +74,18 @@ public class ValueObject{
 			return false;
 		}
 	}
+	
+	public int flightList(){
+		TESTCLASS tc = new TESTCLASS();
+		int x = tc.numberOfFlights();
+		return x;
+		
+	}
 		
 
-	public ArrayList<String> gatherFlights(){
-		ArrayList<String> flights = new ArrayList<String>();
+	public ArrayList<Flight> getFlights() throws ClassNotFoundException, SQLException {
 		TESTCLASS tc = new TESTCLASS();
-		flights = tc.gatherFlight();
+		ArrayList<Flight> flights = tc.getAllFlight();
 		return flights;
 	}
 	

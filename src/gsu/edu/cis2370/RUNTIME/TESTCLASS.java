@@ -1,5 +1,7 @@
 package gsu.edu.cis2370.RUNTIME;
 
+import gsu.edu.cis2370.RUNTIME.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -224,7 +226,11 @@ public class TESTCLASS {
 		}
 		return maxCapacity;
 	}
-		
+	
+
+	
+	
+	/*
 	public ArrayList<String> gatherFlight(){
 		//define a multidimensional string to hold the flight data from the table
 		ArrayList<String> flights = new ArrayList<String>();
@@ -278,26 +284,39 @@ public class TESTCLASS {
 		}
 		return flights;
 	}
+	*/
 	
-	
-	public static String toBase(int ssn, String user, int phone) {
-		return ("INSERT INTO `mydb`.`USER` (`ssn`, `firstName`, `phone`) VALUES ('" + ssn + "`, `" + user + "`, `"
-				+ phone + "')");
-		// return text;
+	public ArrayList<Flight> getAllFlight() throws ClassNotFoundException, SQLException {
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
+				"bismarck");
+		Statement stmt = con.createStatement();
+		String sql = "Select * from FLIGHT";
+		ResultSet rst;
+		rst = stmt.executeQuery(sql);
+		ArrayList<Flight> flightlist = new ArrayList<>();
+		while(rst.next()){
+			Flight flight = new Flight(rst.getInt("flightNumber"), rst.getString("fromAirport"), rst.getString("toAirport"), rst.getString("departDate"),
+					rst.getString("arriveDate"), rst.getString("departTime"), rst.getString("arriveTime"), rst.getInt("maxCapacity"), rst.getInt("numberOfPassengers"));
+		}
+		return flightlist;
 	}
-
-	/*
-	 * public void statement() throws SQLException, ClassNotFoundException{
-	 * ValueObject vo = new ValueObject();
-	 * 
-	 * 
-	 * Connection connection =
-	 * DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root",
-	 * "bismarck"); String text1 =
-	 * "INSERT INTO `mydb`.`USER` (`ssn`, `firstName`, `phone`) VALUES ('" +
-	 * vo.getSSN() + "`, `" + vo.getFirstName() + "`, `" + vo.getPhone() + "')";
-	 * //String text = toBase(vo.getSSN(), vo.getFirstName(), vo.getPhone());
-	 * Statement statement = connection.prepareStatement(text1);
-	 * statement.executeUpdate(text1); }
-	 */
+		
+	
+	
+	public ArrayList<Flight> getAllFlight2() throws ClassNotFoundException, SQLException {
+		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
+				"bismarck");
+		Statement stmt = con.createStatement();
+		String sql = "Select * from FLIGHT";
+		ResultSet rst;
+		rst = stmt.executeQuery(sql);
+		ArrayList<Flight> flightlist = new ArrayList<>();
+		while(rst.next()){
+			Flight flight = new Flight(rst.getInt("flightNumber"), rst.getString("fromAirport"), rst.getString("toAirport"), rst.getString("departDate"),
+					rst.getString("arriveDate"), rst.getString("departTime"), rst.getString("arriveTime"), rst.getInt("maxCapacity"), rst.getInt("numberOfPassengers"));
+		}
+		return flightlist;
+	}
+		
+	
 }
