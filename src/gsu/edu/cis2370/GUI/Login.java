@@ -1,7 +1,7 @@
 package gsu.edu.cis2370.GUI;
 
 
-
+import gsu.edu.cis2370.RUNTIME.ValueObject;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -48,6 +48,8 @@ public class Login extends Application {
 	@Override
 		public void start(Stage primaryStage) {
 
+		
+		
 			// create GridPane object
 			GridPane grid = new GridPane();
 			grid.add(scenetitle, 0, 0);
@@ -67,12 +69,14 @@ public class Login extends Application {
 			//button alignment
 			HBox hbBtn = new HBox(10);
 			hbBtn.getChildren().addAll(btnSignUp, btnLogin);
-			grid.add(btnLogin, 0, 3);
-			grid.add(btnSignUp, 1, 3);
+			grid.add(btnSignUp, 0, 3);
+			grid.add(btnLogin, 1, 3, 3, 1);
+			btnLogin.setMinWidth(130);
+		
 			
 			
 		
-			
+			ValueObject vo = new ValueObject();
 			
 			
 			//use to do action when button pressed
@@ -81,20 +85,22 @@ public class Login extends Application {
 			btnLogin.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 			    public void handle(ActionEvent e) {
-			   actiontarget.setText("Sign in button pressed");
-			   SignUp s1 = new SignUp();
-	        	  s1.start(primaryStage);
-			   
-			   /*
-			   if(testUser(userTextField.getText()) == true &&
-			        		testPass(pwBox.getText()) == true){
-			        	  textGrab(userTextField.getText(), pwBox.getText());
-			        	 
-			        	  
-			        }else{
-			        	actiontarget.setText("ERROR, FORGOT PASSWORD?");
-			        }
-			    */
+				actiontarget.setText("Sign in button pressed");
+				if(vo.checkUser(userTextField.getText(), pwBox.getText()) == false ){
+					actiontarget.setText("ERROR: INVALID USERNAME / PASSWORD FORMAT");
+				}else{
+					if(vo.checkAccess(userTextField.getText()) == true){
+						mainAdmin admin = new mainAdmin();
+						admin.start(primaryStage);
+					}else{
+						mainCustomer customer = new mainCustomer();
+						customer.start(primaryStage);
+					}
+					//check if the name&pass match
+					//if so, check to see if admin or customer
+					//then send to main or admin main
+				}
+			
 			    }
 			});
 			

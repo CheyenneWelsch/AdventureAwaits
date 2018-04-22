@@ -15,6 +15,7 @@ public abstract class User {
 	private String email;
 	private String city;
 	private int phone;
+	private String country;
 
 	private int SSN;
 	// after implementing text boxes, maybe look for a way to have dashes to get
@@ -37,6 +38,7 @@ public abstract class User {
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
+		this.country = country;
 		this.securityQuestion = securityQuestion;
 		this.securityAnswer = securityAnswer;
 	}
@@ -171,5 +173,13 @@ public abstract class User {
 
 	public void setZip(int zip) {
 		this.zip = zip;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 }

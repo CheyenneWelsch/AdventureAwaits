@@ -25,7 +25,7 @@ public class mainAdmin extends Application {
 	Button btnCancel = new Button("Cancel a Flight");
 	Button btnSearch = new Button("Search Flights");
 	Button btnMyFlights= new Button("View My Flights");
-	Button btnAddFlight = new Button("Add Flights");
+	Button btnAddFlight = new Button("Add / Edit / Delete Flights");
 	Button btnDeleteFlight = new Button("Delete Flights");
 	Button btnEditFlight = new Button("Edit Flights");
 	Text txtAdmin = new Text("Admin Tools");
@@ -51,8 +51,7 @@ public class mainAdmin extends Application {
 		grid.add(btnCancel, 0 ,4);
 		grid.add(txtAdmin, 0, 6);
 		grid.add(btnAddFlight, 0, 7);
-		grid.add(btnEditFlight, 0, 8);
-		grid.add(btnDeleteFlight, 0, 9);
+		
 		grid.add(btnLogout, 0, 11);
 		
 		

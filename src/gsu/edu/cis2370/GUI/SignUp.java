@@ -152,10 +152,11 @@ public class SignUp extends Application {
 					
 					int ssn = Integer.parseInt(ssnBOX.getText());
 					int phone = Integer.parseInt(phoneBOX.getText());
-					vo.register(ssn, firstNameBOX.getText(), lastNameBOX.getText(), phone);
+					int zip = Integer.parseInt(zipBOX.getText());
+					vo.register(ssn, firstNameBOX.getText(), lastNameBOX.getText(),emailBOX.getText(), phone, userNameBOX.getText(), pwBOX.getText(), addressBOX.getText(), 
+							cityBOX.getText(), stateBOX.getText(), zip, countryBOX.getText(), securityQBOX.getText(), securityABOX.getText() );
 			        String text = firstNameBOX.getText();
 			        System.out.println(text);
-			        
 			       
 			    }
 			});
@@ -167,16 +168,7 @@ public class SignUp extends Application {
 			       login.start(primaryStage);
 			    }
 			});
-			
-			
-			
 		
-		
-			
-			//btn.setOnAction(e -> textGrab(userTextField.getText(), pwBox.getText()) );
-		
-			
-			String uPass = pwBOX.getText();
 			
 		
 			// adds location for text to appear if login fails
