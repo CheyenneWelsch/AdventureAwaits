@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 
 import gsu.edu.cis2370.DATABASE.*;
@@ -73,11 +74,37 @@ public class ValueObject{
 	}
 		
 
-	public String getFlightInfo){
+	public ArrayList<String> gatherFlights(){
+		ArrayList<String> flights = new ArrayList<String>();
 		TESTCLASS tc = new TESTCLASS();
+		flights = tc.gatherFlight();
+		return flights;
 	}
 	
-	
+	public Flight [] flightCreation(){
+		ArrayList<String> list = gatherFlights();
+		TESTCLASS tc = new TESTCLASS();
+		ArrayList<String> groupOfFlights = new ArrayList<String>();
+		Flight [] flightObjects = new Flight [tc.numberOfFlights()];
+		for(int x = 0; x <tc.numberOfFlights(); x ++){
+			//for loop that runs via the amount of flights there are
+			//it will assign a new flight object the different variables from the arraylist string
+			//since there are a set number of columns in the table, adding 9 to the arraylist index shifts the flight up to the next one
+			
+			int increase = 0;
+			flightObjects[x].setFlightNumber(Integer.parseInt(groupOfFlights.get(0 + increase)));
+			flightObjects[x].setFromAirport(groupOfFlights.get(1 + increase));
+			flightObjects[x].setToAirport(groupOfFlights.get(2 + increase));
+			flightObjects[x].setDepartureDate(groupOfFlights.get(3 + increase));
+			flightObjects[x].setArrivalDate(groupOfFlights.get(4 + increase));
+			flightObjects[x].setDepartureTime(groupOfFlights.get(5 + increase));
+			flightObjects[x].setArrivalTime(groupOfFlights.get(6 + increase));
+			flightObjects[x].setMaxCapacity(Integer.parseInt(groupOfFlights.get(7 + increase)));
+			flightObjects[x].setNumberOfPassengers(Integer.parseInt(groupOfFlights.get(8 + increase)));
+			increase += 9;
+		}
+		return flightObjects;
+	}
 }
 	
 	
