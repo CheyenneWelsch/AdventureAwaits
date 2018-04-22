@@ -4,31 +4,34 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class TESTCLASS {
 
-	private Connection connection;
+	private static Connection connection;
 
 	// add a user to the database
-	public Connection newUser(int ssn, String firstName, String lastName, String email, int phone, String username, String password, String street, String city,
-			String state, int zip, String country, String securityQuestion, String securityAnswer) {
+	public Connection newUser(int ssn, String firstName, String lastName, String email, int phone, String username,
+			String password, String street, String city, String state, int zip, String country, String securityQuestion,
+			String securityAnswer) {
 		connection = null;
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
 			System.out.println("Database connected1111");
-			
-			
+
 			String text2 = "INSERT INTO USER(`ssn`, `firstName`, `lastName`, `email`, `phone`, `username`, `password`, `street`, `city` , `state` , `zip` , `country` , `securityQuestion` , `securityAnswer` , `access`) "
-					+ "VALUES('" + ssn + "`, `" + firstName + "`, `" + lastName + "`, `" + email + "`, `" + phone + "`, `" + username + "`, `" + password 
-					+ "`, `" + street + "`, `" + city + "`, `" + state + "`, `" + zip + "`, `" + country + "`, `" + securityQuestion + "`, `" + securityAnswer + "`, `C` ) ";
-			
-			
+					+ "VALUES('" + ssn + "`, `" + firstName + "`, `" + lastName + "`, `" + email + "`, `" + phone
+					+ "`, `" + username + "`, `" + password + "`, `" + street + "`, `" + city + "`, `" + state + "`, `"
+					+ zip + "`, `" + country + "`, `" + securityQuestion + "`, `" + securityAnswer + "`, `C` ) ";
+
 			String text = "INSERT INTO USER(ssn, firstName, lastName, email, phone, username, password, street, city, state, zip, country, securityQuestion, securityAnswer, access) "
-					+ "VALUES(" + ssn + ", '" + firstName + "', '" + lastName + "', '" + email + "', " + phone + ", '" + username + "', '" + password 
-					+ "', '" + street + "', '" + city + "', '" + state + "', " + zip + ", '" + country + "', '" + securityQuestion + "', '" + securityAnswer + "', 'C' ) ";
-			
+					+ "VALUES(" + ssn + ", '" + firstName + "', '" + lastName + "', '" + email + "', " + phone + ", '"
+					+ username + "', '" + password + "', '" + street + "', '" + city + "', '" + state + "', " + zip
+					+ ", '" + country + "', '" + securityQuestion + "', '" + securityAnswer + "', 'C' ) ";
+
 			Statement stmt = connection.prepareStatement(text);
 			// stmt.executeUpdate(text);
 			stmt.execute(text);
@@ -40,7 +43,7 @@ public class TESTCLASS {
 		return connection;
 	}
 
-	//check the username and password, return as false if there is not a match
+	// check the username and password, return as false if there is not a match
 	public boolean checkAccount(String user, String pass) {
 		connection = null;
 		int check = 0;
@@ -81,15 +84,15 @@ public class TESTCLASS {
 		}
 	}
 
-	//prints out the user information. Can use this as a template to get individual results
-	public boolean checkAccess(String user){
+	// Checks user access (return true is admin, false if customer)
+	public boolean checkAccess(String user) {
 		connection = null;
 		int check = 0;
 		try {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
 					"bismarck");
 
-			String query = "SELECT * FROM USER";
+			String query = "SELECT username, access FROM USER";
 
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
@@ -98,31 +101,33 @@ public class TESTCLASS {
 
 				// name of variable you want to assign the info to, then the
 				// word in "" is the column name in the database
+				String userName = rs.getString("username");
 				String access = rs.getString("access");
-				
-				if(access.equals("A")){
+
+				if (userName.equals(user) && access.equals("A")) {
 					check = 1;
 					break;
-				}else{
+				} else {
 					break;
 				}
 			}
 			stmt.close();
 		} catch (Exception e) {
 			System.out.println(e);
-			return false;
 		}
 
 		if (check == 1) {
+			// true means admin
 			return true;
 		} else {
+			// false means customer
 			return false;
 		}
-	
+
 	}
-	
-	
-	
+
+	// prints out the user information. Can use this as a template to get
+	// individual results
 	public void getUserInfo() {
 		connection = null;
 		try {
@@ -162,31 +167,119 @@ public class TESTCLASS {
 		}
 	}
 
-	// boolean isAdmin = rs.getBoolean("is_admin");
-
 	/*
-	public static void main(String[] args) throws SQLException, ClassNotFoundException {
-		// Load the JDBC driver
+	public ArrayList<String> getFlightInfo() {
+		connection = null;
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
+					"bismarck");
 
-		Class.forName("com.mysql.jdbc.Driver");
-		System.out.println("Driver loaded");
+			String query = "SELECT * FROM FLIGHT";
 
-		// Establish a connection, enter personal user name and password for
-		// connection
-		// AdventureAwaits" , "username", "password");
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
-		System.out.println("Database connected");
-		System.out.println("Get User:");
-		getUserInfo();
-		System.out.println("Get User Check");
-		//System.out.println(getUser("mmax", "max"));
-		//System.out.println(validateUser("mmax", "max"));
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			// iterate through java result set
+			while (rs.next()) {
 
-		// Statement statement = connection.prepareStatement(toBase());
-		// statement.executeUpdate(toBase());
+				// name of variable you want to assign the info to, then the
+				// word in "" is the column name in the database
+				int flightNumber = rs.getInt("slightNumber");
+				String fromAirport = rs.getString("fromAirport");
+				String toAirport = rs.getString("toAirport");
+				String departDate = rs.getString("departDate");
+				String arriveDate = rs.getString("arriveDate");
+				String departTime = rs.getString("departTime");
+				String arriveTime = rs.getString("arriveTime");
+				int maxCapacity = rs.getInt("maxCapacity");
+				int numberOfPassengers = rs.getInt("numberOfPassengers");
 
+			}
+			stmt.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
-*/
+	*/
+	
+	
+	//counts number of flights in system
+	public int numberOfFlights(){
+		int maxCapacity = 0;
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
+					"bismarck");
+
+			String query = "SELECT COUNT(*) FROM FLIGHT";
+
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+		
+			while (rs.next()) {
+				
+				maxCapacity = rs.getInt("COUNT(*)");	
+			}
+			stmt.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return maxCapacity;
+	}
+		
+	public ArrayList<String> gatherFlight(){
+		//define a multidimensional string to hold the flight data from the table
+		ArrayList<String> flights = new ArrayList<String>();
+		connection = null;
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
+					"bismarck");
+
+			String query = "SELECT * FROM FLIGHT";
+
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(query);
+			// iterate through java result set
+			while (rs.next()) {
+
+				int flightNumber = rs.getInt("flightNumber");
+				//convert the int to string
+				String stringFlightNumber = Integer.toString(flightNumber);
+				flights.add(stringFlightNumber);
+				
+				String fromAirport = rs.getString("fromAirport");
+				flights.add(fromAirport);
+				
+				String toAirport = rs.getString("toAirport");
+				flights.add(toAirport);
+				
+				String departDate = rs.getString("departDate");
+				flights.add(departDate);
+				
+				String arriveDate = rs.getString("arriveDate");
+				flights.add(arriveDate);
+				
+				String departTime = rs.getString("departTime");
+				flights.add(departTime);
+				
+				String arriveTime = rs.getString("arriveTime");
+				flights.add(arriveTime);
+				
+				int maxCapacity = rs.getInt("maxCapacity");
+				String stringMaxCapacity = Integer.toString(maxCapacity);
+				flights.add(stringMaxCapacity);
+				
+				int numberOfPassengers = rs.getInt("numberOfPassengers");
+				String stringNumberOfPassengers = Integer.toString(numberOfPassengers);
+				flights.add(stringNumberOfPassengers);
+
+			}
+			stmt.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return flights;
+	}
+	
+	
 	public static String toBase(int ssn, String user, int phone) {
 		return ("INSERT INTO `mydb`.`USER` (`ssn`, `firstName`, `phone`) VALUES ('" + ssn + "`, `" + user + "`, `"
 				+ phone + "')");

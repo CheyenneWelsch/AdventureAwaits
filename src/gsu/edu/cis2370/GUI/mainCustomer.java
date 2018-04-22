@@ -56,7 +56,13 @@ public class mainCustomer extends Application{
 		btnLogout.setMinWidth(200);
 	
 		
-		
+		btnLogout.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+		    public void handle(ActionEvent e) {
+				Login test = new Login();
+				test.start(primaryStage);
+		    }
+		});
 		
 		
 		

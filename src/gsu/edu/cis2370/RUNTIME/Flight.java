@@ -4,21 +4,16 @@ import java.util.Date;
 
 public class Flight{
 	
-	private int flightID;
-	private String fromCity;
+	private int flightNumber;
 	private String fromAirport;
-	private String toCity;
 	private String toAirport;
-	
-	
 	private String departureDate;
 	private String arrivalDate;
-	private int departureTime;
-	private int arrivalTime;
-	
+	private String departureTime;
+	private String arrivalTime;
 	private int numberOfPassengers;
 	private int maxCapacity;
-	private int flightNumber;
+	
 	
 	
 	
@@ -42,42 +37,27 @@ public class Flight{
 		
 	}
 	
-	public Flight (int flightID, String fromAirport, String departureDate, int departureTime, String arrivalDate, int arrivalTime){
-		this.flightID = flightID;
+	public Flight (int flightNumber, String fromAirport, String toAirport, String departureDate, String arrivalDate, String departureTime,  String arrivalTime, int maxCapacity, int numberOfPassengers){
+		this.flightNumber = flightNumber;
 		this.fromAirport = fromAirport;
+		this.toAirport = toAirport;
 		this.departureDate = departureDate;
 		this.departureTime = departureTime;
 		this.arrivalDate = arrivalDate;
 		this.arrivalTime = arrivalTime;
+		this.maxCapacity = maxCapacity;
+		this.numberOfPassengers = numberOfPassengers;
 	}
 	
 	
-	public int getFlightID(){
-		return flightID;
-	}
-	public void setFlightID(int flightID){
-		this.flightID = flightID;
-	}
-	
-	
-	public String getFromCity() {
-		return fromCity;
-	}
-	public void setFromCity(String fromCity) {
-		this.fromCity = fromCity;
-	}
+
 	public String getFromAirport() {
 		return fromAirport;
 	}
 	public void setFromAirport(String fromAirport) {
 		this.fromAirport = fromAirport;
 	}
-	public String getToCity() {
-		return toCity;
-	}
-	public void setToCity(String toCity) {
-		this.toCity = toCity;
-	}
+
 	public String getToAirport() {
 		return toAirport;
 	}
@@ -124,25 +104,24 @@ public class Flight{
 		this.arrivalDate = arrivalDate;
 	}
 
-
-	public int getDepartureTime() {
+	public String getDepartureTime() {
 		return departureTime;
 	}
 
-
-	public void setDepartureTime(int departureTime) {
+	public void setDepartureTime(String departureTime) {
 		this.departureTime = departureTime;
 	}
 
-
-	public int getArrivalTime() {
+	public String getArrivalTime() {
 		return arrivalTime;
 	}
 
-
-	public void setArrivalTime(int arrivalTime) {
+	public void setArrivalTime(String arrivalTime) {
 		this.arrivalTime = arrivalTime;
 	}
+
+
+
 
 	
 	

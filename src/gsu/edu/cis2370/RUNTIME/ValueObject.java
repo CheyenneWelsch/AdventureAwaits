@@ -73,13 +73,8 @@ public class ValueObject{
 	}
 		
 
-	
-	public boolean checkAccount(){
-		return false;
-	}
-	
-	public void testPrint(String txt){
-		System.out.println(txt);
+	public String getFlightInfo){
+		TESTCLASS tc = new TESTCLASS();
 	}
 	
 	
