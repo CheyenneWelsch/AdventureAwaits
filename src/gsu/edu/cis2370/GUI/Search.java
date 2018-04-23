@@ -1,5 +1,9 @@
 package gsu.edu.cis2370.GUI;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import gsu.edu.cis2370.RUNTIME.ValueObject;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -17,7 +22,7 @@ import javafx.stage.Stage;
 import javafx.scene.paint.Paint;
 
 
-public class Search extends Application {
+public class Search extends Application{
 
 	Label airport = new Label("Airport");
 	Label from = new Label("From City");
@@ -39,13 +44,15 @@ public class Search extends Application {
 	Text scenetitle = new Text ("Search for a Flight");
 	Text title = new Text ("Search Flights");
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws ClassNotFoundException, SQLException{
 
 		// create GridPane object
 		GridPane grid = new GridPane();
 		grid.add(scenetitle, 0, 0);
 	
 		//grid.add(name, columnIndex, rowIndex, colSpan, rowSpan)
+		
+		
 		
 		grid.add(airport, 0, 1);
 		grid.add(airportBOX, 1, 1, 3, 1);
@@ -73,6 +80,21 @@ public class Search extends Application {
 		btnSearch.setMinWidth(550);
 		
 		
+		//creates a text box to print flight list
+		TextArea textArea = new TextArea();
+		
+		//creates a new ValueObject to be used to create ArrayList to use getFlightTable method
+		ValueObject vo = new ValueObject();
+		ArrayList<String> s1 = vo.getFlightTable();
+		
+		//create string Array to hold flight table and use to print it out
+		String [] hold = vo.arrayListToString(s1);
+		int count = 0;
+		
+		//for loop that prints text in a text box
+		for(int x = 0; x< vo.flightList(); x++){
+			textArea.appendText(hold[x] + "\n");
+		}
 		
 		
 		// create a new scene and place it on stage
