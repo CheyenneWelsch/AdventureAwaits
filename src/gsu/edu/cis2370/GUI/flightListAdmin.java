@@ -99,9 +99,9 @@ public class flightListAdmin extends Application{
 		ArrayList<Flight> list = vo.getFlights();
 		
 		
-		ObservableList<Flight> data2 = FXCollections.observableArrayList(list);
+		ObservableList<Flight> data = FXCollections.observableArrayList(list);
 		
-		final ObservableList<Flight> data = FXCollections.observableArrayList(
+		final ObservableList<Flight> data2 = FXCollections.observableArrayList(
 				
 				new Flight(001, "ATL", "NYC", "01/01/2018", "01/02/2018", "10:00", "13:00", 100, 70),
 				new Flight(002, "NYC", "LAX", "01/01/2018", "01/02/2018", "10:00", "13:00", 100, 70),
