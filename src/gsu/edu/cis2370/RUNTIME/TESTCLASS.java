@@ -15,7 +15,7 @@ public class TESTCLASS {
 
 	private static Connection connection;
 
-	
+	 
 	
 	
 	// add a user to the database
@@ -24,7 +24,7 @@ public class TESTCLASS {
 			String securityAnswer) {
 		connection = null;
 		try {
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/AdventureAwaits", "root", "ch3y3nn3");
 			
 			String text = "INSERT INTO USER(ssn, firstName, lastName, email, phone, username, password, street, city, state, zip, country, securityQuestion, securityAnswer, access) "
 					+ "VALUES(" + ssn + ", '" + firstName + "', '" + lastName + "', '" + email + "', " + phone + ", '"
@@ -43,14 +43,38 @@ public class TESTCLASS {
 	}
 
 	
+	// add a new FLIGHT to the database
+	public Connection newFlight(int flightNumber, String fromAirport, String toAirport, String departDate,
+			String arriveDate, String departTime, String arriveTime, int maxCapacity, int numberOfPassengers) throws SQLException, ClassNotFoundException {
+		connection = null;
+		 
+		try {   
+			// Set up a connection with database
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/AdventureAwaits", "root", "ch3y3nn3");
+			System.out.println("Database connected");
+			
+			String text = "INSERT INTO flight (flightNumber , fromAirport , toAirport , departDate , arriveDate , departTime , arriveTime , maxCapacity, numberOfPassengers )" +
+					"VALUES (" + flightNumber + ",'"+ fromAirport +"','"+ toAirport +"','" + departDate + "','" + arriveDate +"','" 
+					+ departTime +"','"+ arriveTime +"',"+ maxCapacity +","+ numberOfPassengers +")";
+			
+
+			Statement stmt = connection.prepareStatement(text);
+			// stmt.executeUpdate(text);
+			stmt.execute(text);
+			System.out.println("PUSHED");
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return connection;
+	}
 	
 	// check the username and password, return as false if there is not a match
 	public boolean checkAccount(String user, String pass) {
 		connection = null;
 		int check = 0;
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
-					"bismarck");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/AdventureAwaits", "root", "ch3y3nn3");
 
 			String query = "SELECT * FROM USER";
 
@@ -92,8 +116,7 @@ public class TESTCLASS {
 		connection = null;
 		int check = 0;
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
-					"bismarck");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/AdventureAwaits", "root", "ch3y3nn3");
 
 			String query = "SELECT username, access FROM USER";
 
@@ -134,8 +157,7 @@ public class TESTCLASS {
 	public void getUserInfo() {
 		connection = null;
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
-					"bismarck");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/AdventureAwaits", "root", "ch3y3nn3");
 
 			String query = "SELECT * FROM USER";
 
