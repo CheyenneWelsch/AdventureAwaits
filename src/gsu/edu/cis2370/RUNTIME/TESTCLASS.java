@@ -1,6 +1,6 @@
 package gsu.edu.cis2370.RUNTIME;
 
-import gsu.edu.cis2370.RUNTIME.*;
+//import gsu.edu.cis2370.RUNTIME.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,6 +23,7 @@ public class TESTCLASS {
 	public Connection newUser(int ssn, String firstName, String lastName, String email, int phone, String username,
 			String password, String street, String city, String state, int zip, String country, String securityQuestion,
 			String securityAnswer) {
+		
 		connection = null;
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
@@ -135,8 +136,7 @@ public class TESTCLASS {
 	public void getUserInfo() {
 		connection = null;
 		try {
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
-					"bismarck");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
 
 			String query = "SELECT * FROM USER";
 
