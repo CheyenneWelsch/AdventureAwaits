@@ -1,7 +1,8 @@
 package gsu.edu.cis2370.GUI;
 
+import java.util.ArrayList;
 import java.util.Date;
-
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -61,19 +62,13 @@ public class flightListAdmin extends Application{
 	// int departureTime, String arrivalDate, int arrivalTime){
 	// Defining Table Data
 	
+
 	
-	
-	
-	final ObservableList<Flight> data = FXCollections.observableArrayList(
-			
-			new Flight(001, "ATL", "NYC", "01/01/2018", "01/02/2018", "10:00", "13:00", 100, 70),
-			new Flight(002, "NYC", "LAX", "01/01/2018", "01/02/2018", "10:00", "13:00", 100, 70),
-			new Flight(003, "LAX", "ATL", "01/01/2018", "01/02/2018", "10:00", "13:00", 100, 70)
-			
-			);
 	
 	
 	ValueObject vo = new ValueObject();
+	
+	
 	int x = vo.flightList();
 	
 	//final ObservableList<Flight> data = FXCollections.observableArrayList(vo.getFlights());
@@ -99,8 +94,20 @@ public class flightListAdmin extends Application{
 	final HBox backBox = new HBox();
 
 	@Override
-	public void start(Stage stage) throws Exception {
-
+	public void start(Stage stage) throws ClassNotFoundException, SQLException {
+		
+		ArrayList<Flight> list = vo.getFlights();
+		
+		
+		ObservableList<Flight> data = FXCollections.observableArrayList(list);
+		
+		final ObservableList<Flight> data2 = FXCollections.observableArrayList(
+				
+				new Flight(001, "ATL", "NYC", "01/01/2018", "01/02/2018", "10:00", "13:00", 100, 70),
+				new Flight(002, "NYC", "LAX", "01/01/2018", "01/02/2018", "10:00", "13:00", 100, 70),
+				new Flight(003, "LAX", "ATL", "01/01/2018", "01/02/2018", "10:00", "13:00", 100, 70)
+				
+				);
 		
 		
 		
@@ -117,7 +124,11 @@ public class flightListAdmin extends Application{
 		TableColumn flightNum = new TableColumn("Number");
 		flightNum.setMinWidth(100);
 		flightNum.setCellValueFactory(new PropertyValueFactory<>("flightNumber"));
-
+	
+		
+		
+		
+		
 		TableColumn airport = new TableColumn("Current Airport");
 		airport.setMinWidth(100);
 		airport.setCellValueFactory(new PropertyValueFactory<>("fromAirport"));

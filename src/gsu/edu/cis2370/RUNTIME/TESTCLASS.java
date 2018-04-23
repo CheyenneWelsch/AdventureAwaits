@@ -15,6 +15,9 @@ public class TESTCLASS {
 
 	private static Connection connection;
 
+	
+	
+	
 	// add a user to the database
 	public Connection newUser(int ssn, String firstName, String lastName, String email, int phone, String username,
 			String password, String street, String city, String state, int zip, String country, String securityQuestion,
@@ -22,13 +25,7 @@ public class TESTCLASS {
 		connection = null;
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
-			System.out.println("Database connected1111");
-
-			String text2 = "INSERT INTO USER(`ssn`, `firstName`, `lastName`, `email`, `phone`, `username`, `password`, `street`, `city` , `state` , `zip` , `country` , `securityQuestion` , `securityAnswer` , `access`) "
-					+ "VALUES('" + ssn + "`, `" + firstName + "`, `" + lastName + "`, `" + email + "`, `" + phone
-					+ "`, `" + username + "`, `" + password + "`, `" + street + "`, `" + city + "`, `" + state + "`, `"
-					+ zip + "`, `" + country + "`, `" + securityQuestion + "`, `" + securityAnswer + "`, `C` ) ";
-
+			
 			String text = "INSERT INTO USER(ssn, firstName, lastName, email, phone, username, password, street, city, state, zip, country, securityQuestion, securityAnswer, access) "
 					+ "VALUES(" + ssn + ", '" + firstName + "', '" + lastName + "', '" + email + "', " + phone + ", '"
 					+ username + "', '" + password + "', '" + street + "', '" + city + "', '" + state + "', " + zip
@@ -45,6 +42,8 @@ public class TESTCLASS {
 		return connection;
 	}
 
+	
+	
 	// check the username and password, return as false if there is not a match
 	public boolean checkAccount(String user, String pass) {
 		connection = null;
@@ -86,6 +85,8 @@ public class TESTCLASS {
 		}
 	}
 
+	
+	
 	// Checks user access (return true is admin, false if customer)
 	public boolean checkAccess(String user) {
 		connection = null;
@@ -227,11 +228,11 @@ public class TESTCLASS {
 		return maxCapacity;
 	}
 	
-
 	
 	
-	/*
-	public ArrayList<String> gatherFlight(){
+	
+	
+	public ArrayList<String> getFlightTable(){
 		//define a multidimensional string to hold the flight data from the table
 		ArrayList<String> flights = new ArrayList<String>();
 		connection = null;
@@ -284,7 +285,7 @@ public class TESTCLASS {
 		}
 		return flights;
 	}
-	*/
+	
 	
 	public ArrayList<Flight> getAllFlight() throws ClassNotFoundException, SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
@@ -301,22 +302,20 @@ public class TESTCLASS {
 		return flightlist;
 	}
 		
-	
-	
-	public ArrayList<Flight> getAllFlight2() throws ClassNotFoundException, SQLException {
+	//TEST
+	public ArrayList<Flight> getFlightList() throws ClassNotFoundException, SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
 				"bismarck");
 		Statement stmt = con.createStatement();
 		String sql = "Select * from FLIGHT";
 		ResultSet rst;
 		rst = stmt.executeQuery(sql);
+		String list;
 		ArrayList<Flight> flightlist = new ArrayList<>();
 		while(rst.next()){
-			Flight flight = new Flight(rst.getInt("flightNumber"), rst.getString("fromAirport"), rst.getString("toAirport"), rst.getString("departDate"),
-					rst.getString("arriveDate"), rst.getString("departTime"), rst.getString("arriveTime"), rst.getInt("maxCapacity"), rst.getInt("numberOfPassengers"));
+		//	list.concat(rst.toString());
 		}
 		return flightlist;
 	}
-		
 	
 }

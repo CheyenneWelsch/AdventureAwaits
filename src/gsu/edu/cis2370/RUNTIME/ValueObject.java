@@ -81,14 +81,42 @@ public class ValueObject{
 		return x;
 		
 	}
+	
+	
 		
-
+	//returns array list of flight objects from table
 	public ArrayList<Flight> getFlights() throws ClassNotFoundException, SQLException {
 		TESTCLASS tc = new TESTCLASS();
 		ArrayList<Flight> flights = tc.getAllFlight();
 		return flights;
 	}
 	
+	//returns string array list of flight info
+	public ArrayList<String> getFlightTable() throws ClassNotFoundException, SQLException {
+		TESTCLASS tc = new TESTCLASS();
+		ArrayList<String> flights = tc.getFlightTable();
+		return flights;
+	}
+	
+	
+	public String [] arrayListToString(ArrayList<String> aList) throws ClassNotFoundException, SQLException{
+		String hold = "";
+		String [] endResult = new String [flightList()];
+		int count = 0;
+		ArrayList<String> flights = getFlightTable();
+		for (int x = 0; x < flights.size(); x++) {
+			hold += (flights.get(x) + " ");
+			if ((x + 1) % 9 == 0) {
+				hold.concat("\n");
+				
+				endResult[count++] = hold;
+				hold = "";
+			}
+		}
+		return endResult;
+	}
+	
+	/*
 	public Flight [] flightCreation(){
 		ArrayList<String> list = gatherFlights();
 		TESTCLASS tc = new TESTCLASS();
@@ -113,6 +141,7 @@ public class ValueObject{
 		}
 		return flightObjects;
 	}
+	*/
 }
 	
 	
