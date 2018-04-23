@@ -19,27 +19,18 @@ import javafx.scene.paint.Paint;
 
 public class SplashScreen extends Application {
 		
+	
+	
 		
-		
-		Label userName = new Label("User Name: ");
-		Label pw = new Label("Password: ");
-		TextField userTextField = new TextField();
-		PasswordField pwBox = new PasswordField();
-		Text scenetitle = new Text("Adventure Awaitsssss");
-		
+		Text scenetitle = new Text("Adventure Awaits");
+		Label applicationSlogan = new Label("Changing the way you fly!");
 		
 public void start(Stage primaryStage) {
 
 	// create GridPane object
 	GridPane grid = new GridPane();
 	grid.add(scenetitle, 0, 0);
-	
-	grid.add(userName, 0, 1);
-	grid.add(userTextField, 1, 1);
-	grid.add(pw, 0, 2);
-	grid.add(pwBox, 1, 2);
-	
-	
+
 	grid.setAlignment(Pos.CENTER);
 	grid.setPadding(new Insets(25, 25, 25, 25));
 	grid.setHgap(10);

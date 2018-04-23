@@ -121,8 +121,6 @@ public class Flight{
 	}
 
 
-
-
 	
 	
 	//getting size of the plane

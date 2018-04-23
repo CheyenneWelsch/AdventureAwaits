@@ -51,7 +51,7 @@ public class SqlCommand {
 							 
 		
 							
-		// INSERT into PLANE Attributes: planeId , type , maxSize , currentSize, status
+		/*// INSERT into PLANE Attributes: planeId , type , maxSize , currentSize, status
 			
 			
 		String planeId;
@@ -63,44 +63,36 @@ public class SqlCommand {
 			
 		String plane = ("INSERT into PLANE (planeId , type , maxSize , currentSize , status )" +
 							"Values (" + planeId + "' , '" + type + "','" + maxSize + "','"+ currentSize + "','"+ status + "','"); 						
-							
-							
-		// INSERT into FLIGHTS Attributes: flightNumber , fromCity , toCity , fromAirport, toAirport
+			*/				
+				
+		
+		
+		// INSERT into FLIGHT Attributes: flightNumber , fromCity , toCity , fromAirport, toAirport
 		//departDate , arriveDate , departTime , arriveTime , planeType
 		
-		String flightNumber;
-		String fromCity;
-		String toCity; 
+		String flightNumber; 
 		String fromAirport;
 		String toAirport;
 		String departDate; 
 		String arriveDate;
 		String departTime; 
 		String arriveTime;
+		String maxCapacity;
+		String numberOfPassengers;
 		String planeType;
 		
 			
 			
-		String flights = ("INSERT into PLANE (flightNumber , fromCity , toCity , fromAirport , toAirport , departDate , ariveDate , departTime , arriveTime , planeType )" +
-							"Values (" + flightNumber + "' , '" + fromCity + "','" + toCity + "','"+ fromAirport + "','"+ toAirport + "','" + departDate + "','" + arriveDate + "','" + departTime + "','"+ arriveTime + "','"+ planeType + "','"); 	
+		String flights = ("INSERT into FLIGHT (flightNumber , fromCity , toCity , fromAirport , toAirport , departDate , ariveDate , departTime , arriveTime , planeType )" +
+							"Values (" + flightNumber + "' , '"+ fromAirport + "','"+ toAirport + "','" + departDate + "','" + arriveDate + "','" + departTime + "','"+ arriveTime + "','"+ maxCapacity + "','"+ numberOfPassengers + "','"+ planeType + "','"); 	
 		
 	
-		// INSERT into AIRPORT Attributes: airportCode , name , street , city , state , zip , country , checkSeat
+		// INSERT into BOOKING Attributes: airportCode , name , street , city , state , zip , country , checkSeat
 				
-		String airportCode;
-		String name;
-		String street; 
-		String city;
-		String state;
-		String zip;
-		String country;
-		String checkSeat;
-				
-					
-					
-		String airport = ("INSERT into BOOKING (airportCode , name , street , checkSeat , searchFlights )" +
-									"Values (" + airportCode + "' , '" + name + "','" + assignPassenger + "','"+ checkSeat + "','"+ searchFlights + "','"); 
-		/*
+		String confirmationNumber;				
+		String airport = ("INSERT into BOOKING ('confirmationNumber' )" +
+									"Values (" + confirmationNumber + ",");
+		
 		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('SFO', 'San Francisco International Airport', 'San Francisco', 'CA');
 		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('DEN', 'Denver International Airport', 'Denver', 'CO');
 		INSERT INTO `AdventureAwaits`.`AIRPORT` (`airportCode`, `name`, `cityAirport`, `stateAirport`) VALUES ('LAS', 'McCarran International Airport', 'Las Vegas', 'NV');
