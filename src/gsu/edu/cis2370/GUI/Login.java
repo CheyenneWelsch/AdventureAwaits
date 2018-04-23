@@ -45,6 +45,8 @@ public class Login extends Application {
 	Button btnSignUp = new Button("Sign-Up");
 	//sign-up window pop up
 	
+	Button btnForgotPass = new Button("Forgot Password?");
+	
 	@Override
 		public void start(Stage primaryStage) {
 
@@ -71,7 +73,9 @@ public class Login extends Application {
 			hbBtn.getChildren().addAll(btnSignUp, btnLogin);
 			grid.add(btnSignUp, 0, 3);
 			grid.add(btnLogin, 1, 3, 3, 1);
+			grid.add(btnForgotPass, 1, 4, 3, 1);
 			btnLogin.setMinWidth(130);
+			btnForgotPass.setMinWidth(130);
 		
 			
 			

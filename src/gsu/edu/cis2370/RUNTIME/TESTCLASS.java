@@ -1,6 +1,6 @@
 package gsu.edu.cis2370.RUNTIME;
 
-import gsu.edu.cis2370.RUNTIME.*;
+//import gsu.edu.cis2370.RUNTIME.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 
 public class TESTCLASS {
 
@@ -22,6 +23,7 @@ public class TESTCLASS {
 	public Connection newUser(int ssn, String firstName, String lastName, String email, int phone, String username,
 			String password, String street, String city, String state, int zip, String country, String securityQuestion,
 			String securityAnswer) {
+		
 		connection = null;
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/AdventureAwaits", "root", "ch3y3nn3");
@@ -157,7 +159,11 @@ public class TESTCLASS {
 	public void getUserInfo() {
 		connection = null;
 		try {
+<<<<<<< HEAD
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/AdventureAwaits", "root", "ch3y3nn3");
+=======
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
+>>>>>>> branch 'master' of https://github.com/cheynayners/AdventureAwaits.git
 
 			String query = "SELECT * FROM USER";
 
@@ -267,38 +273,49 @@ public class TESTCLASS {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			// iterate through java result set
+			ResultSetMetaData rsmd = rs.getMetaData();
+			int columncount = rsmd.getColumnCount();
+			
+			/*
+			//get column title???
+			for (int x = 0; x < columncount; x++ ) {
+				flights.add(rsmd.getColumnName(x+1));
+				
+				}
+			
+			*/
 			while (rs.next()) {
 
 				int flightNumber = rs.getInt("flightNumber");
 				//convert the int to string
 				String stringFlightNumber = Integer.toString(flightNumber);
-				flights.add(stringFlightNumber);
+				flights.add(stringFlightNumber + "   ");
 				
 				String fromAirport = rs.getString("fromAirport");
-				flights.add(fromAirport);
+				flights.add(fromAirport+ "   ");
 				
 				String toAirport = rs.getString("toAirport");
-				flights.add(toAirport);
+				flights.add(toAirport+ "   ");
 				
 				String departDate = rs.getString("departDate");
-				flights.add(departDate);
+				flights.add(departDate+ "   ");
 				
 				String arriveDate = rs.getString("arriveDate");
-				flights.add(arriveDate);
+				flights.add(arriveDate+ "   ");
 				
 				String departTime = rs.getString("departTime");
-				flights.add(departTime);
+				flights.add(departTime+ "   ");
 				
 				String arriveTime = rs.getString("arriveTime");
-				flights.add(arriveTime);
+				flights.add(arriveTime+ "   ");
 				
 				int maxCapacity = rs.getInt("maxCapacity");
 				String stringMaxCapacity = Integer.toString(maxCapacity);
-				flights.add(stringMaxCapacity);
+				flights.add(stringMaxCapacity+ "   ");
 				
 				int numberOfPassengers = rs.getInt("numberOfPassengers");
 				String stringNumberOfPassengers = Integer.toString(numberOfPassengers);
-				flights.add(stringNumberOfPassengers);
+				flights.add(stringNumberOfPassengers+ "   ");
 
 			}
 			stmt.close();

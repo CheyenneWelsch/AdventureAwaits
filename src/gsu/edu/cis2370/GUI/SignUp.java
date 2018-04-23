@@ -137,7 +137,7 @@ public class SignUp extends Application {
 			//include all actions within the setOnAction method
 			// create a new scene and place it on stage
 			Scene scene = new Scene(grid, 750, 650);
-			primaryStage.setTitle("Login"); //set title
+			primaryStage.setTitle("Create an Account"); //set title
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
