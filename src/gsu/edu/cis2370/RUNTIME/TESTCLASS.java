@@ -469,7 +469,7 @@ public class TESTCLASS {
 	}
 
 	
-	public ArrayList<String> searchFlights(int flightNum, String fromAir, String toAir, String departureDate, String arrivalDate, String departureTime, String arrivalTime) {
+	public ArrayList<String> searchFlights(int flightNum, String fromAir, String toAir, String departureDate, String arrivalDate, String departureTime, String arrivalTime) throws ClassNotFoundException, SQLException {
 		String passwordString = "";
 		
 		ArrayList<String> flights = new ArrayList<String>();
@@ -479,7 +479,7 @@ public class TESTCLASS {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root",
 					"bismarck");
 
-			String query = "SELECT userName, password FROM FLIGHT";
+			String query = "SELECT flightNumber, fromAirport, toAirport, departDate, arriveDate, departTime, arriveTime FROM FLIGHT";
 
 			Statement stmt = con.prepareStatement(query);
 			ResultSet rs = stmt.executeQuery(query);
@@ -512,14 +512,6 @@ public class TESTCLASS {
 
 						String arriveTime = rs.getString("arriveTime");
 						flights.add(arriveTime + "      ");
-
-						int maxCapacity = rs.getInt("maxCapacity");
-						String stringMaxCapacity = Integer.toString(maxCapacity);
-						flights.add(stringMaxCapacity + "   ");
-
-						int numberOfPassengers = rs.getInt("numberOfPassengers");
-						String stringNumberOfPassengers = Integer.toString(numberOfPassengers);
-						flights.add(stringNumberOfPassengers + "   ");
 				
 				}
 			}

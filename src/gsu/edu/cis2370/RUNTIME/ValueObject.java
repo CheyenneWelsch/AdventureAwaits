@@ -110,7 +110,14 @@ public class ValueObject{
 	public ArrayList<String> searchFlights(int flightNum, String fromAir, String toAir, String departureDate, String arrivalDate,
 			String departureTime, String arrivalTime) throws ClassNotFoundException, SQLException {
 		TESTCLASS tc = new TESTCLASS();
-		ArrayList<String> flights = tc.searchFlights(flightNum, fromAir, toAir, departureDate, arrivalDate, departureTime, arrivalTime);
+		Flight flight = new Flight(flightNum, fromAir, toAir, departureDate, arrivalDate, departureTime, arrivalTime);
+		
+		//ArrayList<String> flights = tc.searchFlights(flightNum, fromAir, toAir, departureDate, arrivalDate, departureTime, arrivalTime);
+		
+		ArrayList<String> flights = tc.searchFlights(flight.getFlightNumber(), flight.getFromAirport(), flight.getToAirport(), flight.getDepartureDate(),
+				flight.getArrivalDate(), flight.getDepartureTime(), flight.getArrivalTime());
+		
+		
 		return flights;
 	}
 	
@@ -119,7 +126,7 @@ public class ValueObject{
 		String hold = "";
 		String [] endResult = new String [flightList()];
 		int count = 0;
-		ArrayList<String> flights = getFlightTable();
+		ArrayList<String> flights = aList;
 		for (int x = 0; x < flights.size(); x++) {
 			hold += (flights.get(x) + " ");
 			if ((x + 1) % 9 == 0) {
@@ -175,7 +182,7 @@ public class ValueObject{
 	
 	
 		public boolean testAirport(String s1){
-			if(s1.matches("^(\\w)$")){
+			if(s1.matches("^[A-Z][A-Z][A-Z]$")){
 				return true;
 			}else{
 				return false;

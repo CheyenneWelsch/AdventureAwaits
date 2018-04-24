@@ -49,7 +49,16 @@ public class Flight{
 		this.numberOfPassengers = numberOfPassengers;
 	}
 	
-	
+	public Flight (int flightNumber, String fromAirport, String toAirport, String departureDate, String arrivalDate, String departureTime,  String arrivalTime){
+		this.flightNumber = flightNumber;
+		this.fromAirport = fromAirport;
+		this.toAirport = toAirport;
+		this.departureDate = departureDate;
+		this.departureTime = departureTime;
+		this.arrivalDate = arrivalDate;
+		this.arrivalTime = arrivalTime;
+		
+	}
 
 	public String getFromAirport() {
 		return fromAirport;

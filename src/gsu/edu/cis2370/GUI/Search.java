@@ -81,24 +81,12 @@ public class Search extends Application {
 		grid.add(btnBack, 0, 6);
 		grid.add(btnSearch, 1, 6, 3, 1);
 		btnBack.setMinWidth(100);
-		btnSearch.setMinWidth(550);
+		btnSearch.setMinWidth(300);
+
+		ValueObject vo = new ValueObject();
 
 		// creates a text box to print flight list
 		TextArea textArea = new TextArea();
-
-		// creates a new ValueObject to be used to create ArrayList to use
-		// getFlightTable method
-		ValueObject vo = new ValueObject();
-		ArrayList<String> s1 = vo.getFlightTable();
-
-		// create string Array to hold flight table and use to print it out
-		String[] hold = vo.arrayListToString(s1);
-		int count = 0;
-
-		// for loop that prints text in a text box
-		for (int x = 0; x < vo.flightList(); x++) {
-			textArea.appendText(hold[x] + "\n");
-		}
 
 		// create a new scene and place it on stage
 		Scene scene = new Scene(grid, 750, 550);
@@ -119,36 +107,51 @@ public class Search extends Application {
 		// btn.setOnAction(e -> textGrab(userTextField.getText(),
 		// pwBox.getText()) );
 		btnSearch.setOnAction(new EventHandler<ActionEvent>() {
+
 			@Override
 			public void handle(ActionEvent e) {
-				
-				/*
-				if(vo.testAirport(fromBOX.toString()) != true && vo.testAirport(toBOX.toString()) != true){
+
+				if (vo.testAirport(fromBOX.getText()) != true && vo.testAirport(toBOX.getText()) != true) {
 					Label actiontarget = new Label("INVALID AIRPORT. Enter as Airport code (ex. ATL, NYC, etc)");
 					grid.add(actiontarget, 1, 7, 3, 1);
-				
-				}else if(vo.testDateFormat(departDateBOX.toString()) != true && vo.testDateFormat(arrivalDateBOX.toString()) != true){
-					Label actiontarget = new Label("INVALID DATE. Enter as MM/DD/YYYY (ex. 12/25/2018, 08/21/2018, etc)");
+
+				} else if (vo.testDateFormat(departDateBOX.getText()) != true
+						&& vo.testDateFormat(arrivalDateBOX.getText()) != true) {
+					Label actiontarget = new Label(
+							"INVALID DATE. Enter as MM/DD/YYYY (ex. 12/25/2018, 08/21/2018, etc)");
 					grid.add(actiontarget, 1, 7, 3, 1);
-					
-				}else if(vo.testTimeFormat(fromTime.toString()) != true && vo.testTimeFormat(toTime.toString()) != true){ 
+
+				} else if (vo.testTimeFormat(fromTime.getText()) != true
+						&& vo.testTimeFormat(toTime.getText()) != true) {
 					Label actiontarget = new Label("INVALID TIME. Enter as HH:MM (ex. 12:56, 16:32, etc)");
 					grid.add(actiontarget, 1, 7, 3, 1);
-				}else{
-					Label actiontarget = new Label("SUCCESS");
-					grid.add(actiontarget, 1, 7, 3, 1);
-				}
-				*/
-				int fnum = Integer.parseInt(flightNumBOX.toString());
-				vo.searchFlights(fnum, fromBOX.toString(), toBOX.toString(), departDateBOX.toString(), arrivalDateBOX.toString(), 
-						fromTime.toString(), toTime.toString());
+				} else {
 				
+
+				int fnum = Integer.parseInt(flightNumBOX.getText());
+				try {
+					ArrayList<String> f1 = vo.searchFlights(fnum, fromBOX.getText(), toBOX.getText(),
+							departDateBOX.getText(), arrivalDateBOX.getText(), fromTime.getText(), toTime.getText());
+
+					// converts array list of flights (f1) to a string array to
+					// be used to print
+					String[] flightResults = f1.toArray(new String[f1.size()]);
+
+					for (int x = 0; x < flightResults.length; x++) {
+						textArea.appendText(flightResults[x] + " ");
+						if (x != 0 && x % 8 == 0) {
+							textArea.appendText("\n");
+						}
+					}
+					grid.add(textArea, 0, 5, 4, 1);
+
+				} catch (SQLException | ClassNotFoundException s) {
+
+				}
+
 			}
-
+			}
 		});
-
-		// adds location for text to appear if login fails
-		
 
 	}
 
