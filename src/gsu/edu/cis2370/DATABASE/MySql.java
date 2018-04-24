@@ -58,6 +58,19 @@ public class MySql {
 				"maxCapacity INTEGER not NULL ,"+
 				"numberOfPassengers INTEGER not NULL ," +
 				" PRIMARY KEY (flightNumber))");
+		
+		
+		String testflight = ("CREATE TABLE TESTFLIGHT" +
+				"(flightNumber INTEGER not NULL ," +
+				" fromAirport VARCHAR(50), " +
+				" toAirport VARCHAR(50), " +
+				" departDate DATE, " +
+				" arriveDate DATE, " +
+				" departTime VARCHAR(50), " +
+				" arriveTime VARCHAR(50), " +
+				"maxCapacity INTEGER not NULL ,"+
+				"numberOfPassengers INTEGER not NULL ," +
+				" PRIMARY KEY (flightNumber))");
 
 
 
@@ -73,6 +86,8 @@ public class MySql {
 
 		String booking = ("CREATE TABLE BOOKING" +
 				"(confirmationNumber INTEGER not NULL ," +
+				" flightNumber INTEGER not Null, "+
+				" userName VARCHAR(20)," +
 				" PRIMARY KEY (confirmationNumber))");
 		
 		/*String bookingForeign = ("ALTER TABLE BOOKING" +
@@ -89,13 +104,17 @@ public class MySql {
 
 //Statement statement = connection.prepareStatement(user);
 //Statement statement = connection.prepareStatement(flight);
-Statement statement = connection.prepareStatement(airport);
+//Statement statement = connection.prepareStatement(airport);
 //Statement statement = connection.prepareStatement(booking);
+		
+Statement statement = connection.prepareStatement(testflight);
 
 //statement.executeUpdate(user);
 //statement.executeUpdate(flight);
-statement.executeUpdate(airport);
+//statement.executeUpdate(airport);
 //statement.executeUpdate(booking);
+
+statement.executeUpdate(testflight);
 
 
 	

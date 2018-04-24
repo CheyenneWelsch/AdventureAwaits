@@ -80,6 +80,34 @@ public class TESTCLASS {
 		return a1;
 	}
 	
+	
+	//returns access of user from temp table
+	public String tempUserName()throws SQLException, ClassNotFoundException{
+		connection = null;
+		int check = 0;
+		String a1 = "";
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root",
+					"bismarck");
+
+			String query = "SELECT userName FROM TEMPUSER";
+
+			Statement stmt = con.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery(query);
+			// iterate through java result set
+			while (rs.next()) {
+
+				a1 = rs.getString("userName");
+				
+			}
+			stmt.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return a1;
+	}
+	
 
 	// add a user to the database
 	public Connection newUser(int ssn, String firstName, String lastName, String email, int phone, String username,
@@ -586,5 +614,82 @@ public class TESTCLASS {
 		return flights;
 	}
 	
+	
+	// book a flight for a user
+	public Connection bookFlight(int flightNum, String userName) {
+
+		connection = null;
+		try {
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
+			
+			String query = "SELECT confirmationNumber FROM BOOKING";
+			Statement stmt = connection.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery(query);
+			// iterate through java result set
+			int findConfirmationNumber = 0;
+			while (rs.next()) {
+				findConfirmationNumber = rs.getInt("confirmationNumber");
+			}
+			
+			
+			
+			
+			String text = "INSERT INTO BOOKING(confirmationNumber, flightNumber, userName) "
+					+ "VALUES(" + (findConfirmationNumber + 1) + ", " + flightNum + ", '" + userName + "') ";
+
+			stmt = connection.prepareStatement(text);
+			// stmt.executeUpdate(text);
+			stmt.execute(text);
+			System.out.println("PUSHED");
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return connection;
+	}
+	
+	
+	
+	public String getDepartureDate(int flightNum){
+		connection = null;
+		String dDate = "";
+		try {
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
+			
+			String query = "SELECT * FROM TESTFLIGHT";
+			Statement stmt = connection.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery(query);
+			// iterate through java result set
+			while (rs.next()) {
+				if(rs.getInt("flightNumber") == flightNum)
+				dDate = rs.getString("departDate");
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return dDate;
+	}
+	
+	public String getArrivalDate(int flightNum){
+		connection = null;
+		String dDate = "";
+		try {
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
+			
+			String query = "SELECT * FROM TESTFLIGHT";
+			Statement stmt = connection.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery(query);
+			// iterate through java result set
+			while (rs.next()) {
+				if(rs.getInt("flightNumber") == flightNum)
+				dDate = rs.getString("arriveDate");
+			}
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return dDate;
+	}
 	
 }

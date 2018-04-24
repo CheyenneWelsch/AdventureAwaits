@@ -18,11 +18,19 @@ public class ValueObject{
 	public ValueObject(){	
 	}
 	
+	//returns Temp User Access to use for moving through menus
 	public String showTempUserAccess()throws SQLException, ClassNotFoundException{
 		TESTCLASS tc = new TESTCLASS();
 		String access = tc.tempUserAccess();
 		return access;
 	}
+	
+	//returns Temp UserName to use for adding and deleting
+	public String showTempUserName()throws SQLException, ClassNotFoundException{
+		TESTCLASS tc = new TESTCLASS();
+		String access = tc.tempUserName();
+		return access;
+	} 
 	
 	//use to create temp table
 	public void createTempInfo(String user, String access) throws SQLException, ClassNotFoundException{
@@ -39,6 +47,7 @@ public class ValueObject{
 		tc.deleteTempAccess();
 		System.out.println("temporary user information deleted");
 	}
+	
 	
 	
 	
@@ -95,6 +104,7 @@ public class ValueObject{
 		return tc.getPass(userName);
 	}
 	
+	//checks username access for login screen
 	public boolean checkAccess(String userName){
 		TESTCLASS tc = new TESTCLASS();
 		if(tc.checkAccess(userName) == true){
@@ -104,6 +114,7 @@ public class ValueObject{
 		}
 	}
 	
+	//number of flights currently in the list
 	public int flightList(){
 		TESTCLASS tc = new TESTCLASS();
 		int x = tc.numberOfFlights();
@@ -127,7 +138,7 @@ public class ValueObject{
 		return flights;
 	}
 	
-	
+
 	public ArrayList<String> searchFlights(int flightNum, String fromAir, String toAir, String departureDate, String arrivalDate,
 			String departureTime, String arrivalTime) throws ClassNotFoundException, SQLException {
 		TESTCLASS tc = new TESTCLASS();
@@ -142,7 +153,7 @@ public class ValueObject{
 		return flights;
 	}
 	
-	
+	//returns regular string array of flight info
 	public String [] arrayListToString(ArrayList<String> aList) throws ClassNotFoundException, SQLException{
 		String hold = "";
 		String [] endResult = new String [flightList()];
@@ -161,6 +172,26 @@ public class ValueObject{
 	}
 	
 	
+	
+	//books a flight for a user
+	public void bookFlight(int flightNumber, String userName){
+		//creates a user class to assign values to the attributes that were just passed to this object
+		TESTCLASS tc = new TESTCLASS();
+		tc.bookFlight(flightNumber, userName);
+		System.out.println("Flight successfully booked");
+	}
+	
+	
+	public boolean checkDates(int flightNum){
+		TESTCLASS tc = new TESTCLASS();
+		
+		String dDate = tc.getDepartureDate(flightNum);
+		String aDate = tc.getArrivalDate(flightNum);
+		
+		
+		
+		return true;
+	}
 	
 	
 	//-----------------REGULAR EXPRESSIONS-----------------\\

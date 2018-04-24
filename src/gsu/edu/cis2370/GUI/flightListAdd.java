@@ -119,6 +119,32 @@ public class flightListAdd extends Application{
 			primaryStage.setScene(sceneText);
 			primaryStage.show();
 
+			//adds flight to User account
+			addFlight.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					ValueObject vc = new ValueObject();
+					
+					try{
+					String uName = vo.showTempUserName();
+					int flightNumber = Integer.parseInt(txtAddFlight.getText());
+					vo.bookFlight(flightNumber, uName);
+					
+					
+					
+					}catch(SQLException | ClassNotFoundException n){
+						System.out.println(n);
+					}
+				}
+			});
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			// go back to main menu and use temp access table to determine which menu to load
 			btnBack.setOnAction(new EventHandler<ActionEvent>() {
