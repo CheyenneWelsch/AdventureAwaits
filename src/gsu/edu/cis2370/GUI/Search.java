@@ -94,14 +94,23 @@ public class Search extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
-		// btn.setOnAction(e -> textGrab(userTextField.getText(),
-		// pwBox.getText()) );
+	
+		// go back to main menu and use temp access table to determine which menu to load
 		btnBack.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				mainAdmin adminMenu = new mainAdmin();
+				try{
+				if(vo.showTempUserAccess().equals("A")){
+					mainAdmin adminMenu = new mainAdmin();
+					adminMenu.start(primaryStage);
+				}else{
+					mainCustomer customerMenu = new mainCustomer();
+					customerMenu.start(primaryStage);
+				}
+				}catch(SQLException | ClassNotFoundException c){
+					System.out.println(c);
+				}
 				
-				adminMenu.start(primaryStage);
 			}
 		});
 

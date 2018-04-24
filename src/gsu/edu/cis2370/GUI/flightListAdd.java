@@ -23,7 +23,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.paint.Paint;
 
-public class flightListCustomer extends Application{
+public class flightListAdd extends Application{
 
 	Label flightNum = new Label("Flight#");
 	Label fromAir = new Label("F.Air");
@@ -95,6 +95,8 @@ public class flightListCustomer extends Application{
 				//vo.getFlightTable().get(x);
 			}
 		
+			
+			
 			HBox hBoxControls = new HBox(20);
 			hBoxControls.getChildren().addAll(txtAddFlight, addFlight);
 			hBoxControls.setPadding(new Insets(25, 25, 25, 25));
@@ -118,7 +120,24 @@ public class flightListCustomer extends Application{
 			primaryStage.show();
 
 			
-	
+			// go back to main menu and use temp access table to determine which menu to load
+			btnBack.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent e) {
+					try{
+					if(vo.showTempUserAccess().equals("A")){
+						mainAdmin adminMenu = new mainAdmin();
+						adminMenu.start(primaryStage);
+					}else{
+						mainCustomer customerMenu = new mainCustomer();
+						customerMenu.start(primaryStage);
+					}
+					}catch(SQLException | ClassNotFoundException c){
+						System.out.println(c);
+					}
+					
+				}
+			});
 		
 		
 		

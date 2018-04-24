@@ -20,10 +20,8 @@ public class TESTCLASS {
 	//creates temp access table to store 
 	public Connection createTempAccess(String userName, String access) throws SQLException, ClassNotFoundException{
 		
-		
 		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
 		System.out.println("Database connected");
-	
 	
 	
 		String tempUser = ("CREATE TABLE TEMPUSER" +
@@ -44,6 +42,7 @@ public class TESTCLASS {
 	
 	}
 	
+	//delete temporary access table upon logout
 	public Connection deleteTempAccess()throws SQLException, ClassNotFoundException{
 		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
 		
@@ -54,7 +53,7 @@ public class TESTCLASS {
 		return connection;
 	}
 	
-	
+	//returns access of user from temp table
 	public String tempUserAccess()throws SQLException, ClassNotFoundException{
 		connection = null;
 		int check = 0;

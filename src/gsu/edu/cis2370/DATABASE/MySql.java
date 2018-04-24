@@ -17,7 +17,7 @@ public class MySql {
 		   
 		// Establish a connection, enter personal user name and password for connection
 		//AdventureAwaits" , "username", "password");
-		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/AdventureAwaits", "root", "ch3y3nn3");
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
 		System.out.println("Database connected");
 	
 	
@@ -89,13 +89,13 @@ public class MySql {
 
 //Statement statement = connection.prepareStatement(user);
 //Statement statement = connection.prepareStatement(flight);
-//Statement statement = connection.prepareStatement(airport);
-Statement statement = connection.prepareStatement(booking);
+Statement statement = connection.prepareStatement(airport);
+//Statement statement = connection.prepareStatement(booking);
 
 //statement.executeUpdate(user);
 //statement.executeUpdate(flight);
-//statement.executeUpdate(airport);
-statement.executeUpdate(booking);
+statement.executeUpdate(airport);
+//statement.executeUpdate(booking);
 
 
 	

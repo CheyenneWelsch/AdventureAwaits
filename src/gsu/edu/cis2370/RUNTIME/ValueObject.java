@@ -18,7 +18,7 @@ public class ValueObject{
 	public ValueObject(){	
 	}
 	
-	public String tempUserAccess()throws SQLException, ClassNotFoundException{
+	public String showTempUserAccess()throws SQLException, ClassNotFoundException{
 		TESTCLASS tc = new TESTCLASS();
 		String access = tc.tempUserAccess();
 		return access;
