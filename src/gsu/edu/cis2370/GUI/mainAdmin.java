@@ -75,14 +75,7 @@ public class mainAdmin extends Application {
 		});
 		*/
 		
-		btnSearch.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-		    public void handle(ActionEvent e) {
-				Search test = new Search();
-				test.start(primaryStage);
-		    }
-		});
-	
+		
 		
 		btnLogout.setOnAction(new EventHandler<ActionEvent>() {
 			@Override

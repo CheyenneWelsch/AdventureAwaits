@@ -24,7 +24,7 @@ import javafx.scene.paint.Paint;
 
 public class Search extends Application{
 
-	Label airport = new Label("Airport");
+	Label flightNum = new Label("Flight Number");
 	Label from = new Label("From City");
 	Label to = new Label("To City");
 	//Label fromCity = new Label("Departure City");
@@ -32,7 +32,7 @@ public class Search extends Application{
 	Label arrivalDate = new Label("Arrival Date");
 	
 	
-	TextField airportBOX = new TextField();
+	TextField flightNumBOX = new TextField();
 	TextField fromBOX = new TextField();
 	TextField toBOX = new TextField();
 	//TextField fromCityBOX = new TextField();
@@ -54,8 +54,8 @@ public class Search extends Application{
 		
 		
 		
-		grid.add(airport, 0, 1);
-		grid.add(airportBOX, 1, 1, 3, 1);
+		grid.add(flightNum, 0, 1);
+		grid.add(flightNumBOX, 1, 1, 3, 1);
 		grid.add(from, 0, 2);
 		grid.add(fromBOX, 1, 2);
 		grid.add(to, 2, 2);
@@ -99,7 +99,7 @@ public class Search extends Application{
 		
 		// create a new scene and place it on stage
 		Scene scene = new Scene(grid, 750, 550);
-		primaryStage.setTitle("Login"); //set title
+		primaryStage.setTitle("Search"); //set title
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	

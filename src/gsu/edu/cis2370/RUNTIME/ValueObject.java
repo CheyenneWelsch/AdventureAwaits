@@ -66,6 +66,32 @@ public class ValueObject{
 		}
 	}
 	
+	//checks to see if username is valid for question & answer
+	public boolean checkUserName(String userName){
+		TESTCLASS tc = new TESTCLASS();
+		if(tc.checkUserName(userName) == true){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	//grabs security question
+	public String getSecurityQuestion(String userName){
+		TESTCLASS tc = new TESTCLASS();
+		return tc.getSecurityQuestion(userName);
+	}
+	//checks security answer
+	public boolean checkSecurityAnswer(String userName, String answer){
+		TESTCLASS tc = new TESTCLASS();
+		return tc.checkAnswer(userName, answer);
+	}
+	
+	//gets password for correct answer display
+	public String getPassword(String userName){
+		TESTCLASS tc = new TESTCLASS();
+		return tc.getPass(userName);
+	}
+	
 	public boolean checkAccess(String userName){
 		TESTCLASS tc = new TESTCLASS();
 		if(tc.checkAccess(userName) == true){

@@ -54,7 +54,7 @@ public class SignUp extends Application {
 	Text scenetitle = new Text("ACCOUNT CREATION");
 	
 	public TextField userTextField = new TextField();
-	TextField userNameBOX = new TextField();
+	public TextField userNameBOX = new TextField();
 	public TextField firstNameBOX = new TextField();
 	public TextField lastNameBOX = new TextField();
 	public TextField ssnBOX = new TextField();
