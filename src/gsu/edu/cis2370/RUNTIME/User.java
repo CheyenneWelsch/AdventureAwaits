@@ -16,7 +16,7 @@ public abstract class User {
 	private String city;
 	private int phone;
 	private String country;
-
+	private String access;
 	private int SSN;
 	// after implementing text boxes, maybe look for a way to have dashes to get
 	// rid of need for string to int
@@ -58,12 +58,18 @@ public abstract class User {
 		System.out.println("User created2");
 		
 	}
-	//TEST
+	/*
 	public User(String firstName, String lastName){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		System.out.println("User created");
 		
+	}
+	*/
+	
+	public User(String userName, String access){
+		this.userName = userName;
+		this.access = userName;
 	}
 	
 	public int getSSN(){
@@ -181,5 +187,13 @@ public abstract class User {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+	
+	public void setAccess(String access){
+		this.access = access;
+	}
+	
+	public String getAccess(){
+		return access;
 	}
 }

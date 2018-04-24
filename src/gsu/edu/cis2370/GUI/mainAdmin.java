@@ -1,5 +1,8 @@
 package gsu.edu.cis2370.GUI;
 
+import java.sql.SQLException;
+
+import gsu.edu.cis2370.RUNTIME.ValueObject;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -80,6 +83,12 @@ public class mainAdmin extends Application {
 		btnLogout.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 		    public void handle(ActionEvent e) {
+				ValueObject vc = new ValueObject();
+				try{
+				vc.deleteTempTable();
+				}catch(SQLException | ClassNotFoundException l) {
+					System.out.println(l);
+				}
 				Login test = new Login();
 				test.start(primaryStage);
 		    }

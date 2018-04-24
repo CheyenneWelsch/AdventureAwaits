@@ -100,6 +100,7 @@ public class Search extends Application {
 			@Override
 			public void handle(ActionEvent e) {
 				mainAdmin adminMenu = new mainAdmin();
+				
 				adminMenu.start(primaryStage);
 			}
 		});

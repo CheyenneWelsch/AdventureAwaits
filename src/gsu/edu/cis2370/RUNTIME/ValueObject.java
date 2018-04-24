@@ -18,9 +18,30 @@ public class ValueObject{
 	public ValueObject(){	
 	}
 	
+	public String tempUserAccess()throws SQLException, ClassNotFoundException{
+		TESTCLASS tc = new TESTCLASS();
+		String access = tc.tempUserAccess();
+		return access;
+	}
+	
+	//use to create temp table
+	public void createTempInfo(String user, String access) throws SQLException, ClassNotFoundException{
+		User u1 = new User(){};
+		u1.setUserName(user);
+		u1.setAccess(access);
+		TESTCLASS tc = new TESTCLASS();
+		tc.createTempAccess(u1.getUserName(), u1.getAccess());
+	}
+	
+	//use to delete temp table
+	public void deleteTempTable()throws SQLException, ClassNotFoundException{
+		TESTCLASS tc = new TESTCLASS();
+		tc.deleteTempAccess();
+		System.out.println("temporary user information deleted");
+	}
 	
 	
-
+	
 	//registers a new User
 	public void register (int ssn, String firstName, String lastName, String email, int phone, String username, String password, String street, String city,
 			String state, int zip, String country, String securityQuestion, String securityAnswer){

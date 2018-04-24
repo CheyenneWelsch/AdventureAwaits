@@ -16,6 +16,71 @@ public class TESTCLASS {
 
 	private static Connection connection;
 
+	
+	//creates temp access table to store 
+	public Connection createTempAccess(String userName, String access) throws SQLException, ClassNotFoundException{
+		
+		
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
+		System.out.println("Database connected");
+	
+	
+	
+		String tempUser = ("CREATE TABLE TEMPUSER" +
+				"(username VARCHAR(20), " +
+				" access VARCHAR(1), " +
+				" PRIMARY KEY (username))");
+		
+		Statement statement = connection.prepareStatement(tempUser);
+		statement.executeUpdate(tempUser);
+		
+		String text = "INSERT INTO TEMPUSER(username, access) "
+				+ "VALUES('" + userName + "', '" + access + "' ) ";
+		Statement stmt = connection.prepareStatement(text);
+		// stmt.executeUpdate(text);
+		stmt.execute(text);
+		System.out.println("TEMP CREATE");
+		return connection;
+	
+	}
+	
+	public Connection deleteTempAccess()throws SQLException, ClassNotFoundException{
+		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
+		
+		String tempUser = ("DROP TABLE TEMPUSER");
+		
+		Statement statement = connection.prepareStatement(tempUser);
+		statement.executeUpdate(tempUser);
+		return connection;
+	}
+	
+	
+	public String tempUserAccess()throws SQLException, ClassNotFoundException{
+		connection = null;
+		int check = 0;
+		String a1 = "";
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root",
+					"bismarck");
+
+			String query = "SELECT access FROM TEMPUSER";
+
+			Statement stmt = con.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery(query);
+			// iterate through java result set
+			while (rs.next()) {
+
+				a1 = rs.getString("access");
+				
+			}
+			stmt.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return a1;
+	}
+	
 
 	// add a user to the database
 	public Connection newUser(int ssn, String firstName, String lastName, String email, int phone, String username,
