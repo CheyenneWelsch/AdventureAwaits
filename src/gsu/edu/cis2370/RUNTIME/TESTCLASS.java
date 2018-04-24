@@ -432,6 +432,9 @@ public class TESTCLASS {
 		return flights;
 	}
 
+	
+	
+	
 	public ArrayList<Flight> getAllFlight() throws ClassNotFoundException, SQLException {
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?useSSL=false", "root",
 				"bismarck");
@@ -465,4 +468,67 @@ public class TESTCLASS {
 		return flightlist;
 	}
 
+	
+	public ArrayList<String> searchFlights(int flightNum, String fromAir, String toAir, String departureDate, String arrivalDate, String departureTime, String arrivalTime) {
+		String passwordString = "";
+		
+		ArrayList<String> flights = new ArrayList<String>();
+		connection = null;
+		int check = 0;
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root",
+					"bismarck");
+
+			String query = "SELECT userName, password FROM FLIGHT";
+
+			Statement stmt = con.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery(query);
+			// iterate through java result set
+			while (rs.next()) {
+
+					if(flightNum == rs.getInt("flightNumber") || fromAir == rs.getString("fromAirport") || toAir == rs.getString("toAirport") 
+							|| departureDate == rs.getString("departDate") || arrivalDate == rs.getString("arriveDate") || departureTime == rs.getString("departTime") 
+							|| arrivalTime == rs.getString("arriveTime")){
+						
+						int flightNumber = rs.getInt("flightNumber");
+						// convert the int to string
+						String stringFlightNumber = Integer.toString(flightNumber);
+						flights.add(stringFlightNumber + "     ");
+
+						String fromAirport = rs.getString("fromAirport");
+						flights.add(fromAirport + "      ");
+
+						String toAirport = rs.getString("toAirport");
+						flights.add(toAirport + "      ");
+
+						String departDate = rs.getString("departDate");
+						flights.add(departDate + "      ");
+
+						String arriveDate = rs.getString("arriveDate");
+						flights.add(arriveDate + "      ");
+
+						String departTime = rs.getString("departTime");
+						flights.add(departTime + "      ");
+
+						String arriveTime = rs.getString("arriveTime");
+						flights.add(arriveTime + "      ");
+
+						int maxCapacity = rs.getInt("maxCapacity");
+						String stringMaxCapacity = Integer.toString(maxCapacity);
+						flights.add(stringMaxCapacity + "   ");
+
+						int numberOfPassengers = rs.getInt("numberOfPassengers");
+						String stringNumberOfPassengers = Integer.toString(numberOfPassengers);
+						flights.add(stringNumberOfPassengers + "   ");
+				
+				}
+			}
+			stmt.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return flights;
+	}
+	
+	
 }

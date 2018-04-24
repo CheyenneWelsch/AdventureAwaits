@@ -37,24 +37,6 @@ public class ValueObject{
 				user.getCity(), user.getState(), user.getZip(), user.getCountry(), user.getSecurityQuestion(), user.getSecurityAnswer());
 	}
 	
-	//checks username format
-	public boolean testUser(String s1){
-		//if(s1.matches("[a-zA-Z0-9._-]{3,}")){
-		if(s1.matches("[a-zA-Z0-9._-].{3,}")){
-			return true;
-		}else{
-			return false;
-		}
-	}	
-		
-	//checks password format	
-	public boolean testPass(String s1){
-		if(s1.matches("(?=.*[0-9a-zA-Z@#$%^&+=]).{8,}")){
-			return true;
-		}else{
-			return false;
-		}
-	}
 	
 	//checks Login to see if it matches
 	public boolean checkUser(String userName, String pass){
@@ -125,6 +107,14 @@ public class ValueObject{
 	}
 	
 	
+	public ArrayList<String> searchFlights(int flightNum, String fromAir, String toAir, String departureDate, String arrivalDate,
+			String departureTime, String arrivalTime) throws ClassNotFoundException, SQLException {
+		TESTCLASS tc = new TESTCLASS();
+		ArrayList<String> flights = tc.searchFlights(flightNum, fromAir, toAir, departureDate, arrivalDate, departureTime, arrivalTime);
+		return flights;
+	}
+	
+	
 	public String [] arrayListToString(ArrayList<String> aList) throws ClassNotFoundException, SQLException{
 		String hold = "";
 		String [] endResult = new String [flightList()];
@@ -141,6 +131,59 @@ public class ValueObject{
 		}
 		return endResult;
 	}
+	
+	
+	
+	
+	//-----------------REGULAR EXPRESSIONS-----------------\\
+	
+		//checks username format
+		public boolean testUser(String s1){
+			//if(s1.matches("[a-zA-Z0-9._-]{3,}")){
+			if(s1.matches("[a-zA-Z0-9._-].{3,}")){
+				return true;
+			}else{
+				return false;
+			}
+		}	
+			
+		//checks password format	
+		public boolean testPass(String s1){
+			if(s1.matches("(?=.*[0-9a-zA-Z@#$%^&+=]).{8,}")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+		
+		public boolean testDateFormat(String s1){
+			if(s1.matches("^(\\d{2}/?\\d{2}/?\\d{4})$")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+		public boolean testTimeFormat(String s1){
+			if(s1.matches("[0-2][0-9]:[0-5][0-9]")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	
+	
+		public boolean testAirport(String s1){
+			if(s1.matches("^(\\w)$")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+	}
+	
 	
 	/*
 	public Flight [] flightCreation(){
@@ -168,7 +211,7 @@ public class ValueObject{
 		return flightObjects;
 	}
 	*/
-}
+
 	
 	
 	
