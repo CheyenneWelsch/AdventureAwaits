@@ -10,7 +10,7 @@ public class SQLTesting {
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		
 	
-	//Generics shifts the issue from a runtime error to a compile time error
+	//Genericss shifts the issue from a runtime error to a compile time error
 	//can only pass strings without casting
 	
 	ArrayList<SQLTesting> list = new ArrayList<SQLTesting>();
@@ -25,7 +25,7 @@ public class SQLTesting {
 	
 	abc.deleteFlight(8);
 	
-	//test
+	//testt
 	TESTCLASSDOS abcd = new TESTCLASSDOS ();
 	abcd.editFlightDepartTime(9,"06:00");
 	

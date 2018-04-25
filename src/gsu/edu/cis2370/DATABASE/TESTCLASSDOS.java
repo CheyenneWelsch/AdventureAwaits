@@ -16,7 +16,7 @@ public class TESTCLASSDOS {
 private static Connection connection;
 
 		
-		//add a user to the database.
+		//addd a user to the database.
 		public Connection newUser(int ssn, String firstName, String lastName, String email, int phone, String username,
 				String password, String street, String city, String state, int zip, String country, String securityQuestion,
 				String securityAnswer) {
