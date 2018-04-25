@@ -25,7 +25,7 @@ public class SQLTesting {
 	
 	abc.deleteFlight(8);
 	
-	
+	//test
 	TESTCLASSDOS abcd = new TESTCLASSDOS ();
 	abcd.editFlightDepartTime(9,"06:00");
 	
