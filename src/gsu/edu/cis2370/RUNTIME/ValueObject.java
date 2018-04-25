@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
+import java.text.ParseException;
 
 import gsu.edu.cis2370.DATABASE.*;
 import gsu.edu.cis2370.GUI.*;
@@ -184,13 +188,30 @@ public class ValueObject{
 	
 	public boolean checkDates(int flightNum){
 		TESTCLASS tc = new TESTCLASS();
-		
+		int hold = 0;
 		String dDate = tc.getDepartureDate(flightNum);
 		String aDate = tc.getArrivalDate(flightNum);
-		
-		
-		
-		return true;
+		//Date Format object used to essentially translate a string of text formatted this way into a date object
+		DateFormat dateFormat = new SimpleDateFormat("YYYY-DD-MM", Locale.ENGLISH);
+		try {
+			Date departDate = dateFormat.parse(dDate);
+			System.out.println("Depart: " + departDate);
+			Date arriveDate = dateFormat.parse(aDate);
+			System.out.println("Arrive: " + arriveDate);
+			if(departDate.compareTo(arriveDate) > 0){
+				hold = 1;
+			}else{
+				return false;
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(hold == 1){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	

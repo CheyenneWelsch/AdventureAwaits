@@ -13,8 +13,8 @@ public class ExceptionHandler {
 
 		System.out.println(tc.getDepartureDate(1));
 		System.out.println("Success");
-		
-		
+		boolean half = vo.checkDates(1);
+		System.out.println(half);
 		
 		/*
 		 * Calendar c1 = Calendar.getInstance(); Calendar c2 =
