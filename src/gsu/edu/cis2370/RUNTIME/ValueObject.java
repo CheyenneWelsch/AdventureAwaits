@@ -194,10 +194,14 @@ public class ValueObject{
 		//Date Format object used to essentially translate a string of text formatted this way into a date object
 		DateFormat dateFormat = new SimpleDateFormat("YYYY-DD-MM", Locale.ENGLISH);
 		try {
+			//find if date comes after departure date and before arrival date
 			Date departDate = dateFormat.parse(dDate);
 			System.out.println("Depart: " + departDate);
 			Date arriveDate = dateFormat.parse(aDate);
 			System.out.println("Arrive: " + arriveDate);
+			
+			//find out what this results as
+			//departDate.after(when)
 			if(departDate.compareTo(arriveDate) > 0){
 				hold = 1;
 			}else{
