@@ -4,8 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
+import java.text.ParseException;
 
 import gsu.edu.cis2370.DATABASE.*;
 import gsu.edu.cis2370.GUI.*;
@@ -18,9 +22,39 @@ public class ValueObject{
 	public ValueObject(){	
 	}
 	
+	//returns Temp User Access to use for moving through menus
+	public String showTempUserAccess()throws SQLException, ClassNotFoundException{
+		TESTCLASS tc = new TESTCLASS();
+		String access = tc.tempUserAccess();
+		return access;
+	}
+	
+	//returns Temp UserName to use for adding and deleting
+	public String showTempUserName()throws SQLException, ClassNotFoundException{
+		TESTCLASS tc = new TESTCLASS();
+		String access = tc.tempUserName();
+		return access;
+	} 
+	
+	//use to create temp table
+	public void createTempInfo(String user, String access) throws SQLException, ClassNotFoundException{
+		User u1 = new User(){};
+		u1.setUserName(user);
+		u1.setAccess(access);
+		TESTCLASS tc = new TESTCLASS();
+		tc.createTempAccess(u1.getUserName(), u1.getAccess());
+	}
+	
+	//use to delete temp table
+	public void deleteTempTable()throws SQLException, ClassNotFoundException{
+		TESTCLASS tc = new TESTCLASS();
+		tc.deleteTempAccess();
+		System.out.println("temporary user information deleted");
+	}
 	
 	
-
+	
+	
 	//registers a new User
 	public void register (int ssn, String firstName, String lastName, String email, int phone, String username, String password, String street, String city,
 			String state, int zip, String country, String securityQuestion, String securityAnswer){
@@ -37,24 +71,6 @@ public class ValueObject{
 				user.getCity(), user.getState(), user.getZip(), user.getCountry(), user.getSecurityQuestion(), user.getSecurityAnswer());
 	}
 	
-	//checks username format
-	public boolean testUser(String s1){
-		//if(s1.matches("[a-zA-Z0-9._-]{3,}")){
-		if(s1.matches("[a-zA-Z0-9._-].{3,}")){
-			return true;
-		}else{
-			return false;
-		}
-	}	
-		
-	//checks password format	
-	public boolean testPass(String s1){
-		if(s1.matches("(?=.*[0-9a-zA-Z@#$%^&+=]).{8,}")){
-			return true;
-		}else{
-			return false;
-		}
-	}
 	
 	//checks Login to see if it matches
 	public boolean checkUser(String userName, String pass){
@@ -66,6 +82,33 @@ public class ValueObject{
 		}
 	}
 	
+	//checks to see if username is valid for question & answer
+	public boolean checkUserName(String userName){
+		TESTCLASS tc = new TESTCLASS();
+		if(tc.checkUserName(userName) == true){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	//grabs security question
+	public String getSecurityQuestion(String userName){
+		TESTCLASS tc = new TESTCLASS();
+		return tc.getSecurityQuestion(userName);
+	}
+	//checks security answer
+	public boolean checkSecurityAnswer(String userName, String answer){
+		TESTCLASS tc = new TESTCLASS();
+		return tc.checkAnswer(userName, answer);
+	}
+	
+	//gets password for correct answer display
+	public String getPassword(String userName){
+		TESTCLASS tc = new TESTCLASS();
+		return tc.getPass(userName);
+	}
+	
+	//checks username access for login screen
 	public boolean checkAccess(String userName){
 		TESTCLASS tc = new TESTCLASS();
 		if(tc.checkAccess(userName) == true){
@@ -75,6 +118,7 @@ public class ValueObject{
 		}
 	}
 	
+	//number of flights currently in the list
 	public int flightList(){
 		TESTCLASS tc = new TESTCLASS();
 		int x = tc.numberOfFlights();
@@ -98,12 +142,27 @@ public class ValueObject{
 		return flights;
 	}
 	
+
+	public ArrayList<String> searchFlights(int flightNum, String fromAir, String toAir, String departureDate, String arrivalDate,
+			String departureTime, String arrivalTime) throws ClassNotFoundException, SQLException {
+		TESTCLASS tc = new TESTCLASS();
+		Flight flight = new Flight(flightNum, fromAir, toAir, departureDate, arrivalDate, departureTime, arrivalTime);
+		
+		//ArrayList<String> flights = tc.searchFlights(flightNum, fromAir, toAir, departureDate, arrivalDate, departureTime, arrivalTime);
+		
+		ArrayList<String> flights = tc.searchFlights(flight.getFlightNumber(), flight.getFromAirport(), flight.getToAirport(), flight.getDepartureDate(),
+				flight.getArrivalDate(), flight.getDepartureTime(), flight.getArrivalTime());
+		
+		
+		return flights;
+	}
 	
+	//returns regular string array of flight info
 	public String [] arrayListToString(ArrayList<String> aList) throws ClassNotFoundException, SQLException{
 		String hold = "";
 		String [] endResult = new String [flightList()];
 		int count = 0;
-		ArrayList<String> flights = getFlightTable();
+		ArrayList<String> flights = aList;
 		for (int x = 0; x < flights.size(); x++) {
 			hold += (flights.get(x) + " ");
 			if ((x + 1) % 9 == 0) {
@@ -115,6 +174,100 @@ public class ValueObject{
 		}
 		return endResult;
 	}
+	
+	
+	
+	//books a flight for a user
+	public void bookFlight(int flightNumber, String userName){
+		//creates a user class to assign values to the attributes that were just passed to this object
+		TESTCLASS tc = new TESTCLASS();
+		tc.bookFlight(flightNumber, userName);
+		System.out.println("Flight successfully booked");
+	}
+	
+	
+	public boolean checkDates(int flightNum){
+		TESTCLASS tc = new TESTCLASS();
+		int hold = 0;
+		String dDate = tc.getDepartureDate(flightNum);
+		String aDate = tc.getArrivalDate(flightNum);
+		//Date Format object used to essentially translate a string of text formatted this way into a date object
+		DateFormat dateFormat = new SimpleDateFormat("YYYY-DD-MM", Locale.ENGLISH);
+		try {
+			//find if date comes after departure date and before arrival date
+			Date departDate = dateFormat.parse(dDate);
+			System.out.println("Depart: " + departDate);
+			Date arriveDate = dateFormat.parse(aDate);
+			System.out.println("Arrive: " + arriveDate);
+			
+			//find out what this results as
+			//departDate.after(when)
+			if(departDate.compareTo(arriveDate) > 0){
+				hold = 1;
+			}else{
+				return false;
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(hold == 1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	
+	//-----------------REGULAR EXPRESSIONS-----------------\\
+	
+		//checks username format
+		public boolean testUser(String s1){
+			//if(s1.matches("[a-zA-Z0-9._-]{3,}")){
+			if(s1.matches("[a-zA-Z0-9._-].{3,}")){
+				return true;
+			}else{
+				return false;
+			}
+		}	
+			
+		//checks password format	
+		public boolean testPass(String s1){
+			if(s1.matches("(?=.*[0-9a-zA-Z@#$%^&+=]).{8,}")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+		
+		public boolean testDateFormat(String s1){
+			if(s1.matches("^(\\d{2}/?\\d{2}/?\\d{4})$")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+		public boolean testTimeFormat(String s1){
+			if(s1.matches("[0-2][0-9]:[0-5][0-9]")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	
+	
+		public boolean testAirport(String s1){
+			if(s1.matches("^[A-Z][A-Z][A-Z]$")){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		
+	}
+	
 	
 	/*
 	public Flight [] flightCreation(){
@@ -142,7 +295,7 @@ public class ValueObject{
 		return flightObjects;
 	}
 	*/
-}
+
 	
 	
 	
