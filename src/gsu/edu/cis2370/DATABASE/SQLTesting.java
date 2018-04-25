@@ -19,9 +19,15 @@ public class SQLTesting {
 	//When it fills, it doubles it, fills existing, and
 	//provides you with the same amount of new spots
 	
-	TESTCLASS abc = new TESTCLASS ();
-	abc.newFlight(8, "ATL", "DEN", "05/03/2018", "05/03/2018", "08:00", "12:00", 200, 100);
+	TESTCLASSDOS abc = new TESTCLASSDOS ();
+	abc.newFlight(11, "ATL", "DEN", "05/03/2018", "05/03/2018", "08:00", "12:00", 200, 100);
 	System.out.println("Hello");
 	
-	}
+	abc.deleteFlight(8);
+	
+	
+	TESTCLASSDOS abcd = new TESTCLASSDOS ();
+	abcd.editFlightDepartTime(9,"06:00");
+	
+	}	
 }
