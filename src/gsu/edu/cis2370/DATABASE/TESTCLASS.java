@@ -935,6 +935,55 @@ public class TESTCLASS {
 		}
 		return connection;
 	}
+	
+	
+	// update maxCapacity
+		public Connection editFlightMaxCapacity(int flightNumber, String maxCap) {
+			connection = null;
+			int maxCapacity = Integer.parseInt(maxCap);
+			try {
+				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
+
+				String updateFlight = ("UPDATE flight SET  maxCapacity = " + maxCapacity + " WHERE flightNumber = "
+						+ flightNumber + "");
+
+				Connection con;
+				Statement stmt = connection.prepareStatement(updateFlight);
+				// stmt.executeUpdate(text);
+				stmt.execute(updateFlight);
+				System.out.println("PUSHED");
+
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+			return connection;
+		}
+	
+		// update CurrentCapacity
+				public Connection editFlightCurrentCapacity(int flightNumber, String curCap) {
+					connection = null;
+					int currCap = Integer.parseInt(curCap);
+					try {
+						connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
+
+						String updateFlight = ("UPDATE flight SET  numberOfPassengers = " + currCap + " WHERE flightNumber = "
+								+ flightNumber + "");
+
+						Connection con;
+						Statement stmt = connection.prepareStatement(updateFlight);
+						// stmt.executeUpdate(text);
+						stmt.execute(updateFlight);
+						System.out.println("PUSHED");
+
+					} catch (SQLException e) {
+						System.out.println(e.getMessage());
+					}
+					return connection;
+				}
+	
+	
+	
+	
 
 	// DELETE A FLIGHT
 	// for new and delete, leave out parenthesis
@@ -999,5 +1048,8 @@ public class TESTCLASS {
 		}
 
 	}
+	
+	
+	
 
 }

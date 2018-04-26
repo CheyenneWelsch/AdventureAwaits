@@ -32,9 +32,9 @@ public class Search extends Application {
 	Label departTime = new Label("Departure Time");
 	Label arriveTime = new Label("Arrival Time");
 
-	TextField flightNumBOX = new TextField();
-	TextField fromBOX = new TextField();
-	TextField toBOX = new TextField();
+	TextField flightNumBOX = new TextField("0");
+	TextField fromBOX = new TextField("AAA");
+	TextField toBOX = new TextField("AAA");
 	// TextField fromCityBOX = new TextField();
 	TextField departDateBOX = new TextField("00/00/0000");
 	TextField arrivalDateBOX = new TextField("00/00/0000");
@@ -118,22 +118,54 @@ public class Search extends Application {
 			@Override
 			public void handle(ActionEvent e) {
 
-				if (vo.testAirport(fromBOX.getText()) != true && vo.testAirport(toBOX.getText()) != true) {
-					Label actiontarget = new Label("INVALID AIRPORT. Enter as Airport code (ex. ATL, NYC, etc)");
-					grid.add(actiontarget, 1, 7, 3, 1);
+				/*
+				 * if (vo.testAirport(fromBOX.getText()) != true &&
+				 * vo.testAirport(toBOX.getText()) != true) { Label actiontarget
+				 * = new
+				 * Label("INVALID AIRPORT. Enter as Airport code (ex. ATL, NYC, etc)"
+				 * ); grid.add(actiontarget, 1, 7, 3, 1);
+				 * 
+				 * } else if (vo.testDateFormat(departDateBOX.getText()) != true
+				 * && vo.testDateFormat(arrivalDateBOX.getText()) != true) {
+				 * Label actiontarget = new Label(
+				 * "INVALID DATE. Enter as MM/DD/YYYY (ex. 12/25/2018, 08/21/2018, etc)"
+				 * ); grid.add(actiontarget, 1, 7, 3, 1);
+				 * 
+				 * } else if (vo.testTimeFormat(fromTime.getText()) != true &&
+				 * vo.testTimeFormat(toTime.getText()) != true) { Label
+				 * actiontarget = new
+				 * Label("INVALID TIME. Enter as HH:MM (ex. 12:56, 16:32, etc)"
+				 * ); grid.add(actiontarget, 1, 7, 3, 1); } else {
+				*/
+				
+				
+				ValueObject vc = new ValueObject();
+				int flightNum = Integer.parseInt(flightNumBOX.getText());
+				if (flightNum == 0 && (vo.testNumberFormat(flightNumBOX.getText()) != true)) {
+						Label actiontarget = new Label("INVALID FLIGHT NUMBER");
+						grid.add(actiontarget, 1, 7, 3, 1);
+					
+				} else if ((fromBOX.getText()).equals("AAA") == false || (toBOX.getText()).equals("AAA")) {
+					if (vo.testAirport(fromBOX.getText()) != true && vo.testAirport(toBOX.getText()) != true) {
+						Label actiontarget = new Label("INVALID AIRPORT. Enter as Airport code (ex. ATL, NYC, etc)");
+						grid.add(actiontarget, 1, 7, 3, 1);
+					}
+				} else if (departDateBOX.getText().equals("00/00/0000") == false
+						|| arrivalDateBOX.getText().equals("00/00/0000") == false) {
+					if (vo.testDateFormat(departDateBOX.getText()) != true
+							&& vo.testDateFormat(arrivalDateBOX.getText()) != true) {
+						Label actiontarget = new Label(
+								"INVALID DATE. Enter as MM/DD/YYYY (ex. 12/25/2018, 08/21/2018, etc)");
+						grid.add(actiontarget, 1, 7, 3, 1);
+					}
 
-				} else if (vo.testDateFormat(departDateBOX.getText()) != true
-						&& vo.testDateFormat(arrivalDateBOX.getText()) != true) {
-					Label actiontarget = new Label(
-							"INVALID DATE. Enter as MM/DD/YYYY (ex. 12/25/2018, 08/21/2018, etc)");
-					grid.add(actiontarget, 1, 7, 3, 1);
+				} else if (fromTime.getText().equals("00:00") == false || toTime.getText().equals("00:00") == false) {
+					if (vo.testTimeFormat(fromTime.getText()) != true && vo.testTimeFormat(toTime.getText()) != true) {
+						Label actiontarget = new Label("INVALID TIME. Enter as HH:MM (ex. 12:56, 16:32, etc)");
+						grid.add(actiontarget, 1, 7, 3, 1);
+					}
 
-				} else if (vo.testTimeFormat(fromTime.getText()) != true
-						&& vo.testTimeFormat(toTime.getText()) != true) {
-					Label actiontarget = new Label("INVALID TIME. Enter as HH:MM (ex. 12:56, 16:32, etc)");
-					grid.add(actiontarget, 1, 7, 3, 1);
 				} else {
-
 					int fnum = Integer.parseInt(flightNumBOX.getText());
 					try {
 
@@ -161,17 +193,17 @@ public class Search extends Application {
 				}
 			}
 		});
-		
+
 		btnNewSearch.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
-		    public void handle(ActionEvent e) {
+			public void handle(ActionEvent e) {
 				Search test = new Search();
-				try{
-				test.start(primaryStage);
-				}catch(SQLException | ClassNotFoundException s){
+				try {
+					test.start(primaryStage);
+				} catch (SQLException | ClassNotFoundException s) {
 					System.out.println(s);
 				}
-		    }
+			}
 		});
 
 	}

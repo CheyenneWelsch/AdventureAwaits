@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 
-public class TESTCLASS {
+public class TESTCLASSold {
 
 	private static Connection connection;
 
