@@ -125,6 +125,8 @@ public class SignUp extends Application {
 			grid.setHgap(10);
 			grid.setVgap(10);
 			
+			
+			
 
 			//HBox creates items in a horizontal row
 			HBox hbBtn = new HBox(20);
@@ -144,18 +146,25 @@ public class SignUp extends Application {
 			btnCreate.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 			    public void handle(ActionEvent e) {
-					actiontarget.setText("Create button pressed");
+					//actiontarget.setText("Create button pressed");
 					
 			        //use value object object
 					System.out.println("Line before Value Object creation");
 					ValueObject vo = new ValueObject();
 					
-					int ssn = Integer.parseInt(ssnBOX.getText());
-					//int phone = Integer.parseInt();
-					int zip = Integer.parseInt(zipBOX.getText());
+					
+					
+					
+					if(vo.existingUser(userTextField.getText()) == true){
+						
+						actiontarget.setText("ERROR. User name already taken");
+					}else{
+						
+						int ssn = Integer.parseInt(ssnBOX.getText());
+						int zip = Integer.parseInt(zipBOX.getText());
 					vo.register(ssn, firstNameBOX.getText(), lastNameBOX.getText(),emailBOX.getText(), phoneBOX.getText(), userTextField.getText(), pwBOX.getText(), addressBOX.getText(), 
 							cityBOX.getText(), stateBOX.getText(), zip, securityQBOX.getText(), securityABOX.getText() );
-			      
+					}
 			       
 			    }
 			});

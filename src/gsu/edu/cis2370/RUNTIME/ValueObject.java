@@ -97,6 +97,17 @@ public class ValueObject {
 			return false;
 		}
 	}
+	
+	
+	// checks Login to see if it matches
+		public boolean existingUser(String userName) {
+			TESTCLASS tc = new TESTCLASS();
+			if (tc.checkUserName(userName) == true) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 
 	// checks to see if username is valid for question & answer
 	public boolean checkUserName(String userName) {

@@ -270,6 +270,7 @@ public class TESTCLASS {
 		}
 
 		if (check == 1) {
+			//username exists
 			return true;
 		} else {
 			return false;

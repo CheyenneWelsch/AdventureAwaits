@@ -17,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -32,7 +34,10 @@ public class Login extends Application {
 	Text scenetitle = new Text("Adventure Awaits");
 	// creates a specialized password input box that hides the password
 	// input
-
+	
+	//creates a string to use to locate the image
+	public static final String SPLASH_IMAGE =
+    		"https://static1.squarespace.com/static/56899343a2bab852737f4ba1/t/5ae20449352f537925be3c63/1524761678903/?format=300w";
 	// creates a login button
 	Button btnLogin = new Button("Login");
 	final Text actiontarget = new Text();
@@ -44,16 +49,19 @@ public class Login extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
-
+		
+		//converts the URL of the image into an imageview object called splash
+		ImageView splash = new ImageView(new Image(SPLASH_IMAGE)); 
 		// create GridPane object
 		GridPane grid = new GridPane();
-		grid.add(scenetitle, 0, 0);
-
+		//grid.add(scenetitle, 0, 0);
+		grid.add(splash, 0, 0, 2, 1);
 		grid.add(userName, 0, 1);
 		grid.add(userTextField, 1, 1);
 		grid.add(pw, 0, 2);
 		grid.add(pwBox, 1, 2);
 		grid.add(actiontarget, 1, 6);
+		
 		userTextField.setMinWidth(150);
 		pwBox.setMinWidth(150);
 
@@ -66,10 +74,10 @@ public class Login extends Application {
 		HBox hbBtn = new HBox(10);
 		hbBtn.getChildren().addAll(btnSignUp, btnLogin);
 		grid.add(btnSignUp, 0, 3);
-		grid.add(btnLogin, 1, 3, 3, 1);
-		grid.add(btnForgotPass, 1, 4, 3, 1);
-		btnLogin.setMinWidth(150);
-		btnForgotPass.setMinWidth(150);
+		grid.add(btnLogin, 1, 3, 2, 1);
+		grid.add(btnForgotPass, 1, 4, 2, 1);
+		btnLogin.setMinWidth(200);
+		btnForgotPass.setMinWidth(200);
 
 		ValueObject vo = new ValueObject();
 		User user = new User() {
@@ -138,7 +146,7 @@ public class Login extends Application {
 		});
 
 		// create a new scene and place it on stage
-		Scene scene = new Scene(grid, 325, 275);
+		Scene scene = new Scene(grid, 425, 375);
 		primaryStage.setTitle("Login"); // set title
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -152,6 +160,8 @@ public class Login extends Application {
 		final Text actiontarget = new Text();
 		grid.add(actiontarget, 1, 6);
 
+		
+		
 	}
 
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {

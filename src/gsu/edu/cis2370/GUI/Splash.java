@@ -14,7 +14,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
 import javafx.util.Duration;
-
+import javafx.scene.image.ImageView;
 	
 public class Splash extends Application {
 	public static final String APPLICATION_ICON = 
