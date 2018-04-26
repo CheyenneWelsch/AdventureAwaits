@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import gsu.edu.cis2370.RUNTIME.ValueObject;
-import gsu.edu.cis2370.RUNTIME.TESTCLASS;
+import gsu.edu.cis2370.DATABASE.TESTCLASS;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -90,6 +90,8 @@ public class viewMyFlights extends Application {
 				try {
 					int deletingNumber = Integer.parseInt(fldDeleteFlight.getText());
 					vo.deleteUserFlight(deletingNumber, vo.showTempUserName());
+					viewMyFlights vmf = new viewMyFlights();
+					vmf.start(primaryStage);
 					
 				} catch (SQLException | ClassNotFoundException c) {
 					System.out.println(c);

@@ -1,49 +1,43 @@
 package gsu.edu.cis2370.GUI;
 
-
 import javafx.application.Application;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-
 import javafx.scene.control.Label;
-
 import javafx.scene.layout.GridPane;
-
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.animation.FadeTransition;
+import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.web.WebView;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
+import java.sql.SQLException;
 
-public class SplashScreen extends Application {
-		
+import org.w3c.dom.Document;
+
+public class SplashScreen {
+	ProgressBar bar;
+	Stage stage;
+
 	
-	
-		
-		Text scenetitle = new Text("Adventure Awaits");
-		Label applicationSlogan = new Label("Changing the way you fly!");
-		
-public void start(Stage primaryStage) {
-
-	// create GridPane object
-	GridPane grid = new GridPane();
-	grid.add(scenetitle, 0, 0);
-
-	grid.setAlignment(Pos.CENTER);
-	grid.setPadding(new Insets(25, 25, 25, 25));
-	grid.setHgap(10);
-	grid.setVgap(10);
-	
-
-	
-	// create a new scene and place it on stage
-				Scene scene = new Scene(grid, 325, 275);
-				primaryStage.setTitle("Login"); //set title
-				primaryStage.setScene(scene);
-				primaryStage.show();
-
-			
-				
-	}
-
 }

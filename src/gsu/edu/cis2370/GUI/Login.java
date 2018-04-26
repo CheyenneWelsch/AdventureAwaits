@@ -54,6 +54,8 @@ public class Login extends Application {
 		grid.add(pw, 0, 2);
 		grid.add(pwBox, 1, 2);
 		grid.add(actiontarget, 1, 6);
+		userTextField.setMinWidth(150);
+		pwBox.setMinWidth(150);
 
 		grid.setAlignment(Pos.CENTER);
 		grid.setPadding(new Insets(25, 25, 25, 25));
@@ -66,8 +68,8 @@ public class Login extends Application {
 		grid.add(btnSignUp, 0, 3);
 		grid.add(btnLogin, 1, 3, 3, 1);
 		grid.add(btnForgotPass, 1, 4, 3, 1);
-		btnLogin.setMinWidth(130);
-		btnForgotPass.setMinWidth(130);
+		btnLogin.setMinWidth(150);
+		btnForgotPass.setMinWidth(150);
 
 		ValueObject vo = new ValueObject();
 		User user = new User() {

@@ -27,6 +27,28 @@ public class MySql {
 				" firstName VARCHAR(20), " +
 				" lastName VARCHAR(30), " +
 				" email VARCHAR(100), " +
+				" phone VARCHAR(12), " +
+				" username VARCHAR(20), " +
+				" password VARCHAR(25), " +
+				" street VARCHAR(100), " +
+				" city VARCHAR(50), " +
+				" state VARCHAR(50), " +
+				" zip VARCHAR(5), " +
+				//" country VARCHAR(50), " +
+				" securityQuestion VARCHAR(500), " +
+				" securityAnswer VARCHAR(200), " +
+				" access VARCHAR(8), " +
+				" PRIMARY KEY (ssn))");
+
+		
+		
+		/*
+		 * 
+		 * String user = ("CREATE TABLE USER" +
+				"(ssn INTEGER not NULL ," +
+				" firstName VARCHAR(20), " +
+				" lastName VARCHAR(30), " +
+				" email VARCHAR(100), " +
 				" phone INTEGER not NULL, " +
 				" username VARCHAR(20), " +
 				" password VARCHAR(25), " +
@@ -39,9 +61,27 @@ public class MySql {
 				" securityAnswer VARCHAR(200), " +
 				" access VARCHAR(8), " +
 				" PRIMARY KEY (ssn))");
+				
+		 */
 
 
-
+		String user2 = ("CREATE TABLE USER" +
+				"(ssn INTEGER not NULL ," +
+				" firstName VARCHAR(20), " +
+				" lastName VARCHAR(30), " +
+				" email VARCHAR(100), " +
+				" phone VARCHAR(12), " +
+				" username VARCHAR(20), " +
+				" password VARCHAR(25), " +
+				" street VARCHAR(100), " +
+				" city VARCHAR(50), " +
+				" state VARCHAR(50), " +
+				" zip VARCHAR(5), " +
+				" country VARCHAR(50), " +
+				" securityQuestion VARCHAR(500), " +
+				" securityAnswer VARCHAR(200), " +
+				" access VARCHAR(8), " +
+				" PRIMARY KEY (ssn))");
 
 
 
@@ -102,19 +142,19 @@ public class MySql {
 
 
 
-//Statement statement = connection.prepareStatement(user);
+Statement statement = connection.prepareStatement(user);
 //Statement statement = connection.prepareStatement(flight);
 //Statement statement = connection.prepareStatement(airport);
 //Statement statement = connection.prepareStatement(booking);
 		
-Statement statement = connection.prepareStatement(testflight);
+//Statement statement = connection.prepareStatement(testflight);
 
-//statement.executeUpdate(user);
+statement.executeUpdate(user);
 //statement.executeUpdate(flight);
 //statement.executeUpdate(airport);
 //statement.executeUpdate(booking);
 
-statement.executeUpdate(testflight);
+//statement.executeUpdate(testflight);
 
 
 	

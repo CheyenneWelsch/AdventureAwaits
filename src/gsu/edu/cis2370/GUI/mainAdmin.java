@@ -50,7 +50,7 @@ public class mainAdmin extends Application {
 		grid.add(btnMyFlights, 0, 1);
 		grid.add(btnSearch, 0, 2);
 		grid.add(btnBook, 0, 3);
-		grid.add(btnCancel, 0 ,4);
+		//grid.add(btnCancel, 0 ,3);
 		grid.add(txtAdmin, 0, 6);
 		grid.add(btnAddFlight, 0, 7);
 		
@@ -67,18 +67,38 @@ public class mainAdmin extends Application {
 		btnLogout.setMinWidth(200);
 		
 	
-		/*
+		
+		
+		
+		
 		btnMyFlights.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 		    public void handle(ActionEvent e) {
-				listTEST list = new listTEST();
-				list.start(primaryStage);
-		    }
+				try{
+				viewMyFlights mf = new viewMyFlights();
+				mf.start(primaryStage);
+				}catch(SQLException | ClassNotFoundException my){
+					System.out.println(my);
+				}
+				}
 		});
-		*/
 		
 		
 		
+		btnSearch.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+		    public void handle(ActionEvent e) {
+				try{
+				Search s = new Search();
+				s.start(primaryStage);
+				}catch(SQLException | ClassNotFoundException my){
+					System.out.println(my);
+				}
+				}
+		});
+		
+		
+		//logs you out of the application
 		btnLogout.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 		    public void handle(ActionEvent e) {
@@ -94,7 +114,7 @@ public class mainAdmin extends Application {
 		});
 		
 	
-		
+		//Admin Class Tools Button
 		btnAddFlight.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 		    public void handle(ActionEvent e) {
@@ -108,28 +128,17 @@ public class mainAdmin extends Application {
 		});
 		
 		
-		/*	class not made yet
-		 * btnBook.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-			    public void handle(ActionEvent e) {
-					bookingTEST book = new bookingTEST();
-					book.start(primaryStage);
-			    }
-			});
-			*/
-		
-		
-		/*	class not made yet
-		 * btnCencel.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-			    public void handle(ActionEvent e) {
-					cancelFlightTEST cancel = new cancelFlightTEST();
-					cancel.start(primaryStage);
-			    }
-			});
-			*/
-		
-		
+		btnBook.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+		    public void handle(ActionEvent e) {
+				try{
+				flightListAdd fla = new flightListAdd();
+				fla.start(primaryStage);
+				}catch(SQLException | ClassNotFoundException l) {
+					System.out.println(l);
+				}
+		    }
+		});
 		
 		
 		// create a new scene and place it on stage

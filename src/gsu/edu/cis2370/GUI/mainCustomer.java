@@ -47,8 +47,8 @@ public class mainCustomer extends Application{
 		grid.add(btnMyFlights, 0, 1);
 		grid.add(btnSearch, 0, 2);
 		grid.add(btnBook, 0, 3);
-		grid.add(btnCancel, 0 ,4);
-		grid.add(btnLogout, 0, 6);
+		
+		grid.add(btnLogout, 0, 5);
 		
 		
 		
@@ -73,6 +73,49 @@ public class mainCustomer extends Application{
 		    }
 		});
 		
+		
+		
+		
+		btnMyFlights.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+		    public void handle(ActionEvent e) {
+				try{
+				viewMyFlights mf = new viewMyFlights();
+				mf.start(primaryStage);
+				}catch(SQLException | ClassNotFoundException my){
+					System.out.println(my);
+				}
+				}
+		});
+		
+		
+		
+		btnSearch.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+		    public void handle(ActionEvent e) {
+				try{
+				Search s = new Search();
+				s.start(primaryStage);
+				}catch(SQLException | ClassNotFoundException my){
+					System.out.println(my);
+				}
+				}
+		});
+		
+		
+		
+
+		btnBook.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+		    public void handle(ActionEvent e) {
+				try{
+				flightListAdd fla = new flightListAdd();
+				fla.start(primaryStage);
+				}catch(SQLException | ClassNotFoundException l) {
+					System.out.println(l);
+				}
+		    }
+		});
 		
 		
 		

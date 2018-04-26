@@ -169,21 +169,19 @@ public class flightListAdd extends Application{
 			btnBack.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent e) {
-					try{
-					if(vo.showTempUserAccess().equals("A")){
-						mainAdmin adminMenu = new mainAdmin();
-						adminMenu.start(primaryStage);
-					}else{
-						mainCustomer customerMenu = new mainCustomer();
-						customerMenu.start(primaryStage);
-					}
-					}catch(SQLException | ClassNotFoundException c){
+					try {
+						if (vo.showTempUserAccess().equals("A")) {
+							mainAdmin adminMenu = new mainAdmin();
+							adminMenu.start(primaryStage);
+						} else {
+							mainCustomer customerMenu = new mainCustomer();
+							customerMenu.start(primaryStage);
+						}
+					} catch (SQLException | ClassNotFoundException c) {
 						System.out.println(c);
 					}
-					
 				}
 			});
-		
 		
 		
 		

@@ -54,14 +54,14 @@ public class ValueObject {
 	}
 
 	// registers a new User
-	public void register(int ssn, String firstName, String lastName, String email, int phone, String username,
-			String password, String street, String city, String state, int zip, String country, String securityQuestion,
+	public void register(int ssn, String firstName, String lastName, String email, String phone, String username,
+			String password, String street, String city, String state, int zip, String securityQuestion,
 			String securityAnswer) {
 		// creates a user class to assign values to the attributes that were
 		// just passed to this object
 
 		User user = new User(ssn, firstName, lastName, email, phone, username, password, street, city, state, zip,
-				country, securityQuestion, securityAnswer) {
+				securityQuestion, securityAnswer) {
 		};
 		TESTCLASS tc = new TESTCLASS();
 
@@ -69,7 +69,7 @@ public class ValueObject {
 
 		tc.newUser(user.getSSN(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhone(),
 				user.getUserName(), user.getPassword(), user.getStreet(), user.getCity(), user.getState(),
-				user.getZip(), user.getCountry(), user.getSecurityQuestion(), user.getSecurityAnswer());
+				user.getZip(), user.getSecurityQuestion(), user.getSecurityAnswer());
 	}
 
 	// registers a new Flight

@@ -101,18 +101,18 @@ public class TESTCLASS {
 	}
 
 	// add a user to the database
-	public Connection newUser(int ssn, String firstName, String lastName, String email, int phone, String username,
-			String password, String street, String city, String state, int zip, String country, String securityQuestion,
+	public Connection newUser(int ssn, String firstName, String lastName, String email, String phone, String username,
+			String password, String street, String city, String state, int zip, String securityQuestion,
 			String securityAnswer) {
 
 		connection = null;
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
 
-			String text = "INSERT INTO USER(ssn, firstName, lastName, email, phone, username, password, street, city, state, zip, country, securityQuestion, securityAnswer, access) "
+			String text = "INSERT INTO USER(ssn, firstName, lastName, email, phone, username, password, street, city, state, zip, securityQuestion, securityAnswer, access) "
 					+ "VALUES(" + ssn + ", '" + firstName + "', '" + lastName + "', '" + email + "', " + phone + ", '"
 					+ username + "', '" + password + "', '" + street + "', '" + city + "', '" + state + "', " + zip
-					+ ", '" + country + "', '" + securityQuestion + "', '" + securityAnswer + "', 'C' ) ";
+					+ ",  '" + securityQuestion + "', '" + securityAnswer + "', 'C' ) ";
 
 			Statement stmt = connection.prepareStatement(text);
 			// stmt.executeUpdate(text);

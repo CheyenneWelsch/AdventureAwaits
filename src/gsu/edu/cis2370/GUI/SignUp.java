@@ -151,12 +151,11 @@ public class SignUp extends Application {
 					ValueObject vo = new ValueObject();
 					
 					int ssn = Integer.parseInt(ssnBOX.getText());
-					int phone = Integer.parseInt(phoneBOX.getText());
+					//int phone = Integer.parseInt();
 					int zip = Integer.parseInt(zipBOX.getText());
-					vo.register(ssn, firstNameBOX.getText(), lastNameBOX.getText(),emailBOX.getText(), phone, userNameBOX.getText(), pwBOX.getText(), addressBOX.getText(), 
-							cityBOX.getText(), stateBOX.getText(), zip, countryBOX.getText(), securityQBOX.getText(), securityABOX.getText() );
-			        String text = firstNameBOX.getText();
-			        System.out.println(text);
+					vo.register(ssn, firstNameBOX.getText(), lastNameBOX.getText(),emailBOX.getText(), phoneBOX.getText(), userTextField.getText(), pwBOX.getText(), addressBOX.getText(), 
+							cityBOX.getText(), stateBOX.getText(), zip, securityQBOX.getText(), securityABOX.getText() );
+			      
 			       
 			    }
 			});

@@ -3,7 +3,7 @@ package gsu.edu.cis2370.DATABASE;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import gsu.edu.cis2370.RUNTIME.TESTCLASS;
+import gsu.edu.cis2370.DATABASE.TESTCLASS;
 import gsu.edu.cis2370.RUNTIME.ValueObject;
 
 public class ExceptionHandler {

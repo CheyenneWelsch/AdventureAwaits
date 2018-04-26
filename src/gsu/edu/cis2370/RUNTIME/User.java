@@ -14,7 +14,7 @@ public abstract class User {
 	private String password;
 	private String email;
 	private String city;
-	private int phone;
+	private String phone;
 	private String country;
 	private String access;
 	private int SSN;
@@ -25,8 +25,8 @@ public abstract class User {
 	private String securityAnswer;
 
 	
-	public User(int ssn, String firstName, String lastName, String email, int phone, String userName, String password, 
-			String street, String city, String state, int zip, String country, String securityQuestion, String securityAnswer){
+	public User(int ssn, String firstName, String lastName, String email, String phone, String userName, String password, 
+			String street, String city, String state, int zip, String securityQuestion, String securityAnswer){
 		this.SSN = ssn;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -45,12 +45,12 @@ public abstract class User {
 	
 	//default constructor
 	public User() {
-		this(999999, "First", "Last","emailaddress@email.email", 555 ,"user", "password", 
-				"000 Fake Street", "Atlanta", "GA", 00000, "USA", "Is this a question?", "Yes");
+		this(999999, "First", "Last","emailaddress@email.email", "732-548-7071" ,"user", "password", 
+				"000 Fake Street", "Atlanta", "GA", 00000, "Is this a question?", "Yes");
 		}
 	
 	
-	public User(int ssn, String firstName, String lastName, int phone){
+	public User(int ssn, String firstName, String lastName, String phone){
 		this.SSN = ssn;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -152,11 +152,11 @@ public abstract class User {
 	}
 	
 	
-	public int getPhone(){
+	public String getPhone(){
 		return phone;
 	}
 	
-	public void setPhone(int phone){
+	public void setPhone(String phone){
 		this.phone = phone;
 	}
 
