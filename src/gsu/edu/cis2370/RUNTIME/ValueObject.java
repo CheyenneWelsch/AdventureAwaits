@@ -143,6 +143,7 @@ public class ValueObject{
 	}
 	
 
+	//search flight list
 	public ArrayList<String> searchFlights(int flightNum, String fromAir, String toAir, String departureDate, String arrivalDate,
 			String departureTime, String arrivalTime) throws ClassNotFoundException, SQLException {
 		TESTCLASS tc = new TESTCLASS();
@@ -175,7 +176,12 @@ public class ValueObject{
 		return endResult;
 	}
 	
-	
+	//return an array list of the user's flights
+	public ArrayList<String> getMyFlights(String userName) throws ClassNotFoundException, SQLException {
+		TESTCLASS tc = new TESTCLASS();
+		ArrayList<String> flights = tc.viewMyFlights(userName);
+		return flights;
+	}
 	
 	//books a flight for a user
 	public void bookFlight(int flightNumber, String userName){
@@ -183,6 +189,17 @@ public class ValueObject{
 		TESTCLASS tc = new TESTCLASS();
 		tc.bookFlight(flightNumber, userName);
 		System.out.println("Flight successfully booked");
+	}
+	
+	public boolean checkFlightAvailability(int flightNum, String userName)throws ClassNotFoundException, SQLException{
+		//true available, false NOT available
+		TESTCLASS tc = new TESTCLASS();
+		boolean check = tc.checkFlightAvailability(flightNum, userName);
+		if(check == true){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	
@@ -217,6 +234,13 @@ public class ValueObject{
 			return false;
 		}
 	}
+	
+	
+	public void deleteUserFlight(int flightNumber, String userName){
+		TESTCLASS tc = new TESTCLASS();
+		tc.deleteUserFlight(flightNumber, userName);
+	}
+	
 	
 	
 	//-----------------REGULAR EXPRESSIONS-----------------\\

@@ -2,7 +2,7 @@ package gsu.edu.cis2370.GUI;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+import javafx.scene.control.Dialog;
 import gsu.edu.cis2370.RUNTIME.ValueObject;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -10,7 +10,10 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
@@ -95,8 +98,14 @@ public class flightListAdd extends Application{
 				//vo.getFlightTable().get(x);
 			}
 		
+			GridPane gridBtm = new GridPane();
+			gridBtm.setAlignment(Pos.CENTER);
+			gridBtm.setHgap(10);
+			gridBtm.setVgap(10);
+			gridBtm.setPadding(new Insets(25, 25, 25, 25));
+			gridBtm.setAlignment(Pos.CENTER);
 			
-			
+			final Text actiontarget = new Text("");
 			HBox hBoxControls = new HBox(20);
 			hBoxControls.getChildren().addAll(txtAddFlight, addFlight);
 			hBoxControls.setPadding(new Insets(25, 25, 25, 25));
@@ -113,12 +122,11 @@ public class flightListAdd extends Application{
 			
 			VBox vbox = new VBox(20);
 			Scene sceneText = new Scene(vbox, 600, 700);
-			vbox.getChildren().addAll(hBoxTitle,grid,hBoxText, hBoxControls, hbox);
+			vbox.getChildren().addAll(hBoxTitle,grid,hBoxText, hBoxControls, gridBtm,hbox);
 			vbox.setAlignment(Pos.CENTER);
 			primaryStage.setTitle("Flight List"); //set title
 			primaryStage.setScene(sceneText);
 			primaryStage.show();
-
 			//adds flight to User account
 			addFlight.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
@@ -128,7 +136,18 @@ public class flightListAdd extends Application{
 					try{
 					String uName = vo.showTempUserName();
 					int flightNumber = Integer.parseInt(txtAddFlight.getText());
-					vo.bookFlight(flightNumber, uName);
+					System.out.println("Username:" + uName);
+					if(vo.checkFlightAvailability(flightNumber, uName) == true){
+						
+						vo.bookFlight(flightNumber, uName);
+						final Text actiontarget = new Text("Flight Added");
+						gridBtm.add(actiontarget, 0, 0);
+						
+						
+					}else{
+						gridBtm.add(actiontarget, 0, 0);
+						final Text actiontarget = new Text("ERROR! Flight already booked!");
+					}
 					
 					
 					

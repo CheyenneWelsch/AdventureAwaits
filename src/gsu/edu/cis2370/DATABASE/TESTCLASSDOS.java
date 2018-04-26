@@ -118,7 +118,7 @@ private static Connection connection;
 				Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/AdventureAwaits", "root", "ch3y3nn3");
 
 				String query = "SELECT username, access FROM USER";
-//can they all still be named query? 
+				
 				Statement stmt = con.prepareStatement(query);
 				ResultSet rs = stmt.executeQuery(query);
 				// iterate through java result set

@@ -94,30 +94,26 @@ public class Search extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
-	
-		// go back to main menu and use temp access table to determine which menu to load
+		// go back to main menu and use temp access table to determine which
+		// menu to load
 		btnBack.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
-				try{
-				if(vo.showTempUserAccess().equals("A")){
-					mainAdmin adminMenu = new mainAdmin();
-					adminMenu.start(primaryStage);
-				}else{
-					mainCustomer customerMenu = new mainCustomer();
-					customerMenu.start(primaryStage);
-				}
-				}catch(SQLException | ClassNotFoundException c){
+				try {
+					if (vo.showTempUserAccess().equals("A")) {
+						mainAdmin adminMenu = new mainAdmin();
+						adminMenu.start(primaryStage);
+					} else {
+						mainCustomer customerMenu = new mainCustomer();
+						customerMenu.start(primaryStage);
+					}
+				} catch (SQLException | ClassNotFoundException c) {
 					System.out.println(c);
 				}
-				
 			}
 		});
-
-		// btn.setOnAction(e -> textGrab(userTextField.getText(),
-		// pwBox.getText()) );
+		// actions for search button. Makes list of avaliable flights appear
 		btnSearch.setOnAction(new EventHandler<ActionEvent>() {
-
 			@Override
 			public void handle(ActionEvent e) {
 
@@ -136,30 +132,32 @@ public class Search extends Application {
 					Label actiontarget = new Label("INVALID TIME. Enter as HH:MM (ex. 12:56, 16:32, etc)");
 					grid.add(actiontarget, 1, 7, 3, 1);
 				} else {
-				
 
-				int fnum = Integer.parseInt(flightNumBOX.getText());
-				try {
-					ArrayList<String> f1 = vo.searchFlights(fnum, fromBOX.getText(), toBOX.getText(),
-							departDateBOX.getText(), arrivalDateBOX.getText(), fromTime.getText(), toTime.getText());
+					int fnum = Integer.parseInt(flightNumBOX.getText());
+					try {
 
-					// converts array list of flights (f1) to a string array to
-					// be used to print
-					String[] flightResults = f1.toArray(new String[f1.size()]);
+						ArrayList<String> f1 = vo.searchFlights(fnum, fromBOX.getText(), toBOX.getText(),
+								departDateBOX.getText(), arrivalDateBOX.getText(), fromTime.getText(),
+								toTime.getText());
 
-					for (int x = 0; x < flightResults.length; x++) {
-						textArea.appendText(flightResults[x] + " ");
-						if (x != 0 && x % 8 == 0) {
-							textArea.appendText("\n");
+						// converts array list of flights (f1) to a string array
+						// to
+						// be used to print
+						String[] flightResults = f1.toArray(new String[f1.size()]);
+
+						for (int x = 0; x < flightResults.length; x++) {
+							textArea.appendText(flightResults[x] + " ");
+							if (x != 0 && x % 8 == 0) {
+								textArea.appendText("\n");
+							}
 						}
-					}
-					grid.add(textArea, 0, 5, 4, 1);
+						grid.add(textArea, 0, 5, 4, 1);
 
-				} catch (SQLException | ClassNotFoundException s) {
+					} catch (SQLException | ClassNotFoundException s) {
+
+					}
 
 				}
-
-			}
 			}
 		});
 

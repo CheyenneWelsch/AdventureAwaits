@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class cancelFlight extends Application{
+public class myFlights extends Application{
 
 	
 
