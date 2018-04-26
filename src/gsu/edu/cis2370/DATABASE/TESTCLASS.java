@@ -1,6 +1,6 @@
-package gsu.edu.cis2370.RUNTIME;
+package gsu.edu.cis2370.DATABASE;
 
-//import gsu.edu.cis2370.RUNTIME.*;
+import gsu.edu.cis2370.RUNTIME.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

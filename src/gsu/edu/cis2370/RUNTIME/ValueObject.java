@@ -64,12 +64,28 @@ public class ValueObject{
 		User user = new User(ssn, firstName, lastName, email, phone, username, password, street, city, state, zip, country, securityQuestion, securityAnswer){};
 		TESTCLASS tc = new TESTCLASS();
 
-		System.out.println("user.getSSN: " + user.getSSN());
+	//	System.out.println("user.getSSN: " + user.getSSN());
 		
 		
 		tc.newUser(user.getSSN(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhone(), user.getUserName(), user.getPassword(), user.getStreet(),
 				user.getCity(), user.getState(), user.getZip(), user.getCountry(), user.getSecurityQuestion(), user.getSecurityAnswer());
 	}
+	
+	
+	//registers a new Flight
+		public void addFlight(int flightNumber, String fromAirport, String toAirport, String departDate,
+				String arriveDate, String departTime, String arriveTime, int maxCapacity, int numberOfPassengers) throws SQLException, ClassNotFoundException{
+			//creates a user class to assign values to the attributes that were just passed to this object
+			
+			
+			Flight f1 = new Flight(flightNumber, fromAirport, toAirport, departDate, arriveDate, departTime, arriveTime, maxCapacity, numberOfPassengers);
+			TESTCLASS tc = new TESTCLASS();
+			
+			
+			tc.newFlight(f1.getFlightNumber(), f1.getFromAirport(), f1.getToAirport(), f1.getDepartureDate(), f1.getArrivalDate(), f1.getDepartureTime(),
+					f1.getArrivalTime(), f1.getMaxCapacity(), f1.getNumberOfPassengers());
+		}
+	
 	
 	
 	//checks Login to see if it matches
@@ -144,6 +160,7 @@ public class ValueObject{
 	
 
 	//search flight list
+	
 	public ArrayList<String> searchFlights(int flightNum, String fromAir, String toAir, String departureDate, String arrivalDate,
 			String departureTime, String arrivalTime) throws ClassNotFoundException, SQLException {
 		TESTCLASS tc = new TESTCLASS();
@@ -235,13 +252,19 @@ public class ValueObject{
 		}
 	}
 	
-	
+	//delete a flight form a user's account
 	public void deleteUserFlight(int flightNumber, String userName){
 		TESTCLASS tc = new TESTCLASS();
 		tc.deleteUserFlight(flightNumber, userName);
 	}
 	
+	public void deleteSystemFlight(int flightNumber){
+		TESTCLASS tc = new TESTCLASS();
+		tc.deleteSystemFlight(flightNumber);
+	}
 	
+	
+
 	
 	//-----------------REGULAR EXPRESSIONS-----------------\\
 	

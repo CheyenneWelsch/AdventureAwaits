@@ -43,6 +43,7 @@ public class Search extends Application {
 
 	Button btnSearch = new Button("Search");
 	Button btnBack = new Button("Go Back");
+	Button btnNewSearch = new Button("New Search");
 	Text scenetitle = new Text("Search for a Flight");
 	Text title = new Text("Search Flights");
 
@@ -159,6 +160,18 @@ public class Search extends Application {
 
 				}
 			}
+		});
+		
+		btnNewSearch.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+		    public void handle(ActionEvent e) {
+				Search test = new Search();
+				try{
+				test.start(primaryStage);
+				}catch(SQLException | ClassNotFoundException s){
+					System.out.println(s);
+				}
+		    }
 		});
 
 	}

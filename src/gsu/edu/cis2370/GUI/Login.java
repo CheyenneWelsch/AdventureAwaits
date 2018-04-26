@@ -79,6 +79,11 @@ public class Login extends Application {
 		btnLogin.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
+				try {
+					vo.deleteTempTable();
+				} catch (SQLException | ClassNotFoundException l) {
+					System.out.println(l);
+				}
 				actiontarget.setText("Sign in button pressed");
 				if (vo.checkUser(userTextField.getText(), pwBox.getText()) == false) {
 					actiontarget.setText("ERROR: INVALID USERNAME / PASSWORD FORMAT");

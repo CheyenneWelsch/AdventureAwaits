@@ -29,8 +29,7 @@ public class mainAdmin extends Application {
 	Button btnSearch = new Button("Search Flights");
 	Button btnMyFlights= new Button("View My Flights");
 	Button btnAddFlight = new Button("Add / Edit / Delete Flights");
-	Button btnDeleteFlight = new Button("Delete Flights");
-	Button btnEditFlight = new Button("Edit Flights");
+
 	Text txtAdmin = new Text("Admin Tools");
 	
 	Button btnLogout = new Button("Log Out");
@@ -64,9 +63,9 @@ public class mainAdmin extends Application {
 		btnBook.setMinWidth(200);
 		btnCancel.setMinWidth(200);
 		btnAddFlight.setMinWidth(200);
-		btnDeleteFlight.setMinWidth(200);
+		
 		btnLogout.setMinWidth(200);
-		btnEditFlight.setMinWidth(200);
+		
 	
 		/*
 		btnMyFlights.setOnAction(new EventHandler<ActionEvent>() {
@@ -94,11 +93,17 @@ public class mainAdmin extends Application {
 		    }
 		});
 		
-		btnCancel.setOnAction(new EventHandler<ActionEvent>() {
+	
+		
+		btnAddFlight.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 		    public void handle(ActionEvent e) {
-				Login test = new Login();
-				test.start(primaryStage);
+				try{
+				AdminControlsADD aca = new AdminControlsADD();
+				aca.start(primaryStage);
+				}catch(SQLException | ClassNotFoundException l) {
+					System.out.println(l);
+				}
 		    }
 		});
 		
