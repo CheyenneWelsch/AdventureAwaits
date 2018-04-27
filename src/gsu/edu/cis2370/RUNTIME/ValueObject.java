@@ -1,6 +1,5 @@
 package gsu.edu.cis2370.RUNTIME;
 
-import gsu.edu.cis2370.DATABASE.TESTCLASS;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -42,6 +41,7 @@ public class ValueObject {
 		};
 		u1.setUserName(user);
 		u1.setAccess(access);
+		System.out.println("User: " + user + "Access: " + access);
 		TESTCLASS tc = new TESTCLASS();
 		tc.createTempAccess(u1.getUserName(), u1.getAccess());
 	}
@@ -54,23 +54,24 @@ public class ValueObject {
 	}
 
 	// registers a new User
-	public void register(int ssn, String firstName, String lastName, String email, String phone, String username,
-			String password, String street, String city, String state, int zip, String securityQuestion,
-			String securityAnswer) {
-		// creates a user class to assign values to the attributes that were
-		// just passed to this object
+	// registers a new User
+		public void register(int ssn, String firstName, String lastName, String email, int phone, String username,
+				String password, String street, String city, String state, int zip, String country, String securityQuestion,
+				String securityAnswer) {
+			// creates a user class to assign values to the attributes that were
+			// just passed to this object
 
-		User user = new User(ssn, firstName, lastName, email, phone, username, password, street, city, state, zip,
-				securityQuestion, securityAnswer) {
-		};
-		TESTCLASS tc = new TESTCLASS();
+			User user = new User(ssn, firstName, lastName, email, phone, username, password, street, city, state, zip,
+					country, securityQuestion, securityAnswer) {
+			};
+			TESTCLASS tc = new TESTCLASS();
 
-		// System.out.println("user.getSSN: " + user.getSSN());
+			// System.out.println("user.getSSN: " + user.getSSN());
 
-		tc.newUser(user.getSSN(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhone(),
-				user.getUserName(), user.getPassword(), user.getStreet(), user.getCity(), user.getState(),
-				user.getZip(), user.getSecurityQuestion(), user.getSecurityAnswer());
-	}
+			tc.newUser(user.getSSN(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPhone(),
+					user.getUserName(), user.getPassword(), user.getStreet(), user.getCity(), user.getState(),
+					user.getZip(), user.getCountry(), user.getSecurityQuestion(), user.getSecurityAnswer());
+		}
 
 	// registers a new Flight
 	public void addFlight(int flightNumber, String fromAirport, String toAirport, String departDate, String arriveDate,
@@ -88,7 +89,7 @@ public class ValueObject {
 				f1.getNumberOfPassengers());
 	}
 
-	// checks Login to see if it matches
+	// checks Login to see if it User name matches password
 	public boolean checkUser(String userName, String pass) {
 		TESTCLASS tc = new TESTCLASS();
 		if (tc.checkAccount(userName, pass) == true) {
@@ -137,16 +138,33 @@ public class ValueObject {
 		return tc.getPass(userName);
 	}
 
-	// checks username access for login screen
+	// checks username access for login screen (should check to see if A or C)
 	public boolean checkAccess(String userName) {
 		TESTCLASS tc = new TESTCLASS();
 		if (tc.checkAccess(userName) == true) {
+			System.out.println("ValueObject check access: " + userName);
 			return true;
 		} else {
 			return false;
 		}
 	}
+	
+	public boolean returnUserAccess(String userName) throws SQLException, ClassNotFoundException{
+		TESTCLASS tc = new TESTCLASS();
+		if(tc.userTableAccess(userName).equals("A")){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
+	
+	public String returnUserAccessL(String userName) throws SQLException, ClassNotFoundException{
+		TESTCLASS tc = new TESTCLASS();
+		return tc.userTableAccess(userName);
+	}
+
+	
 	// number of flights currently in the list
 	public int flightList() {
 		TESTCLASS tc = new TESTCLASS();

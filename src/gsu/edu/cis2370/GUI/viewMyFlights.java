@@ -3,8 +3,8 @@ package gsu.edu.cis2370.GUI;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import gsu.edu.cis2370.RUNTIME.ValueObject;
 import gsu.edu.cis2370.DATABASE.TESTCLASS;
+import gsu.edu.cis2370.RUNTIME.ValueObject;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

@@ -1,8 +1,8 @@
 package gsu.edu.cis2370.GUI;
-import gsu.edu.cis2370.DATABASE.TESTCLASS;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.scene.control.Dialog;
+import gsu.edu.cis2370.DATABASE.TESTCLASS;
 import gsu.edu.cis2370.RUNTIME.ValueObject;
 import javafx.application.Application;
 import javafx.event.ActionEvent;

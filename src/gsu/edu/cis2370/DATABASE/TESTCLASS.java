@@ -100,19 +100,55 @@ public class TESTCLASS {
 		return a1;
 	}
 
+	// access from USER table
+	public String userTableAccess(String userName) throws SQLException, ClassNotFoundException {
+		connection = null;
+		int check = 0;
+		String a1 = "";
+		String a2 = "";
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
+
+			String query = "SELECT username, access FROM USER";
+
+			Statement stmt = con.prepareStatement(query);
+			ResultSet rs = stmt.executeQuery(query);
+			// iterate through java result set
+			while (rs.next()) {
+
+				// name of variable you want to assign the info to, then the
+				// word in "" is the column name in the database
+				String username = rs.getString("userName");
+				String access = rs.getString("access");
+
+				if (userName.equals(username)) {
+					a1 = access;
+					break;
+				} else {
+					check = 0;
+				}
+			}
+			stmt.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return a1;
+	}
+
 	// add a user to the database
-	public Connection newUser(int ssn, String firstName, String lastName, String email, String phone, String username,
-			String password, String street, String city, String state, int zip, String securityQuestion,
+	public Connection newUser(int ssn, String firstName, String lastName, String email, int phone, String username,
+			String password, String street, String city, String state, int zip, String country, String securityQuestion,
 			String securityAnswer) {
 
 		connection = null;
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
 
-			String text = "INSERT INTO USER(ssn, firstName, lastName, email, phone, username, password, street, city, state, zip, securityQuestion, securityAnswer, access) "
+			String text = "INSERT INTO USER(ssn, firstName, lastName, email, phone, username, password, street, city, state, zip, country, securityQuestion, securityAnswer, access) "
 					+ "VALUES(" + ssn + ", '" + firstName + "', '" + lastName + "', '" + email + "', " + phone + ", '"
 					+ username + "', '" + password + "', '" + street + "', '" + city + "', '" + state + "', " + zip
-					+ ",  '" + securityQuestion + "', '" + securityAnswer + "', 'C' ) ";
+					+ ", '" + country + "', '" + securityQuestion + "', '" + securityAnswer + "', 'C' ) ";
 
 			Statement stmt = connection.prepareStatement(text);
 			// stmt.executeUpdate(text);
@@ -182,8 +218,8 @@ public class TESTCLASS {
 			System.out.println("Database connected");
 
 			String text = "INSERT INTO flight (flightNumber , fromAirport , toAirport , departDate , arriveDate , departTime , arriveTime , maxCapacity, numberOfPassengers )"
-					+ "VALUES (" + (numberOfFlights()+1) + ",'" + fromAirport + "','" + toAirport + "','" + departDate + "','"
-					+ arriveDate + "','" + departTime + "','" + arriveTime + "'," + maxCapacity + ","
+					+ "VALUES (" + (numberOfFlights() + 1) + ",'" + fromAirport + "','" + toAirport + "','" + departDate
+					+ "','" + arriveDate + "','" + departTime + "','" + arriveTime + "'," + maxCapacity + ","
 					+ numberOfPassengers + ")";
 
 			Statement stmt = connection.prepareStatement(text);
@@ -197,7 +233,8 @@ public class TESTCLASS {
 		return connection;
 	}
 
-	// check the username and password, return as false if there is not a match
+	// check the username (Account) and password, return as false if there is
+	// not a match
 	public boolean checkAccount(String user, String pass) {
 		connection = null;
 		int check = 0;
@@ -270,7 +307,7 @@ public class TESTCLASS {
 		}
 
 		if (check == 1) {
-			//username exists
+			// username exists
 			return true;
 		} else {
 			return false;
@@ -400,7 +437,6 @@ public class TESTCLASS {
 				// word in "" is the column name in the database
 				String userName = rs.getString("username");
 				String access = rs.getString("access");
-
 				if (userName.equals(user) && access.equals("A")) {
 					check = 1;
 					break;
@@ -763,17 +799,18 @@ public class TESTCLASS {
 
 			String deleteFlight = "DELETE FROM TABLE booking WHERE flightNumber = ? AND userName = ?";
 			Statement stmt = connection.prepareStatement(deleteFlight);
-			
+
 			//
-			PreparedStatement st = connection.prepareStatement("DELETE FROM booking WHERE flightNumber = ? AND userName = ?");
-			
-			//sets the two arguments that are passed to this method when called to the index of the '?'s in the prepared statement
+			PreparedStatement st = connection
+					.prepareStatement("DELETE FROM booking WHERE flightNumber = ? AND userName = ?");
+
+			// sets the two arguments that are passed to this method when called
+			// to the index of the '?'s in the prepared statement
 			st.setInt(1, flightNum);
-			st.setString(2,userName);
+			st.setString(2, userName);
 			st.executeUpdate();
-		 
-			
-			//stmt.execute(deleteFlight);
+
+			// stmt.execute(deleteFlight);
 			System.out.println("FLIGHT DELETED");
 
 		} catch (SQLException e) {
@@ -781,27 +818,26 @@ public class TESTCLASS {
 		}
 		return connection;
 	}
-	
-	
-	
+
 	public Connection deleteSystemFlight(int flightNum) {
 		connection = null;
 		String dDate = "";
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
 
-			//String deleteFlight = "DELETE FROM TABLE booking WHERE flightNumber = ?";
-			//Statement stmt = connection.prepareStatement(deleteFlight);
-			
+			// String deleteFlight = "DELETE FROM TABLE booking WHERE
+			// flightNumber = ?";
+			// Statement stmt = connection.prepareStatement(deleteFlight);
+
 			//
 			PreparedStatement st = connection.prepareStatement("DELETE FROM flight WHERE flightNumber = ?");
-			
-			//sets the two arguments that are passed to this method when called to the index of the '?'s in the prepared statement
+
+			// sets the two arguments that are passed to this method when called
+			// to the index of the '?'s in the prepared statement
 			st.setInt(1, flightNum);
 			st.executeUpdate();
-		 
-			
-			//stmt.execute(deleteFlight);
+
+			// stmt.execute(deleteFlight);
 			System.out.println("FLIGHT DELETED");
 
 		} catch (SQLException e) {
@@ -809,9 +845,6 @@ public class TESTCLASS {
 		}
 		return connection;
 	}
-	
-	
-	
 
 	// --------------------ADMIN CONTROLS--------------------
 
@@ -835,7 +868,7 @@ public class TESTCLASS {
 		return connection;
 	}
 
-	// update fromAirport
+	// --------- update fromAirport ----------\\
 	public Connection editFlightFromAirport(int flightNumber, String fromAirport) {
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
@@ -855,7 +888,7 @@ public class TESTCLASS {
 		return connection;
 	}
 
-	// update departDate
+	//--------- update departDate --------\\
 	public Connection editFlightDepartDate(int flightNumber, String departDate) {
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
@@ -875,7 +908,7 @@ public class TESTCLASS {
 		return connection;
 	}
 
-	// update arriveDate
+	//-------- update arriveDate -------\\
 	public Connection editFlightArriveDate(int flightNumber, String arriveDate) {
 		try {
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
@@ -916,7 +949,7 @@ public class TESTCLASS {
 		return connection;
 	}
 
-	// update arriveTime
+	//------update arriveTime--------
 	public Connection editFlightArriveTime(int flightNumber, String arriveTime) {
 		connection = null;
 		try {
@@ -936,55 +969,50 @@ public class TESTCLASS {
 		}
 		return connection;
 	}
-	
-	
-	// update maxCapacity
-		public Connection editFlightMaxCapacity(int flightNumber, String maxCap) {
-			connection = null;
-			int maxCapacity = Integer.parseInt(maxCap);
-			try {
-				connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
 
-				String updateFlight = ("UPDATE flight SET  maxCapacity = " + maxCapacity + " WHERE flightNumber = "
-						+ flightNumber + "");
+	//-----update maxCapacity------
+	public Connection editFlightMaxCapacity(int flightNumber, String maxCap) {
+		connection = null;
+		int maxCapacity = Integer.parseInt(maxCap);
+		try {
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
 
-				Connection con;
-				Statement stmt = connection.prepareStatement(updateFlight);
-				// stmt.executeUpdate(text);
-				stmt.execute(updateFlight);
-				System.out.println("PUSHED");
+			String updateFlight = ("UPDATE flight SET  maxCapacity = " + maxCapacity + " WHERE flightNumber = "
+					+ flightNumber + "");
 
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
-			}
-			return connection;
+			Connection con;
+			Statement stmt = connection.prepareStatement(updateFlight);
+			// stmt.executeUpdate(text);
+			stmt.execute(updateFlight);
+			System.out.println("PUSHED");
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 		}
-	
-		// update CurrentCapacity
-				public Connection editFlightCurrentCapacity(int flightNumber, String curCap) {
-					connection = null;
-					int currCap = Integer.parseInt(curCap);
-					try {
-						connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
+		return connection;
+	}
 
-						String updateFlight = ("UPDATE flight SET  numberOfPassengers = " + currCap + " WHERE flightNumber = "
-								+ flightNumber + "");
+	//-----update Current Capacity------
+	public Connection editFlightCurrentCapacity(int flightNumber, String curCap) {
+		connection = null;
+		int currCap = Integer.parseInt(curCap);
+		try {
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "bismarck");
 
-						Connection con;
-						Statement stmt = connection.prepareStatement(updateFlight);
-						// stmt.executeUpdate(text);
-						stmt.execute(updateFlight);
-						System.out.println("PUSHED");
+			String updateFlight = ("UPDATE flight SET  numberOfPassengers = " + currCap + " WHERE flightNumber = "
+					+ flightNumber + "");
 
-					} catch (SQLException e) {
-						System.out.println(e.getMessage());
-					}
-					return connection;
-				}
-	
-	
-	
-	
+			Connection con;
+			Statement stmt = connection.prepareStatement(updateFlight);
+			// stmt.executeUpdate(text);
+			stmt.execute(updateFlight);
+			System.out.println("PUSHED");
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return connection;
+	}
 
 	// DELETE A FLIGHT
 	// for new and delete, leave out parenthesis
@@ -1049,8 +1077,5 @@ public class TESTCLASS {
 		}
 
 	}
-	
-	
-	
 
 }

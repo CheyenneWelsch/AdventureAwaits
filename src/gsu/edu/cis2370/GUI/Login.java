@@ -1,5 +1,6 @@
 package gsu.edu.cis2370.GUI;
 
+import gsu.edu.cis2370.DATABASE.*;
 import gsu.edu.cis2370.RUNTIME.User;
 import gsu.edu.cis2370.RUNTIME.ValueObject;
 
@@ -85,7 +86,6 @@ public class Login extends Application {
 
 		// use to do action when button pressed
 		// include all actions within the setOnAction method
-
 		btnLogin.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
@@ -140,6 +140,19 @@ public class Login extends Application {
 				// pulls from the sign up class
 				SignUp s1 = new SignUp();
 				s1.start(primaryStage);
+
+			}
+
+		});
+		
+
+		btnForgotPass.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				actiontarget.setText("Sign in button pressed");
+				// pulls from the sign up class
+				forgotPassword fp = new forgotPassword();
+				fp.start(primaryStage);
 
 			}
 

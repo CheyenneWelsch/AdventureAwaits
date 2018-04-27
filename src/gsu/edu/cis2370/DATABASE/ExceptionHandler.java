@@ -3,7 +3,6 @@ package gsu.edu.cis2370.DATABASE;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import gsu.edu.cis2370.DATABASE.TESTCLASS;
 import gsu.edu.cis2370.RUNTIME.ValueObject;
 
 public class ExceptionHandler {
@@ -25,6 +24,11 @@ public class ExceptionHandler {
 		
 		tc.deleteUserFlight(1, "Mmeinhardt");
 		System.out.println("D E L E TE");
+		
+		
+		System.out.println(tc.userTableAccess("Mmeinhardt"));
+		tc.createTempAccess("mmeinhardt", "A");
+		System.out.println(tc.userTableAccess("Mmeinhardt"));
 		/*
 		 * Calendar c1 = Calendar.getInstance(); Calendar c2 =
 		 * Calendar.getInstance(); c1.compareTo(c2); Returns:

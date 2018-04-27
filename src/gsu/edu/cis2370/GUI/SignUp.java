@@ -115,8 +115,8 @@ public class SignUp extends Application {
 			grid.add(userTextField, 1, 12, 3, 1);
 			grid.add(pw, 0, 13);
 			grid.add(pwBOX, 1, 13, 3, 1);
-			grid.add(pw2, 0, 14);
-			grid.add(pw2BOX, 1, 14, 3, 1);
+			//grid.add(pw2, 0, 14);
+			//grid.add(pw2BOX, 1, 14, 3, 1);
 			grid.add(actiontarget, 1, 16, 3, 1);
 			
 			
@@ -159,11 +159,11 @@ public class SignUp extends Application {
 						
 						actiontarget.setText("ERROR. User name already taken");
 					}else{
-						
+						int phone = Integer.parseInt(phoneBOX.getText());
 						int ssn = Integer.parseInt(ssnBOX.getText());
 						int zip = Integer.parseInt(zipBOX.getText());
-					vo.register(ssn, firstNameBOX.getText(), lastNameBOX.getText(),emailBOX.getText(), phoneBOX.getText(), userTextField.getText(), pwBOX.getText(), addressBOX.getText(), 
-							cityBOX.getText(), stateBOX.getText(), zip, securityQBOX.getText(), securityABOX.getText() );
+					vo.register(ssn, firstNameBOX.getText(), lastNameBOX.getText(),emailBOX.getText(), phone, userTextField.getText(), pwBOX.getText(), addressBOX.getText(), 
+							cityBOX.getText(), stateBOX.getText(), zip, "USA", securityQBOX.getText(), securityABOX.getText() );
 					}
 			       
 			    }
@@ -185,11 +185,7 @@ public class SignUp extends Application {
 
 		}
 		
-	/*
-		private void textGrab(String user, String pass){
-			System.out.println("Username: " + user + "\nPassword: " + pass);
-		}
-		*/
+
 		
 	public static void main (String[] args) throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");

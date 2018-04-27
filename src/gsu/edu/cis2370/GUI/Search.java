@@ -118,28 +118,29 @@ public class Search extends Application {
 			@Override
 			public void handle(ActionEvent e) {
 
-				/*
-				 * if (vo.testAirport(fromBOX.getText()) != true &&
-				 * vo.testAirport(toBOX.getText()) != true) { Label actiontarget
-				 * = new
-				 * Label("INVALID AIRPORT. Enter as Airport code (ex. ATL, NYC, etc)"
-				 * ); grid.add(actiontarget, 1, 7, 3, 1);
-				 * 
-				 * } else if (vo.testDateFormat(departDateBOX.getText()) != true
-				 * && vo.testDateFormat(arrivalDateBOX.getText()) != true) {
-				 * Label actiontarget = new Label(
-				 * "INVALID DATE. Enter as MM/DD/YYYY (ex. 12/25/2018, 08/21/2018, etc)"
-				 * ); grid.add(actiontarget, 1, 7, 3, 1);
-				 * 
-				 * } else if (vo.testTimeFormat(fromTime.getText()) != true &&
-				 * vo.testTimeFormat(toTime.getText()) != true) { Label
-				 * actiontarget = new
-				 * Label("INVALID TIME. Enter as HH:MM (ex. 12:56, 16:32, etc)"
-				 * ); grid.add(actiontarget, 1, 7, 3, 1); } else {
-				*/
-				
-				
 				ValueObject vc = new ValueObject();
+				int flightNum = Integer.parseInt(flightNumBOX.getText());
+				 if (vo.testAirport(fromBOX.getText()) != true &&
+				 vo.testAirport(toBOX.getText()) != true) { Label actiontarget
+				  = new
+				  Label("INVALID AIRPORT. Enter as Airport code (ex. ATL, NYC, etc)"
+				  ); grid.add(actiontarget, 1, 7, 3, 1);
+				  
+				  } else if (vo.testDateFormat(departDateBOX.getText()) != true
+				  && vo.testDateFormat(arrivalDateBOX.getText()) != true) {
+				  Label actiontarget = new Label(
+				  "INVALID DATE. Enter as MM/DD/YYYY (ex. 12/25/2018, 08/21/2018, etc)"
+				  ); grid.add(actiontarget, 1, 7, 3, 1);
+				  
+				  } else if (vo.testTimeFormat(fromTime.getText()) != true &&
+				  vo.testTimeFormat(toTime.getText()) != true) { Label
+				  actiontarget = new
+				  Label("INVALID TIME. Enter as HH:MM (ex. 12:56, 16:32, etc)"
+				  ); grid.add(actiontarget, 1, 7, 3, 1); } else {
+				
+				
+				
+			/*
 				int flightNum = Integer.parseInt(flightNumBOX.getText());
 				if (flightNum == 0 && (vo.testNumberFormat(flightNumBOX.getText()) != true)) {
 						Label actiontarget = new Label("INVALID FLIGHT NUMBER");
@@ -166,9 +167,11 @@ public class Search extends Application {
 					}
 
 				} else {
+					*/
+					  
 					int fnum = Integer.parseInt(flightNumBOX.getText());
 					try {
-
+			
 						ArrayList<String> f1 = vo.searchFlights(fnum, fromBOX.getText(), toBOX.getText(),
 								departDateBOX.getText(), arrivalDateBOX.getText(), fromTime.getText(),
 								toTime.getText());

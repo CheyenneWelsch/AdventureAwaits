@@ -1,8 +1,8 @@
 package gsu.edu.cis2370.GUI;
-import gsu.edu.cis2370.DATABASE.TESTCLASS;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.scene.control.Dialog;
+import gsu.edu.cis2370.DATABASE.TESTCLASS;
 import gsu.edu.cis2370.RUNTIME.ValueObject;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -131,6 +131,7 @@ public class flightListAdd extends Application{
 			addFlight.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent e) {
+					
 					ValueObject vc = new ValueObject();
 					
 					try{
@@ -140,6 +141,7 @@ public class flightListAdd extends Application{
 					if(vo.checkFlightAvailability(flightNumber, uName) == true){
 						
 						vo.bookFlight(flightNumber, uName);
+						
 						final Text actiontarget = new Text("Flight Added");
 						gridBtm.add(actiontarget, 0, 0);
 						

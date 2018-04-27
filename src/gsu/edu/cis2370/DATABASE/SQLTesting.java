@@ -3,8 +3,6 @@ import java.sql.*;
 import java.sql.SQLException;
 import java.util.*;
 
-import gsu.edu.cis2370.RUNTIME.TESTCLASS;
-
 public class SQLTesting {
 
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
